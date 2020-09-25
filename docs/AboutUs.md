@@ -21,10 +21,10 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Jane Doe
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/calistaio.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/calistaio)]
+[[portfolio](team/calistaio.md)]
 
 * Role: Team Lead
 * Responsibilities: UI
@@ -38,15 +38,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Mehak Virdi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/mehak24k.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/mehak24k)]
+[[portfolio](team/mehakvirdi.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Testing + Code Quality
 
 ### James Doe
 
@@ -57,3 +57,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: UI
+
+### Wu Zeying
+<img src="images/WuZeying.png" width="200px">
+
+[[github](http://github.com/zeying99)]
+[[portfolio](team/wuzeying.md)]
+
+* Role: Developer
+* Responsibilities: documentation
