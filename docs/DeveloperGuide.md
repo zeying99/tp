@@ -256,26 +256,28 @@ Students can organise (specify the sequence) the flashcards as well.
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
+| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                      |
+| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
 | `* * *`  | new user                                   | view the user manual           | get a brief idea of how to use the app                                 |
 | `* * *`  | user                                       | make new flashcards about the definition of a concept | remember my CS2040S content better              |
 | `* * *`  | user                                       | delete a flashcard             | remove flashcards with mistakes or those I do not need                 |
-| `* * *`  | user                                       | save the flashcards locally |  review some flashcards that I have previously made |
+| `* * *`  | user                                       | save the flashcards locally |  review some flashcards that I have previously made                       |
 | `* *`    | user studying for a test                   | practice questions/ quizzes    | get good grades!                                                       |
 | `* *`    | user studying for a test                   | review past quiz attempts      | so that I can learn from my mistakes                                   |
 | `* *`    | user                                       | study pseudocode               | gain a better understanding of the algorithms                          |
 | `* *`    | familiar user                              | search for flashcards using keywords |                                                                  |
 | `* *`    | familiar user and visual learner           | insert diagrams in flashcards | remember the information better                                         |
 | `* *`    | familiar user                              | delete wrong tags             |                                                                         |
-| `* *`    | familiar user                                       | label my flashcards   | sort them into different categories with appropriate tags.             |
-| `* *`    | familiar user                                       | view flashcards according to the different topics   | study topic-by-topic.                |
-| `* *`    | user with limited time                                       | I want to save my progress as I may not finish everything    | continue my revision from where I had left off from the previous session.                |
+| `* *`    | familiar user                            | label my flashcards   | sort them into different categories with appropriate tags.                        |
+| `* *`    | familiar user                    | view flashcards according to the different topics   | study topic-by-topic.                                        |
+| `* *`    | user with limited time              | I want to save my progress as I may not finish everything    | continue my revision from where I had left off from the previous session.  |
 | `*`  | user who is familiar with the app			| set reminders indicating when I should study a particular flashcard | so that I can maximise information retention |
-| `*`  | expert user								| use shortcuts                  | view my frequently-viewed flashcards more easily |
+| `*`  | expert user								| use shortcuts                  | view my frequently-viewed flashcards more easily                             |
 | `*`  | expert user                                | track my history of flashcards that I have viewed over the past specified time period(e.g week/month) | check my study habits regularly |
-| `*`  | user who is familiar with the app           | favourite flashcards | easily access flashcards I have to review more      |
-| `*`  | user studying for a test                   | design my own questions that I want to practice | be better prepared for exams |
-| `*`  | expert user                                | check my history of my wrong quiz answers/ quiz scores | visualize my improvement in a statistical way |
-| `*`  | user studying for a test                   | add in T/F questions 			 | be better prepared for more types of questions |
+| `*`  | user who is familiar with the app           | favourite flashcards          | easily access flashcards I have to review more                               |
+| `*`  | user studying for a test                   | design my own questions that I want to practice | be better prepared for exams                               |
+| `*`  | expert user                                | check my history of my wrong quiz answers/ quiz scores | visualize my improvement in a statistical way      |
+| `*`  | user studying for a test                   | add in T/F questions 			 | be better prepared for more types of questions                            |
 
 
 Use Cases
@@ -388,12 +390,12 @@ Use case loops through 7 and 8 upon user request until user inputs exit command
 
 ### Non-Functional Requirements
 
-Should work on any *mainstream OS* as long as it has Java `11` or above installed.
-Should be able to store up to 1000 flashcards without a noticeable sluggishness in performance for typical usage.
-A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-Should not take up too much memory in the hard disk (i.e. the entire desktop application should not take up more than 100 MB of space).
-The system should work on both 32-bit and 64-bit environments.
-The flashcards would not be required to support inputs in formats other than utf-8.
+* Should work on any *mainstream OS* as long as it has Java `11` or above installed.
+* Should be able to store up to 1000 flashcards without a noticeable sluggishness in performance for typical usage.
+* A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+* Should not take up too much memory in the hard disk (i.e. the entire desktop application should not take up more than 100 MB of space).
+* The system should work on both 32-bit and 64-bit environments.
+* The flashcards would not be required to support inputs in formats other than utf-8.
 ### Glossary
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 
