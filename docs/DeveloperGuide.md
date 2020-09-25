@@ -236,13 +236,19 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
+* CS2040S students in NUS
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
+* wants a way to study 2040 concepts in a condensed format
+* wants a way to use fragmented time for effective revision
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: 
+This product can help students with memory retention of various concepts and formulae in CS2040S. Students can utilize fragmented time to enhance learning.
+This product can help with a quick review of concepts for students to check their understanding. Questions are neatly segmented into different topics for better organisation.
+Concepts and definitions are organised according to different levels of priority for the student to allocate his studying time wisely.
+Students can bookmark where they left off and resume going through the questions later.
+Students can organise (specify the sequence) the flashcards as well.
 
 
 ### User stories
