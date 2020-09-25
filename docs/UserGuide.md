@@ -152,7 +152,7 @@ Format: `exit`
 DSAce data is saved in the DSAce folder automatically after any command that changes the data is entered. There is no need to save the data manually.
 
 ### FAQ
-Q: How do I transfer my data to another Computer?
+Q: How do I transfer my data to another Computer? <br>
 A: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous DSAce home folder.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -161,7 +161,7 @@ A: Install the app in the other computer and overwrite the empty data file it cr
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add t/TITLE c/CONTENT <br> e.g., `add t/Bellman-Ford Search c/runtime: O(VE)`
+**Add** | `add t/TITLE c/CONTENT` <br> e.g., `add t/Bellman-Ford Search c/runtime: O(VE)`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** [v 2.0] | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​` <br> e.g., `edit 2 n/James Lee e/jameslee@example.com`
