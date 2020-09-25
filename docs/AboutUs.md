@@ -57,3 +57,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: UI
+
+### Wu Zeying
+<img src="images/WuZeying.png" width="200px">
+
+[[github](http://github.com/zeying99)]
+[[portfolio](team/wuzeying.md)]
+
+* Role: Developer
+* Responsibilities: documentation
