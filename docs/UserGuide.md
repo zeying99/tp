@@ -108,7 +108,7 @@ Examples:
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+Clears all entries from the flashcards folder.
 
 Format: `clear`
 
@@ -119,19 +119,11 @@ Exits the program.
 Format: `exit`
 
 ### Saving the data
+DSAce data is saved in the DSAce folder automatically after any command that changes the data is entered. There is no need to save the data manually.
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Archiving data files `[coming in v2.0]`
-
-_{explain the feature here}_
-
---------------------------------------------------------------------------------------------------------------------
-
-## FAQ
-
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+### FAQ
+Q: How do I transfer my data to another Computer? <br>
+A: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous DSAce home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -139,10 +131,10 @@ _{explain the feature here}_
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add t/TITLE c/CONTENT` <br> e.g., `add t/Bellman-Ford Search c/runtime: O(VE)`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Edit** [v 2.0] | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​` <br> e.g., `edit 2 n/James Lee e/jameslee@example.com`
+**Find** [v 2.0] | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Bellman-Ford Search`
 **List** | `list`
 **Help** | `help`
