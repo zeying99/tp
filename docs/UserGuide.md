@@ -142,7 +142,7 @@ Clears all entries from the flashcards folder.
 
 Format: `clear`
 
-### Exiting the program : exit
+### Exiting the program : `exit`
 
 Exits the program.
 
