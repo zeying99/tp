@@ -8,8 +8,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.person.exceptions.DuplicateFlashcardException;
+import seedu.address.model.person.exceptions.FlashcardNotFoundException;
 
 /**
  * A list of flashcards that enforces uniqueness between its elements and does not allow nulls.
@@ -45,7 +45,7 @@ public class UniqueFlashcardList implements Iterable<Person> {
     public void add(Person toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateFlashcardException();
         }
         internalList.add(toAdd);
     }
@@ -60,11 +60,11 @@ public class UniqueFlashcardList implements Iterable<Person> {
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new FlashcardNotFoundException();
         }
 
         if (!target.isSamePerson(editedFlashcard) && contains(editedFlashcard)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateFlashcardException();
         }
 
         internalList.set(index, editedFlashcard);
@@ -77,7 +77,7 @@ public class UniqueFlashcardList implements Iterable<Person> {
     public void remove(Person toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new FlashcardNotFoundException();
         }
     }
 
@@ -93,7 +93,7 @@ public class UniqueFlashcardList implements Iterable<Person> {
     public void setFlashcards(List<Person> flashcards) {
         requireAllNonNull(flashcards);
         if (!flashcardsAreUnique(flashcards)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateFlashcardException();
         }
 
         internalList.setAll(flashcards);
