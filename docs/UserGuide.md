@@ -3,10 +3,24 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+DSAce is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, DSAce can get your revision tasks done faster than traditional GUI apps.
 
-* Table of Contents
-{:toc}
+## Table of Contents
+* [Quick start](#quick-start)
+* [Features](#features)
+   * [**`help`** : Viewing help.](#viewing-help--help)
+   * [**`add`** : Adding a flashcard.](#adding-a-flashcard--add)
+   * [**`list`** : Listing all flashcards.](#listing-all-flashcards--list)
+   * [**`delete`** : Deleting a flashcard.](#deleting-a-flashcard--delete)
+   * [**`clear`** : Clearing all flashcards.](#clearing-all-entries--clear)
+   * [**`exit`** : Exiting the program.](#exiting-the-program--exit)
+   * [Saving the data.](#saving-the-data)
+   * [Archiving data files [coming in v2.0].](#archiving-data-files-coming-in-v20)
+   * [**`edit`** : Editing a flashcard [coming in v2.0].](#editing-a-flashcard--edit-coming-in-v20)
+   * [**`find`** : Locating flashcard by title/content [coming in v2.0].](#locating-a-flashcard--find-coming-in-v20)
+* [FAQ](#faq)
+* [Command Summary](#command-summary)
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -14,9 +28,9 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `dsace.jar` from [here](https://github.com/AY2021S1-CS2103-T14-2/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+1. Copy the file to the folder you want to use as the _home folder_ for your DSAce.
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
@@ -24,17 +38,19 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * **`list`** : Lists all contacts.
+   * **`list`** : Lists all flashcards.
 
-   * **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * **`add`**`t/Insertion Sort c/Worse case: O(n^2)` : Adds a flashcard named `Insertion Sort` to the DSAce folder.
 
-   * **`delete`**`3` : Deletes the 3rd contact shown in the current list.
+   * **`delete`**`3` : Deletes the 3rd flashcard shown in the current list.
 
-   * **`clear`** : Deletes all contacts.
+   * **`clear`** : Deletes all flashcards.
 
    * **`exit`** : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
+
+1. All sample data and flashcards created by the user will be stored in the `DSAce` folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -92,7 +108,7 @@ Examples:
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+Clears all entries from the flashcards folder.
 
 Format: `clear`
 
@@ -103,19 +119,11 @@ Exits the program.
 Format: `exit`
 
 ### Saving the data
+DSAce data is saved in the DSAce folder automatically after any command that changes the data is entered. There is no need to save the data manually.
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Archiving data files `[coming in v2.0]`
-
-_{explain the feature here}_
-
---------------------------------------------------------------------------------------------------------------------
-
-## FAQ
-
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+### FAQ
+Q: How do I transfer my data to another Computer? <br>
+A: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous DSAce home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -123,10 +131,10 @@ _{explain the feature here}_
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add t/TITLE c/CONTENT` <br> e.g., `add t/Bellman-Ford Search c/runtime: O(VE)`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Edit** [v 2.0] | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​` <br> e.g., `edit 2 n/James Lee e/jameslee@example.com`
+**Find** [v 2.0] | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Bellman-Ford Search`
 **List** | `list`
 **Help** | `help`
