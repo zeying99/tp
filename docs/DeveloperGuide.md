@@ -236,71 +236,167 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
+* CS2040S students in NUS
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
+* wants a way to study 2040 concepts in a condensed format
+* wants a way to use fragmented time for effective revision
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: 
+This product can help students with memory retention of various concepts and formulae in CS2040S. Students can utilize fragmented time to enhance learning.
+This product can help with a quick review of concepts for students to check their understanding. Questions are neatly segmented into different topics for better organisation.
+Concepts and definitions are organised according to different levels of priority for the student to allocate his studying time wisely.
+Students can bookmark where they left off and resume going through the questions later.
+Students can organise (specify the sequence) the flashcards as well.
+
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| `* * *`  | new user                                   | view the user manual           | get a brief idea of how to use the app                                 |
+| `* * *`  | user                                       | make new flashcards about the definition of a concept | remember my CS2040S content better              |
+| `* * *`  | user                                       | delete a flashcard             | remove flashcards with mistakes or those I do not need                 |
+| `* * *`  | user                                       | save the flashcards locally |  review some flashcards that I have previously made |
+| `* *`    | user studying for a test                   | practice questions/ quizzes    | get good grades!                                                       |
+| `* *`    | user studying for a test                   | review past quiz attempts      | so that I can learn from my mistakes                                   |
+| `* *`    | user                                       | study pseudocode               | gain a better understanding of the algorithms                          |
+| `* *`    | familiar user                              | search for flashcards using keywords |                                                                  |
+| `* *`    | familiar user and visual learner           | insert diagrams in flashcards | remember the information better                                         |
+| `* *`    | familiar user                              | delete wrong tags             |                                                                         |
+| `* *`    | familiar user                                       | label my flashcards   | sort them into different categories with appropriate tags.             |
+| `* *`    | familiar user                                       | view flashcards according to the different topics   | study topic-by-topic.                |
+| `* *`    | user with limited time                                       | I want to save my progress as I may not finish everything    | continue my revision from where I had left off from the previous session.                |
+| `*`  | user who is familiar with the app			| set reminders indicating when I should study a particular flashcard | so that I can maximise information retention |
+| `*`  | expert user								| use shortcuts                  | view my frequently-viewed flashcards more easily |
+| `*`  | expert user                                | track my history of flashcards that I have viewed over the past specified time period(e.g week/month) | check my study habits regularly |
+| `*`  | user who is familiar with the app           | favourite flashcards | easily access flashcards I have to review more      |
+| `*`  | user studying for a test                   | design my own questions that I want to practice | be better prepared for exams |
+| `*`  | expert user                                | check my history of my wrong quiz answers/ quiz scores | visualize my improvement in a statistical way |
+| `*`  | user studying for a test                   | add in T/F questions 			 | be better prepared for more types of questions |
 
-*{More to be added}*
 
-### Use cases
+Use Cases
+(For all use cases below, the **System** is the `DSAce` and the **Actor** is the `user`, unless specified otherwise)
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
-
-**Use case: Delete a person**
+**Use case: Delete a flashcard**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to list flashcards
+2.  DSAce shows a list of flashcards
+3.  User requests to delete a specific flashcard in the list
+4.  DSAce deletes the flashcard
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
 * 2a. The list is empty.
 
-  Use case ends.
+ Use case ends.
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+  * 3a1. DSAce shows an error message.
 
-      Use case resumes at step 2.
+     Use case resumes at step 2.
+
+**Use case: Add a flashcard**
+
+**MSS**
+
+1.  User requests to add a flashcards
+2.  DSAce adds the flashcard
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+  * 1a1. DSAce shows an error message.
+
+**Use case: Edit a flashcard**
+
+**MSS**
+
+1.  User requests to list flashcards to determine if the flashcard to be edited already exists
+2.  DSAce shows a list of flashcards
+3.  User requests to edit a specific flashcard in the list by providing the detail to be edited
+4.  DSAce edits the flashcard
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+ Use case ends.
+
+* 3a. The given index is invalid.
+
+  * 3a1. DSAce shows an error message.
+
+     Use case resumes at step 2.
+
+* 3b. The given input is invalid.
+
+  * 3b1. DSAce shows an error message.
+
+     Use case resumes at step 2.
+
+**Use case: Take a quiz**
+
+**MSS**
+
+1.  User requests to see the list of quiz topics available for study
+2.  DSAce shows a list of quiz topics
+3.  User requests the topics to be covered in the quiz questions
+4.  DSAce displays one question
+5.  User inputs their answer for the displayed question
+Use case loops through steps 4 and 5 until the quiz runs out of questions or the user inputs a stop command
+6.  DSAce shows overall score and a list of questions with their marks
+7.  User can request to view a particular question using the index
+8.  DSAce displays the question, user’s answer and the correct answer
+Use case loops through 7 and 8 upon user request until user inputs exit command
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+ Use case ends.
+
+* 3a. The user input topic index is invalid.
+
+  * 3a1. DSAce shows an error message.
+
+     Use case resumes at step 2.
+
+* 5a. The user input answer is invalid.
+
+  * 5b1. DSAce shows an error message.
+
+     Use case resumes at step 4.
 
 *{More to be added}*
+
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
-
+Should work on any *mainstream OS* as long as it has Java `11` or above installed.
+Should be able to store up to 1000 flashcards without a noticeable sluggishness in performance for typical usage.
+A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+Should not take up too much memory in the hard disk (i.e. the entire desktop application should not take up more than 100 MB of space).
+The system should work on both 32-bit and 64-bit environments.
+The flashcards would not be required to support inputs in formats other than utf-8.
 ### Glossary
-
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+
 
 --------------------------------------------------------------------------------------------------------------------
 
