@@ -10,7 +10,7 @@ import java.util.Set;
 import seedu.address.model.tag.Tag;
 
 /**
- * Represents a Flashcard in the address book.
+ * Represents a Flashcard in the flashcard folder.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Flashcard {
@@ -61,10 +61,10 @@ public class Flashcard {
     }
 
     /**
-     * Returns true if both persons of the same name have at least one other identity field that is the same.
+     * Returns true if both flashcards of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
-    public boolean isSamePerson(Flashcard otherFlashcard) {
+    public boolean isSameFlashcard(Flashcard otherFlashcard) {
         if (otherFlashcard == this) {
             return true;
         }

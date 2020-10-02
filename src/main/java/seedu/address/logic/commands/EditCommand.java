@@ -74,7 +74,7 @@ public class EditCommand extends Command {
         Flashcard flashcardToEdit = lastShownList.get(index.getZeroBased());
         Flashcard editedFlashcard = createEditedPerson(flashcardToEdit, editPersonDescriptor);
 
-        if (!flashcardToEdit.isSamePerson(editedFlashcard) && model.hasPerson(editedFlashcard)) {
+        if (!flashcardToEdit.isSameFlashcard(editedFlashcard) && model.hasPerson(editedFlashcard)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
