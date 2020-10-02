@@ -17,7 +17,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Jackson-friendly version of {@link Flashcard}.
  */
-class JsonAdaptedPerson {
+class JsonAdaptedFlashcard {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Flashcard's %s field is missing!";
 
@@ -27,12 +27,12 @@ class JsonAdaptedPerson {
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonAdaptedPerson} with the given flashcard details.
+     * Constructs a {@code JsonAdaptedFlashcard} with the given flashcard details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("name") String name,
-                             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+    public JsonAdaptedFlashcard(@JsonProperty("name") String name,
+                                @JsonProperty("email") String email, @JsonProperty("address") String address,
+                                @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
         this.email = email;
         this.address = address;
@@ -44,7 +44,7 @@ class JsonAdaptedPerson {
     /**
      * Converts a given {@code Flashcard} into this class for Jackson use.
      */
-    public JsonAdaptedPerson(Flashcard source) {
+    public JsonAdaptedFlashcard(Flashcard source) {
         name = source.getName().fullName;
         email = source.getEmail().value;
         address = source.getAddress().value;

@@ -8,8 +8,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.person.exceptions.DuplicateFlashcardException;
+import seedu.address.model.person.exceptions.FlashcardNotFoundException;
 
 /**
  * A list of persons that enforces uniqueness between its elements and does not allow nulls.
@@ -43,7 +43,7 @@ public class UniquePersonList implements Iterable<Flashcard> {
     public void add(Flashcard toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateFlashcardException();
         }
         internalList.add(toAdd);
     }
@@ -58,11 +58,11 @@ public class UniquePersonList implements Iterable<Flashcard> {
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new FlashcardNotFoundException();
         }
 
         if (!target.isSameFlashcard(editedFlashcard) && contains(editedFlashcard)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateFlashcardException();
         }
 
         internalList.set(index, editedFlashcard);
@@ -75,7 +75,7 @@ public class UniquePersonList implements Iterable<Flashcard> {
     public void remove(Flashcard toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new FlashcardNotFoundException();
         }
     }
 
@@ -91,7 +91,7 @@ public class UniquePersonList implements Iterable<Flashcard> {
     public void setPersons(List<Flashcard> flashcards) {
         requireAllNonNull(flashcards);
         if (!personsAreUnique(flashcards)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateFlashcardException();
         }
 
         internalList.setAll(flashcards);

@@ -11,7 +11,7 @@ import seedu.address.model.util.SampleDataUtil;
 /**
  * A utility class to help with building Flashcard objects.
  */
-public class PersonBuilder {
+public class FlashcardBuilder {
 
     public static final String DEFAULT_NAME = "Alice Pauline";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
@@ -23,9 +23,9 @@ public class PersonBuilder {
     private Set<Tag> tags;
 
     /**
-     * Creates a {@code PersonBuilder} with the default details.
+     * Creates a {@code FlashcardBuilder} with the default details.
      */
-    public PersonBuilder() {
+    public FlashcardBuilder() {
         name = new Name(DEFAULT_NAME);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
@@ -33,9 +33,9 @@ public class PersonBuilder {
     }
 
     /**
-     * Initializes the PersonBuilder with the data of {@code flashcardToCopy}.
+     * Initializes the FlashcardBuilder with the data of {@code flashcardToCopy}.
      */
-    public PersonBuilder(Flashcard flashcardToCopy) {
+    public FlashcardBuilder(Flashcard flashcardToCopy) {
         name = flashcardToCopy.getName();
         email = flashcardToCopy.getEmail();
         address = flashcardToCopy.getAddress();
@@ -45,7 +45,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Name} of the {@code Flashcard} that we are building.
      */
-    public PersonBuilder withName(String name) {
+    public FlashcardBuilder withName(String name) {
         this.name = new Name(name);
         return this;
     }
@@ -53,7 +53,7 @@ public class PersonBuilder {
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Flashcard} that we are building.
      */
-    public PersonBuilder withTags(String ... tags) {
+    public FlashcardBuilder withTags(String ... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }
@@ -61,7 +61,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Address} of the {@code Flashcard} that we are building.
      */
-    public PersonBuilder withAddress(String address) {
+    public FlashcardBuilder withAddress(String address) {
         this.address = new Address(address);
         return this;
     }
@@ -69,7 +69,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Email} of the {@code Flashcard} that we are building.
      */
-    public PersonBuilder withEmail(String email) {
+    public FlashcardBuilder withEmail(String email) {
         this.email = new Email(email);
         return this;
     }

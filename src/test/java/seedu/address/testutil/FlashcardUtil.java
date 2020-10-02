@@ -15,7 +15,7 @@ import seedu.address.model.tag.Tag;
 /**
  * A utility class for Flashcard.
  */
-public class PersonUtil {
+public class FlashcardUtil {
 
     /**
      * Returns an add command string for adding the {@code flashcard}.
