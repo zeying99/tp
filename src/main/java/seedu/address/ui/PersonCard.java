@@ -33,8 +33,6 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label phone;
-    @FXML
     private Label address;
     @FXML
     private Label email;
@@ -49,7 +47,6 @@ public class PersonCard extends UiPart<Region> {
         this.flashcard = flashcard;
         id.setText(displayedIndex + ". ");
         name.setText(flashcard.getName().fullName);
-        phone.setText(flashcard.getPhone().value);
         address.setText(flashcard.getAddress().value);
         email.setText(flashcard.getEmail().value);
         flashcard.getTags().stream()

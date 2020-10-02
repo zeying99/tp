@@ -14,12 +14,10 @@ import seedu.address.model.util.SampleDataUtil;
 public class PersonBuilder {
 
     public static final String DEFAULT_NAME = "Alice Pauline";
-    public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Name name;
-    private Phone phone;
     private Email email;
     private Address address;
     private Set<Tag> tags;
@@ -29,7 +27,6 @@ public class PersonBuilder {
      */
     public PersonBuilder() {
         name = new Name(DEFAULT_NAME);
-        phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
@@ -40,7 +37,6 @@ public class PersonBuilder {
      */
     public PersonBuilder(Flashcard flashcardToCopy) {
         name = flashcardToCopy.getName();
-        phone = flashcardToCopy.getPhone();
         email = flashcardToCopy.getEmail();
         address = flashcardToCopy.getAddress();
         tags = new HashSet<>(flashcardToCopy.getTags());
@@ -71,14 +67,6 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code Flashcard} that we are building.
-     */
-    public PersonBuilder withPhone(String phone) {
-        this.phone = new Phone(phone);
-        return this;
-    }
-
-    /**
      * Sets the {@code Email} of the {@code Flashcard} that we are building.
      */
     public PersonBuilder withEmail(String email) {
@@ -87,7 +75,7 @@ public class PersonBuilder {
     }
 
     public Flashcard build() {
-        return new Flashcard(name, phone, email, address, tags);
+        return new Flashcard(name, email, address, tags);
     }
 
 }
