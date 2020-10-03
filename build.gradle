@@ -17,7 +17,7 @@ repositories {
 }
 
 checkstyle {
-    sourceSets = []
+    toolVersion = '8.29'
 }
 
 test {
