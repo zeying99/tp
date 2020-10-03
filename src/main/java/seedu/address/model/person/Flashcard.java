@@ -17,7 +17,6 @@ public class Flashcard {
 
     // Identity fields
     private final Name name;
-    private final Email email;
 
     // Data fields
     private final Address address;
@@ -26,20 +25,15 @@ public class Flashcard {
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Name name, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, email, address, tags);
+    public Flashcard(Name name, Address address, Set<Tag> tags) {
+        requireAllNonNull(name, address, tags);
         this.name = name;
-        this.email = email;
         this.address = address;
         this.tags.addAll(tags);
     }
 
     public Name getName() {
         return name;
-    }
-
-    public Email getEmail() {
-        return email;
     }
 
     public Address getAddress() {
@@ -64,8 +58,7 @@ public class Flashcard {
         }
 
         return otherFlashcard != null
-                && otherFlashcard.getName().equals(getName())
-                && otherFlashcard.getEmail().equals(getEmail());
+                && otherFlashcard.getName().equals(getName());
     }
 
     /**
@@ -84,7 +77,6 @@ public class Flashcard {
 
         Flashcard otherFlashcard = (Flashcard) other;
         return otherFlashcard.getName().equals(getName())
-                && otherFlashcard.getEmail().equals(getEmail())
                 && otherFlashcard.getAddress().equals(getAddress())
                 && otherFlashcard.getTags().equals(getTags());
     }
@@ -92,15 +84,13 @@ public class Flashcard {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, email, address, tags);
+        return Objects.hash(name, address, tags);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append(" Email: ")
-                .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
                 .append(" Tags: ");

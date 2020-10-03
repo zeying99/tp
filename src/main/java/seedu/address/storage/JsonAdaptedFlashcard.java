@@ -22,7 +22,6 @@ class JsonAdaptedFlashcard {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Flashcard's %s field is missing!";
 
     private final String name;
-    private final String email;
     private final String address;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
@@ -31,10 +30,9 @@ class JsonAdaptedFlashcard {
      */
     @JsonCreator
     public JsonAdaptedFlashcard(@JsonProperty("name") String name,
-                                @JsonProperty("email") String email, @JsonProperty("address") String address,
+                                @JsonProperty("address") String address,
                                 @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
-        this.email = email;
         this.address = address;
         if (tagged != null) {
             this.tagged.addAll(tagged);
@@ -46,7 +44,6 @@ class JsonAdaptedFlashcard {
      */
     public JsonAdaptedFlashcard(Flashcard source) {
         name = source.getName().fullName;
-        email = source.getEmail().value;
         address = source.getAddress().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
@@ -72,14 +69,6 @@ class JsonAdaptedFlashcard {
         }
         final Name modelName = new Name(name);
 
-        if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
-        }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
-        }
-        final Email modelEmail = new Email(email);
-
         if (address == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
         }
@@ -89,7 +78,7 @@ class JsonAdaptedFlashcard {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Flashcard(modelName, modelEmail, modelAddress, modelTags);
+        return new Flashcard(modelName, modelAddress, modelTags);
     }
 
 }
