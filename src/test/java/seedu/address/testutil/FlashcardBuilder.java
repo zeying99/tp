@@ -13,7 +13,7 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class FlashcardBuilder {
 
-    public static final String DEFAULT_NAME = "Alice Pauline";
+    public static final String DEFAULT_NAME = "Alicia Pauline";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Name name;
