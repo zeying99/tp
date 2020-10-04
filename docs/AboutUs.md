@@ -18,7 +18,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 
-### Jane Doe
+### Calista Io
 
 <img src="images/calistaio.png" width="200px">
 
@@ -37,15 +37,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Mehak Virdi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/mehak24k.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/mehak24k)]
+[[portfolio](team/mehakvirdi.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Testing + Code Quality
 
 ### James Doe
 

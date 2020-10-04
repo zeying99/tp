@@ -10,15 +10,13 @@ import java.util.Set;
 import seedu.address.model.tag.Tag;
 
 /**
- * Represents a Person in the address book.
+ * Represents a Flashcard in the flashcard folder.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Person {
+public class Flashcard {
 
     // Identity fields
     private final Title title;
-    private final Phone phone;
-    private final Email email;
 
     // Data fields
     private final Address address;
@@ -27,25 +25,15 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Title title, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(title, phone, email, address, tags);
+    public Flashcard(Title title, Address address, Set<Tag> tags) {
+        requireAllNonNull(title, address, tags);
         this.title = title;
-        this.phone = phone;
-        this.email = email;
         this.address = address;
         this.tags.addAll(tags);
     }
 
     public Title getTitle() {
         return title;
-    }
-
-    public Phone getPhone() {
-        return phone;
-    }
-
-    public Email getEmail() {
-        return email;
     }
 
     public Address getAddress() {
@@ -61,17 +49,19 @@ public class Person {
     }
 
     /**
+<<<<<<< HEAD:src/main/java/seedu/address/model/person/Person.java
      * Returns true if both persons of the same title have at least one other identity field that is the same.
+=======
+     * Returns true if both flashcards of the same title have at least one other identity field that is the same.
+>>>>>>> f44fea8fe89f79ebafaeb4587fe076e50c94e54d:src/main/java/seedu/address/model/person/Flashcard.java
      * This defines a weaker notion of equality between two persons.
      */
-    public boolean isSamePerson(Person otherPerson) {
-        if (otherPerson == this) {
+    public boolean isSameFlashcard(Flashcard otherFlashcard) {
+        if (otherFlashcard == this) {
             return true;
         }
-
-        return otherPerson != null
-                && otherPerson.getTitle().equals(getTitle())
-                && (otherPerson.getPhone().equals(getPhone()) || otherPerson.getEmail().equals(getEmail()));
+        return otherFlashcard != null
+                && otherFlashcard.getTitle().equals(getTitle());
     }
 
     /**
@@ -84,32 +74,25 @@ public class Person {
             return true;
         }
 
-        if (!(other instanceof Person)) {
+        if (!(other instanceof Flashcard)) {
             return false;
         }
-
-        Person otherPerson = (Person) other;
-        return otherPerson.getTitle().equals(getTitle())
-                && otherPerson.getPhone().equals(getPhone())
-                && otherPerson.getEmail().equals(getEmail())
-                && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getTags().equals(getTags());
+        Flashcard otherFlashcard = (Flashcard) other;
+        return otherFlashcard.getTitle().equals(getTitle())
+                && otherFlashcard.getAddress().equals(getAddress())
+                && otherFlashcard.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, phone, email, address, tags);
+        return Objects.hash(title, address, tags);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle())
-                .append(" Phone: ")
-                .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
                 .append(" Tags: ");
