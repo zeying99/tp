@@ -31,6 +31,7 @@ public class DefinitionTest {
         // valid addresses
         assertTrue(Definition.isValidDefinition("OOP stands for Object-Oriented Programming."));
         assertTrue(Definition.isValidDefinition("-")); // one character
-        assertTrue(Definition.isValidDefinition("A dictionary is a collection of (key,value) pairs.")); // long definition
+        assertTrue(Definition
+                .isValidDefinition("A dictionary is a collection of (key,value) pairs.")); // long definition
     }
 }

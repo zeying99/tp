@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DEFINITION_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEFINITION_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEFINITION_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
