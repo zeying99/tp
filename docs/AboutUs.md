@@ -58,7 +58,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Responsibilities: UI
 
 ### Wu Zeying
-<img src="images/WuZeying.png" width="200px">
+<img src="images/Wuzeying.png" width="200px">
 
 [[github](http://github.com/zeying99)]
 [[portfolio](team/wuzeying.md)]
