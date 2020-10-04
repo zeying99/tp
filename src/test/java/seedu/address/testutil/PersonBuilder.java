@@ -68,8 +68,8 @@ public class PersonBuilder {
     /**
      * Sets the {@code Address} of the {@code Person} that we are building.
      */
-    public PersonBuilder withAddress(String address) {
-        this.definition = new Definition(address);
+    public PersonBuilder withDefinition(String definition) {
+        this.definition = new Definition(definition);
         return this;
     }
 
