@@ -47,7 +47,6 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Testing + Code Quality
 
-
 ### Wu Zeying
 <img src="images/Wuzeying.png" width="200px">
 
