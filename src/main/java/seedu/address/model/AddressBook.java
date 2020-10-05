@@ -53,7 +53,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
 
-        setFlashcards(newData.getPersonList());
+        setFlashcards(newData.getFlashcardList());
     }
 
     //// flashcard-level operations
@@ -61,7 +61,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Returns true if a flashcard with the same identity as {@code flashcard} exists in the address book.
      */
-    public boolean hasPerson(Flashcard flashcard) {
+    public boolean hasFlashcard(Flashcard flashcard) {
         requireNonNull(flashcard);
         return flashcards.contains(flashcard);
     }
@@ -70,7 +70,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Adds a flashcard to the address book.
      * The flashcard must not already exist in the address book.
      */
-    public void addPerson(Flashcard p) {
+    public void addFlashcard(Flashcard p) {
         flashcards.add(p);
     }
 
@@ -80,7 +80,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * The flashcard identity of {@code editedFlashcard} must not be the same as another existing flashcard
      * in the address book.
      */
-    public void setPerson(Flashcard target, Flashcard editedFlashcard) {
+    public void setFlashcard(Flashcard target, Flashcard editedFlashcard) {
         requireNonNull(editedFlashcard);
 
         flashcards.setFlashcard(target, editedFlashcard);
@@ -90,7 +90,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the address book.
      */
-    public void removePerson(Flashcard key) {
+    public void removeFlashcard(Flashcard key) {
         flashcards.remove(key);
     }
 
@@ -103,7 +103,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
-    public ObservableList<Flashcard> getPersonList() {
+    public ObservableList<Flashcard> getFlashcardList() {
         return flashcards.asUnmodifiableObservableList();
     }
 
