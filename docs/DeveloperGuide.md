@@ -82,7 +82,7 @@ The `UI` component,
 
 1. `Logic` uses the `AddressBookParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
-1. The command execution can affect the `Model` (e.g. adding a person).
+1. The command execution can affect the `Model` (e.g. adding a flashcard).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
@@ -151,11 +151,11 @@ Step 1. The user launches the application for the first time. The `VersionedAddr
 
 ![UndoRedoState0](images/UndoRedoState0.png)
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
+Step 2. The user executes `delete 5` command to delete the 5th flashcard in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
 
 ![UndoRedoState1](images/UndoRedoState1.png)
 
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
+Step 3. The user executes `add n/David …​` to add a new flashcard. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
 
 ![UndoRedoState2](images/UndoRedoState2.png)
 
@@ -163,7 +163,7 @@ Step 3. The user executes `add n/David …​` to add a new person. The `add` co
 
 </div>
 
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
+Step 4. The user now decides that adding the flashcard was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
 
 ![UndoRedoState3](images/UndoRedoState3.png)
 
@@ -208,7 +208,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+  * Pros: Will use less memory (e.g. for `delete`, just save the flashcard being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
@@ -256,26 +256,28 @@ Students can organise (specify the sequence) the flashcards as well.
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
+| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                      |
+| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
 | `* * *`  | new user                                   | view the user manual           | get a brief idea of how to use the app                                 |
 | `* * *`  | user                                       | make new flashcards about the definition of a concept | remember my CS2040S content better              |
 | `* * *`  | user                                       | delete a flashcard             | remove flashcards with mistakes or those I do not need                 |
-| `* * *`  | user                                       | save the flashcards locally |  review some flashcards that I have previously made |
+| `* * *`  | user                                       | save the flashcards locally |  review some flashcards that I have previously made                       |
 | `* *`    | user studying for a test                   | practice questions/ quizzes    | get good grades!                                                       |
 | `* *`    | user studying for a test                   | review past quiz attempts      | so that I can learn from my mistakes                                   |
 | `* *`    | user                                       | study pseudocode               | gain a better understanding of the algorithms                          |
 | `* *`    | familiar user                              | search for flashcards using keywords |                                                                  |
 | `* *`    | familiar user and visual learner           | insert diagrams in flashcards | remember the information better                                         |
 | `* *`    | familiar user                              | delete wrong tags             |                                                                         |
-| `* *`    | familiar user                                       | label my flashcards   | sort them into different categories with appropriate tags.             |
-| `* *`    | familiar user                                       | view flashcards according to the different topics   | study topic-by-topic.                |
-| `* *`    | user with limited time                                       | I want to save my progress as I may not finish everything    | continue my revision from where I had left off from the previous session.                |
+| `* *`    | familiar user                            | label my flashcards   | sort them into different categories with appropriate tags.                        |
+| `* *`    | familiar user                    | view flashcards according to the different topics   | study topic-by-topic.                                        |
+| `* *`    | user with limited time              | I want to save my progress as I may not finish everything    | continue my revision from where I had left off from the previous session.  |
 | `*`  | user who is familiar with the app			| set reminders indicating when I should study a particular flashcard | so that I can maximise information retention |
-| `*`  | expert user								| use shortcuts                  | view my frequently-viewed flashcards more easily |
+| `*`  | expert user								| use shortcuts                  | view my frequently-viewed flashcards more easily                             |
 | `*`  | expert user                                | track my history of flashcards that I have viewed over the past specified time period(e.g week/month) | check my study habits regularly |
-| `*`  | user who is familiar with the app           | favourite flashcards | easily access flashcards I have to review more      |
-| `*`  | user studying for a test                   | design my own questions that I want to practice | be better prepared for exams |
-| `*`  | expert user                                | check my history of my wrong quiz answers/ quiz scores | visualize my improvement in a statistical way |
-| `*`  | user studying for a test                   | add in T/F questions 			 | be better prepared for more types of questions |
+| `*`  | user who is familiar with the app           | favourite flashcards          | easily access flashcards I have to review more                               |
+| `*`  | user studying for a test                   | design my own questions that I want to practice | be better prepared for exams                               |
+| `*`  | expert user                                | check my history of my wrong quiz answers/ quiz scores | visualize my improvement in a statistical way      |
+| `*`  | user studying for a test                   | add in T/F questions 			 | be better prepared for more types of questions                            |
 
 
 Use Cases
@@ -388,12 +390,12 @@ Use case loops through 7 and 8 upon user request until user inputs exit command
 
 ### Non-Functional Requirements
 
-Should work on any *mainstream OS* as long as it has Java `11` or above installed.
-Should be able to store up to 1000 flashcards without a noticeable sluggishness in performance for typical usage.
-A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-Should not take up too much memory in the hard disk (i.e. the entire desktop application should not take up more than 100 MB of space).
-The system should work on both 32-bit and 64-bit environments.
-The flashcards would not be required to support inputs in formats other than utf-8.
+* Should work on any *mainstream OS* as long as it has Java `11` or above installed.
+* Should be able to store up to 1000 flashcards without a noticeable sluggishness in performance for typical usage.
+* A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+* Should not take up too much memory in the hard disk (i.e. the entire desktop application should not take up more than 100 MB of space).
+* The system should work on both 32-bit and 64-bit environments.
+* The flashcards would not be required to support inputs in formats other than utf-8.
 ### Glossary
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 
@@ -426,17 +428,17 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+### Deleting a flashcard
 
-1. Deleting a person while all persons are being shown
+1. Deleting a flashcard while all flashcards are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: List all flashcards using the `list` command. Multiple flashcards in the list.
 
    1. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
    1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No flashcard is deleted. Error details shown in the status message. Status bar remains the same.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
