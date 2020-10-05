@@ -6,7 +6,7 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Flashcard;
-import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.UniqueFlashcardList;
 
 /**
  * Wraps all data at the address-book level
@@ -14,7 +14,7 @@ import seedu.address.model.person.UniquePersonList;
  */
 public class AddressBook implements ReadOnlyAddressBook {
 
-    private final UniquePersonList persons;
+    private final UniqueFlashcardList flashcards;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -24,7 +24,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        persons = new UniquePersonList();
+        flashcards = new UniqueFlashcardList();
     }
 
     public AddressBook() {}
@@ -43,8 +43,8 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Replaces the contents of the flashcard list with {@code flashcards}.
      * {@code flashcards} must not contain duplicate flashcards.
      */
-    public void setPersons(List<Flashcard> flashcards) {
-        this.persons.setPersons(flashcards);
+    public void setFlashcards(List<Flashcard> flashcards) {
+        this.flashcards.setFlashcards(flashcards);
     }
 
     /**
@@ -53,7 +53,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
 
-        setPersons(newData.getPersonList());
+        setFlashcards(newData.getFlashcardList());
     }
 
     //// flashcard-level operations
@@ -61,17 +61,17 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Returns true if a flashcard with the same identity as {@code flashcard} exists in the address book.
      */
-    public boolean hasPerson(Flashcard flashcard) {
+    public boolean hasFlashcard(Flashcard flashcard) {
         requireNonNull(flashcard);
-        return persons.contains(flashcard);
+        return flashcards.contains(flashcard);
     }
 
     /**
      * Adds a flashcard to the address book.
      * The flashcard must not already exist in the address book.
      */
-    public void addPerson(Flashcard p) {
-        persons.add(p);
+    public void addFlashcard(Flashcard p) {
+        flashcards.add(p);
     }
 
     /**
@@ -80,42 +80,42 @@ public class AddressBook implements ReadOnlyAddressBook {
      * The flashcard identity of {@code editedFlashcard} must not be the same as another existing flashcard
      * in the address book.
      */
-    public void setPerson(Flashcard target, Flashcard editedFlashcard) {
+    public void setFlashcard(Flashcard target, Flashcard editedFlashcard) {
         requireNonNull(editedFlashcard);
 
-        persons.setPerson(target, editedFlashcard);
+        flashcards.setFlashcard(target, editedFlashcard);
     }
 
     /**
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the address book.
      */
-    public void removePerson(Flashcard key) {
-        persons.remove(key);
+    public void removeFlashcard(Flashcard key) {
+        flashcards.remove(key);
     }
 
     //// util methods
 
     @Override
     public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
+        return flashcards.asUnmodifiableObservableList().size() + " flashcards";
         // TODO: refine later
     }
 
     @Override
-    public ObservableList<Flashcard> getPersonList() {
-        return persons.asUnmodifiableObservableList();
+    public ObservableList<Flashcard> getFlashcardList() {
+        return flashcards.asUnmodifiableObservableList();
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons));
+                && flashcards.equals(((AddressBook) other).flashcards));
     }
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return flashcards.hashCode();
     }
 }
