@@ -3,7 +3,7 @@ package seedu.address.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEFINITION_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalFlashcards.ALICE;
@@ -22,7 +22,7 @@ import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.exceptions.DuplicateFlashcardException;
 import seedu.address.testutil.FlashcardBuilder;
 
-public class AddressBookTest {
+public class DefinitionBookTest {
 
     private final AddressBook addressBook = new AddressBook();
 
@@ -46,8 +46,8 @@ public class AddressBookTest {
     @Test
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         // Two flashcards with the same identity fields
-        Flashcard editedAlice = new FlashcardBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
+        Flashcard editedAlice = new FlashcardBuilder(ALICE)
+                .withDefinition(VALID_DEFINITION_BOB).withTags(VALID_TAG_HUSBAND).build();
         List<Flashcard> newFlashcards = Arrays.asList(ALICE, editedAlice);
         AddressBookStub newData = new AddressBookStub(newFlashcards);
 
@@ -73,8 +73,8 @@ public class AddressBookTest {
     @Test
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
         addressBook.addFlashcard(ALICE);
-        Flashcard editedAlice = new FlashcardBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
+        Flashcard editedAlice = new FlashcardBuilder(ALICE)
+                .withDefinition(VALID_DEFINITION_BOB).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(addressBook.hasFlashcard(editedAlice));
     }
 

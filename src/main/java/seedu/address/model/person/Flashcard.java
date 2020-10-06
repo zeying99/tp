@@ -19,16 +19,16 @@ public class Flashcard {
     private final Name name;
 
     // Data fields
-    private final Address address;
+    private final Definition definition;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Name name, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, address, tags);
+    public Flashcard(Name name, Definition definition, Set<Tag> tags) {
+        requireAllNonNull(name, definition, tags);
         this.name = name;
-        this.address = address;
+        this.definition = definition;
         this.tags.addAll(tags);
     }
 
@@ -36,8 +36,9 @@ public class Flashcard {
         return name;
     }
 
-    public Address getAddress() {
-        return address;
+
+    public Definition getDefinition() {
+        return definition;
     }
 
     /**
@@ -77,14 +78,14 @@ public class Flashcard {
 
         Flashcard otherFlashcard = (Flashcard) other;
         return otherFlashcard.getName().equals(getName())
-                && otherFlashcard.getAddress().equals(getAddress())
+                && otherFlashcard.getDefinition().equals(getDefinition())
                 && otherFlashcard.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, address, tags);
+        return Objects.hash(name, definition, tags);
     }
 
     @Override
@@ -92,7 +93,7 @@ public class Flashcard {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
                 .append(" Address: ")
-                .append(getAddress())
+                .append(getDefinition())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

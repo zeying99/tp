@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.Address;
+import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
@@ -23,7 +23,7 @@ class JsonAdaptedFlashcard {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Flashcard's %s field is missing!";
 
     private final String name;
-    private final String address;
+    private final String definition;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
@@ -31,10 +31,10 @@ class JsonAdaptedFlashcard {
      */
     @JsonCreator
     public JsonAdaptedFlashcard(@JsonProperty("name") String name,
-                                @JsonProperty("address") String address,
+                                @JsonProperty("definition") String definition,
                                 @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
-        this.address = address;
+        this.definition = definition;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -45,7 +45,7 @@ class JsonAdaptedFlashcard {
      */
     public JsonAdaptedFlashcard(Flashcard source) {
         name = source.getName().fullName;
-        address = source.getAddress().value;
+        definition = source.getDefinition().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -70,16 +70,18 @@ class JsonAdaptedFlashcard {
         }
         final Name modelName = new Name(name);
 
-        if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
+        if (definition == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Definition.class.getSimpleName()));
         }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
+        if (!Definition.isValidDefinition(definition)) {
+            throw new IllegalValueException(Definition.MESSAGE_CONSTRAINTS);
         }
-        final Address modelAddress = new Address(address);
+        final Definition modelDefinition = new Definition(definition);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Flashcard(modelName, modelAddress, modelTags);
+
+        return new Flashcard(modelName, modelDefinition, modelTags);
     }
 
 }

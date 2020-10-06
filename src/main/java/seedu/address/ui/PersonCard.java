@@ -33,7 +33,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label address;
+    private Label definition;
     @FXML
     private FlowPane tags;
 
@@ -45,7 +45,7 @@ public class PersonCard extends UiPart<Region> {
         this.flashcard = flashcard;
         id.setText(displayedIndex + ". ");
         name.setText(flashcard.getName().fullName);
-        address.setText(flashcard.getAddress().value);
+        definition.setText(flashcard.getDefinition().value);
         flashcard.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

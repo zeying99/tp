@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEFINITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
@@ -17,7 +17,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Address;
+import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
@@ -34,7 +34,7 @@ public class EditCommand extends Command {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_DEFINITION + "DEFINITION] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 ";
 
@@ -86,10 +86,10 @@ public class EditCommand extends Command {
         assert flashcardToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(flashcardToEdit.getName());
-        Address updatedAddress = editPersonDescriptor.getAddress().orElse(flashcardToEdit.getAddress());
+        Definition updatedDefinition = editPersonDescriptor.getDefinition().orElse(flashcardToEdit.getDefinition());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(flashcardToEdit.getTags());
 
-        return new Flashcard(updatedName, updatedAddress, updatedTags);
+        return new Flashcard(updatedName, updatedDefinition, updatedTags);
     }
 
     @Override
@@ -116,7 +116,7 @@ public class EditCommand extends Command {
      */
     public static class EditPersonDescriptor {
         private Name name;
-        private Address address;
+        private Definition definition;
         private Set<Tag> tags;
 
         public EditPersonDescriptor() {}
@@ -127,7 +127,7 @@ public class EditCommand extends Command {
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setName(toCopy.name);
-            setAddress(toCopy.address);
+            setDefinition(toCopy.definition);
             setTags(toCopy.tags);
         }
 
@@ -135,7 +135,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, address, tags);
+            return CollectionUtil.isAnyNonNull(name, definition, tags);
         }
 
         public void setName(Name name) {
@@ -146,12 +146,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(name);
         }
 
-        public void setAddress(Address address) {
-            this.address = address;
+        public void setDefinition(Definition definition) {
+            this.definition = definition;
         }
 
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
+        public Optional<Definition> getDefinition() {
+            return Optional.ofNullable(definition);
         }
 
         /**
@@ -187,7 +187,7 @@ public class EditCommand extends Command {
             EditPersonDescriptor e = (EditPersonDescriptor) other;
 
             return getName().equals(e.getName())
-                    && getAddress().equals(e.getAddress())
+                    && getDefinition().equals(e.getDefinition())
                     && getTags().equals(e.getTags());
         }
     }

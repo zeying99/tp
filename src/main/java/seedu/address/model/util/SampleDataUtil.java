@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.person.Address;
+import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
@@ -18,22 +18,22 @@ public class SampleDataUtil {
     public static Flashcard[] getSamplePersons() {
         return new Flashcard[] {
             new Flashcard(new Name("Alex Yeoh"),
-                    new Address("Blk 30 Geylang Street 29, #06-40"),
+                new Definition("<DEFINITION_1> placeholder"),
                 getTagSet("friends")),
             new Flashcard(new Name("Bernice Yu"),
-                    new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
+                new Definition("<DEFINITION_2> placeholder"),
                 getTagSet("colleagues", "friends")),
             new Flashcard(new Name("Charlotte Oliveiro"),
-                    new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
+                new Definition("<DEFINITION_3> placeholder"),
                 getTagSet("neighbours")),
             new Flashcard(new Name("David Li"),
-                    new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
+                new Definition("<DEFINITION_4> placeholder"),
                 getTagSet("family")),
             new Flashcard(new Name("Irfan Ibrahim"),
-                new Address("Blk 47 Tampines Street 20, #17-35"),
+                new Definition("<DEFINITION_5> placeholder"),
                 getTagSet("classmates")),
             new Flashcard(new Name("Roy Balakrishnan"),
-                new Address("Blk 45 Aljunied Street 85, #11-31"),
+                new Definition("<DEFINITION_6> placeholder"),
                 getTagSet("colleagues"))
         };
     }
