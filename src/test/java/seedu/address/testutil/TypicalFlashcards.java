@@ -60,7 +60,7 @@ public class TypicalFlashcards {
     public static AddressBook getTypicalAddressBook() {
         AddressBook ab = new AddressBook();
         for (Flashcard flashcard : getTypicalPersons()) {
-            ab.addPerson(flashcard);
+            ab.addFlashcard(flashcard);
         }
         return ab;
     }

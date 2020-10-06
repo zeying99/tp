@@ -38,8 +38,8 @@ public class AddCommandIntegrationTest {
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
-        Flashcard flashcardInList = model.getAddressBook().getPersonList().get(0);
-        assertCommandFailure(new AddCommand(flashcardInList), model, AddCommand.MESSAGE_DUPLICATE_PERSON);
+        Flashcard flashcardInList = model.getAddressBook().getFlashcardList().get(0);
+        assertCommandFailure(new AddCommand(flashcardInList), model, AddCommand.MESSAGE_DUPLICATE_FLASHCARD);
     }
 
 }
