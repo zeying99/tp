@@ -48,8 +48,9 @@ public class Person {
         return email;
     }
 
-    public Remark getRemark() {return remark;}
-
+    public Remark getRemark() {
+        return remark;
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -98,7 +99,7 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email,remark, tags);
+        return Objects.hash(name, phone, email, tags);
     }
 
     @Override
@@ -115,5 +116,5 @@ public class Person {
         getTags().forEach(builder::append);
         return builder.toString();
     }
-
 }
+

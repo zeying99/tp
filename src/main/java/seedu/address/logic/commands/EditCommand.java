@@ -98,7 +98,7 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         Remark updatedRemark = personToEdit.getRemark(); // edit command does not allow editing remarks
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedRemark,updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedRemark, updatedTags);
     }
 
     @Override
