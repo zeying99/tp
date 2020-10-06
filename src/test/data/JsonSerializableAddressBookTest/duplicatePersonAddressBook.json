@@ -1,14 +1,10 @@
 {
   "persons": [ {
     "name": "Alice Pauline",
-    "phone": "94351253",
-    "email": "alice@example.com",
     "definition": "<VALID DEFINITION PLACEHOLDER>",
     "tagged": [ "friends" ]
   }, {
     "name": "Alice Pauline",
-    "phone": "94351253",
-    "email": "pauline@example.com",
     "definition": "<VALID DEFINITION PLACEHOLDER> 2"
   } ]
 }
