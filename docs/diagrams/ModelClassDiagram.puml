@@ -17,7 +17,6 @@ Class ReadOnlyUserPrefs
 
 Package Person {
 Class Person
-Class Address
 Class Email
 Class Name
 Class Phone
