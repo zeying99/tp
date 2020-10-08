@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.model.person.Address;
+import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
@@ -31,7 +31,7 @@ public class EditFlashcardDescriptorBuilder {
     public EditFlashcardDescriptorBuilder(Flashcard flashcard) {
         descriptor = new EditPersonDescriptor();
         descriptor.setTitle(flashcard.getTitle());
-        descriptor.setAddress(flashcard.getAddress());
+        descriptor.setDefinition(flashcard.getDefinition());
         descriptor.setTags(flashcard.getTags());
     }
 
@@ -44,10 +44,10 @@ public class EditFlashcardDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Definition} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditFlashcardDescriptorBuilder withAddress(String address) {
-        descriptor.setAddress(new Address(address));
+    public EditFlashcardDescriptorBuilder withDefinition(String definition) {
+        descriptor.setDefinition(new Definition(definition));
         return this;
     }
 

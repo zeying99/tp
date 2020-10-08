@@ -3,7 +3,7 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.person.Address;
+import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
@@ -15,10 +15,10 @@ import seedu.address.model.util.SampleDataUtil;
 public class FlashcardBuilder {
 
     public static final String DEFAULT_NAME = "Alicia Pauline";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_DEFINITION = "<DEFAULT DEFINITION> placeholder";
 
     private Title title;
-    private Address address;
+    private Definition definition;
     private Set<Tag> tags;
 
     /**
@@ -26,7 +26,7 @@ public class FlashcardBuilder {
      */
     public FlashcardBuilder() {
         title = new Title(DEFAULT_NAME);
-        address = new Address(DEFAULT_ADDRESS);
+        definition = new Definition(DEFAULT_DEFINITION);
         tags = new HashSet<>();
     }
 
@@ -35,7 +35,7 @@ public class FlashcardBuilder {
      */
     public FlashcardBuilder(Flashcard flashcardToCopy) {
         title = flashcardToCopy.getTitle();
-        address = flashcardToCopy.getAddress();
+        definition = flashcardToCopy.getDefinition();
         tags = new HashSet<>(flashcardToCopy.getTags());
     }
 
@@ -58,13 +58,13 @@ public class FlashcardBuilder {
     /**
      * Sets the {@code Address} of the {@code Flashcard} that we are building.
      */
-    public FlashcardBuilder withAddress(String address) {
-        this.address = new Address(address);
+    public FlashcardBuilder withDefinition(String definition) {
+        this.definition = new Definition(definition);
         return this;
     }
 
     public Flashcard build() {
-        return new Flashcard(title, address, tags);
+        return new Flashcard(title, definition, tags);
     }
 
 }

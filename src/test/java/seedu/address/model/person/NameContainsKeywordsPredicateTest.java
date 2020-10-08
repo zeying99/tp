@@ -70,6 +70,6 @@ public class NameContainsKeywordsPredicateTest {
         // Keywords match address, but does not match name
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("12345", "Main", "Street"));
         assertFalse(predicate.test(new FlashcardBuilder().withTitle("Alice")
-                .withAddress("Main Street").build()));
+                .withDefinition("Main Street").build()));
     }
 }

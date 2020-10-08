@@ -1,9 +1,9 @@
 {
   "persons": [ {
     "name": "Valid Person",
-    "address": "4th street"
+    "definition": "<VALID DEFINITION PLACEHOLDER>"
   }, {
-    "name": "Person With Invalid Address Field",
-    "address": " "
+    "name": "Person With Invalid Definition Field",
+    "definition": " "
   } ]
 }

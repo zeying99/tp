@@ -19,16 +19,16 @@ public class Flashcard {
     private final Title title;
 
     // Data fields
-    private final Address address;
+    private final Definition definition;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Title title, Address address, Set<Tag> tags) {
-        requireAllNonNull(title, address, tags);
+    public Flashcard(Title title, Definition definition, Set<Tag> tags) {
+        requireAllNonNull(title, definition, tags);
         this.title = title;
-        this.address = address;
+        this.definition = definition;
         this.tags.addAll(tags);
     }
 
@@ -36,8 +36,9 @@ public class Flashcard {
         return title;
     }
 
-    public Address getAddress() {
-        return address;
+
+    public Definition getDefinition() {
+        return definition;
     }
 
     /**
@@ -49,11 +50,7 @@ public class Flashcard {
     }
 
     /**
-<<<<<<< HEAD:src/main/java/seedu/address/model/person/Person.java
-     * Returns true if both persons of the same title have at least one other identity field that is the same.
-=======
      * Returns true if both flashcards of the same title have at least one other identity field that is the same.
->>>>>>> f44fea8fe89f79ebafaeb4587fe076e50c94e54d:src/main/java/seedu/address/model/person/Flashcard.java
      * This defines a weaker notion of equality between two persons.
      */
     public boolean isSameFlashcard(Flashcard otherFlashcard) {
@@ -79,14 +76,14 @@ public class Flashcard {
         }
         Flashcard otherFlashcard = (Flashcard) other;
         return otherFlashcard.getTitle().equals(getTitle())
-                && otherFlashcard.getAddress().equals(getAddress())
+                && otherFlashcard.getDefinition().equals(getDefinition())
                 && otherFlashcard.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, address, tags);
+        return Objects.hash(title, definition, tags);
     }
 
     @Override
@@ -94,7 +91,7 @@ public class Flashcard {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle())
                 .append(" Address: ")
-                .append(getAddress())
+                .append(getDefinition())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

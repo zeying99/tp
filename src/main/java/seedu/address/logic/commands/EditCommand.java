@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEFINITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
@@ -17,7 +17,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Address;
+import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
@@ -34,7 +34,7 @@ public class EditCommand extends Command {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_TITLE + "TITLE] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_DEFINITION + "DEFINITION] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 ";
 
@@ -85,10 +85,10 @@ public class EditCommand extends Command {
     private static Flashcard createEditedPerson(Flashcard flashcardToEdit, EditPersonDescriptor editPersonDescriptor) {
         assert flashcardToEdit != null;
         Title updatedTitle = editPersonDescriptor.getTitle().orElse(flashcardToEdit.getTitle());
-        Address updatedAddress = editPersonDescriptor.getAddress().orElse(flashcardToEdit.getAddress());
+        Definition updatedDefinition = editPersonDescriptor.getDefinition().orElse(flashcardToEdit.getDefinition());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(flashcardToEdit.getTags());
 
-        return new Flashcard(updatedTitle, updatedAddress, updatedTags);
+        return new Flashcard(updatedTitle, updatedDefinition, updatedTags);
     }
 
     @Override
@@ -115,7 +115,7 @@ public class EditCommand extends Command {
      */
     public static class EditPersonDescriptor {
         private Title title;
-        private Address address;
+        private Definition definition;
         private Set<Tag> tags;
 
         public EditPersonDescriptor() {}
@@ -126,7 +126,7 @@ public class EditCommand extends Command {
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setTitle(toCopy.title);
-            setAddress(toCopy.address);
+            setDefinition(toCopy.definition);
             setTags(toCopy.tags);
         }
 
@@ -134,7 +134,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(title, address, tags);
+            return CollectionUtil.isAnyNonNull(title, definition, tags);
         }
 
         public void setTitle(Title title) {
@@ -145,12 +145,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(title);
         }
 
-        public void setAddress(Address address) {
-            this.address = address;
+        public void setDefinition(Definition definition) {
+            this.definition = definition;
         }
 
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
+        public Optional<Definition> getDefinition() {
+            return Optional.ofNullable(definition);
         }
 
         /**
@@ -185,7 +185,7 @@ public class EditCommand extends Command {
             // state check
             EditPersonDescriptor e = (EditPersonDescriptor) other;
             return getTitle().equals(e.getTitle())
-                    && getAddress().equals(e.getAddress())
+                    && getDefinition().equals(e.getDefinition())
                     && getTags().equals(e.getTags());
         }
     }

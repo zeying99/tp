@@ -29,7 +29,7 @@ import seedu.address.testutil.EditFlashcardDescriptorBuilder;
 import seedu.address.testutil.FlashcardBuilder;
 import seedu.address.testutil.FlashcardUtil;
 
-public class AddressBookParserTest {
+public class DefinitionBookParserTest {
 
     private final AddressBookParser parser = new AddressBookParser();
 
