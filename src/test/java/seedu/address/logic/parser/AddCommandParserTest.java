@@ -26,7 +26,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.FlashcardBuilder;
 
@@ -85,7 +85,7 @@ public class AddCommandParserTest {
     public void parse_invalidValue_failure() {
         // invalid name
         assertParseFailure(parser, INVALID_NAME_DESC + DEFINITION_DESC_BOB
-                + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
+                + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Title.MESSAGE_CONSTRAINTS);
 
         // invalid address
         assertParseFailure(parser, NAME_DESC_BOB + INVALID_DEFINITION_DESC
@@ -97,7 +97,7 @@ public class AddCommandParserTest {
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + INVALID_DEFINITION_DESC,
-                Name.MESSAGE_CONSTRAINTS);
+                Title.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOB

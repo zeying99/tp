@@ -34,7 +34,7 @@ public class FlashcardTest {
         assertTrue(editedAlice.isSameFlashcard(ALICE));
 
         // different name -> returns false
-        editedAlice = new FlashcardBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        editedAlice = new FlashcardBuilder(ALICE).withTitle(VALID_NAME_BOB).build();
         assertFalse(ALICE.isSameFlashcard(editedAlice));
 
         // same name, same email, different attributes -> returns true
@@ -72,7 +72,7 @@ public class FlashcardTest {
         assertFalse(ALICE.equals(BOB));
 
         // different name -> returns false
-        Flashcard editedAlice = new FlashcardBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        Flashcard editedAlice = new FlashcardBuilder(ALICE).withTitle(VALID_NAME_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different address -> returns false

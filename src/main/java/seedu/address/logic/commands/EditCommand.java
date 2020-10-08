@@ -2,8 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEFINITION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -19,7 +19,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -33,7 +33,7 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed flashcard list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_TITLE + "TITLE] "
             + "[" + PREFIX_DEFINITION + "DEFINITION] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 ";
@@ -84,12 +84,11 @@ public class EditCommand extends Command {
      */
     private static Flashcard createEditedPerson(Flashcard flashcardToEdit, EditPersonDescriptor editPersonDescriptor) {
         assert flashcardToEdit != null;
-
-        Name updatedName = editPersonDescriptor.getName().orElse(flashcardToEdit.getName());
+        Title updatedTitle = editPersonDescriptor.getTitle().orElse(flashcardToEdit.getTitle());
         Definition updatedDefinition = editPersonDescriptor.getDefinition().orElse(flashcardToEdit.getDefinition());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(flashcardToEdit.getTags());
 
-        return new Flashcard(updatedName, updatedDefinition, updatedTags);
+        return new Flashcard(updatedTitle, updatedDefinition, updatedTags);
     }
 
     @Override
@@ -115,7 +114,7 @@ public class EditCommand extends Command {
      * corresponding field value of the flashcard.
      */
     public static class EditPersonDescriptor {
-        private Name name;
+        private Title title;
         private Definition definition;
         private Set<Tag> tags;
 
@@ -126,7 +125,7 @@ public class EditCommand extends Command {
          * A defensive copy of {@code tags} is used internally.
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
-            setName(toCopy.name);
+            setTitle(toCopy.title);
             setDefinition(toCopy.definition);
             setTags(toCopy.tags);
         }
@@ -135,15 +134,15 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, definition, tags);
+            return CollectionUtil.isAnyNonNull(title, definition, tags);
         }
 
-        public void setName(Name name) {
-            this.name = name;
+        public void setTitle(Title title) {
+            this.title = title;
         }
 
-        public Optional<Name> getName() {
-            return Optional.ofNullable(name);
+        public Optional<Title> getTitle() {
+            return Optional.ofNullable(title);
         }
 
         public void setDefinition(Definition definition) {
@@ -185,8 +184,7 @@ public class EditCommand extends Command {
 
             // state check
             EditPersonDescriptor e = (EditPersonDescriptor) other;
-
-            return getName().equals(e.getName())
+            return getTitle().equals(e.getTitle())
                     && getDefinition().equals(e.getDefinition())
                     && getTags().equals(e.getTags());
         }

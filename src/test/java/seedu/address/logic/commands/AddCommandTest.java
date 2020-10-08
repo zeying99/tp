@@ -53,8 +53,8 @@ public class AddCommandTest {
 
     @Test
     public void equals() {
-        Flashcard alice = new FlashcardBuilder().withName("Alice").build();
-        Flashcard bob = new FlashcardBuilder().withName("Bob").build();
+        Flashcard alice = new FlashcardBuilder().withTitle("Alice").build();
+        Flashcard bob = new FlashcardBuilder().withTitle("Bob").build();
         AddCommand addAliceCommand = new AddCommand(alice);
         AddCommand addBobCommand = new AddCommand(bob);
 

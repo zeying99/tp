@@ -3,8 +3,8 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEFINITION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -30,15 +30,13 @@ public class CommandTestUtil {
     public static final String VALID_DEFINITION_BOB = "<definition placeholder 2>";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
-
-    public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
-    public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
+    public static final String NAME_DESC_AMY = " " + PREFIX_TITLE + VALID_NAME_AMY;
+    public static final String NAME_DESC_BOB = " " + PREFIX_TITLE + VALID_NAME_BOB;
     public static final String DEFINITION_DESC_AMY = " " + PREFIX_DEFINITION + VALID_DEFINITION_AMY;
     public static final String DEFINITION_DESC_BOB = " " + PREFIX_DEFINITION + VALID_DEFINITION_BOB;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
-
-    public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
+    public static final String INVALID_NAME_DESC = " " + PREFIX_TITLE + "James&"; // '&' not allowed in names
     public static final String INVALID_DEFINITION_DESC = " "
             + PREFIX_DEFINITION; // empty string not allowed for addresses>>>>>>> upstream/branch-v1.2
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
@@ -106,9 +104,8 @@ public class CommandTestUtil {
      */
     public static void showPersonAtIndex(Model model, Index targetIndex) {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredPersonList().size());
-
         Flashcard flashcard = model.getFilteredPersonList().get(targetIndex.getZeroBased());
-        final String[] splitName = flashcard.getName().fullName.split("\\s+");
+        final String[] splitName = flashcard.getTitle().fullTitle.split("\\s+");
         model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredPersonList().size());

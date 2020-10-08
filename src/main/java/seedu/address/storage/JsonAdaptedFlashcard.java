@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -22,7 +22,7 @@ class JsonAdaptedFlashcard {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Flashcard's %s field is missing!";
 
-    private final String name;
+    private final String title;
     private final String definition;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
@@ -33,7 +33,7 @@ class JsonAdaptedFlashcard {
     public JsonAdaptedFlashcard(@JsonProperty("name") String name,
                                 @JsonProperty("definition") String definition,
                                 @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
-        this.name = name;
+        this.title = name;
         this.definition = definition;
         if (tagged != null) {
             this.tagged.addAll(tagged);
@@ -44,8 +44,9 @@ class JsonAdaptedFlashcard {
      * Converts a given {@code Flashcard} into this class for Jackson use.
      */
     public JsonAdaptedFlashcard(Flashcard source) {
-        name = source.getName().fullName;
+        title = source.getTitle().fullTitle;
         definition = source.getDefinition().value;
+
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -62,13 +63,13 @@ class JsonAdaptedFlashcard {
             personTags.add(tag.toModelType());
         }
 
-        if (name == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+        if (title == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName()));
         }
-        if (!Name.isValidName(name)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+        if (!Title.isValidName(title)) {
+            throw new IllegalValueException(Title.MESSAGE_CONSTRAINTS);
         }
-        final Name modelName = new Name(name);
+        final Title modelName = new Title(title);
 
         if (definition == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,

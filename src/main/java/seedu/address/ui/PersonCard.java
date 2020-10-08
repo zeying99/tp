@@ -44,7 +44,7 @@ public class PersonCard extends UiPart<Region> {
         super(FXML);
         this.flashcard = flashcard;
         id.setText(displayedIndex + ". ");
-        name.setText(flashcard.getName().fullName);
+        name.setText(flashcard.getTitle().fullTitle);
         definition.setText(flashcard.getDefinition().value);
         flashcard.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))

@@ -53,7 +53,7 @@ public class EditCommandTest {
         Flashcard lastFlashcard = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
 
         FlashcardBuilder personInList = new FlashcardBuilder(lastFlashcard);
-        Flashcard editedFlashcard = personInList.withName(VALID_NAME_BOB)
+        Flashcard editedFlashcard = personInList.withTitle(VALID_NAME_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
 
         EditPersonDescriptor descriptor = new EditFlashcardDescriptorBuilder().withName(VALID_NAME_BOB)
@@ -85,7 +85,7 @@ public class EditCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Flashcard flashcardInFilteredList = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Flashcard editedFlashcard = new FlashcardBuilder(flashcardInFilteredList).withName(VALID_NAME_BOB).build();
+        Flashcard editedFlashcard = new FlashcardBuilder(flashcardInFilteredList).withTitle(VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
                 new EditFlashcardDescriptorBuilder().withName(VALID_NAME_BOB).build());
 

@@ -1,8 +1,8 @@
 package seedu.address.testutil;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEFINITION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
 import java.util.Set;
 
@@ -28,7 +28,7 @@ public class FlashcardUtil {
      */
     public static String getPersonDetails(Flashcard flashcard) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_NAME + flashcard.getName().fullName + " ");
+        sb.append(PREFIX_TITLE + flashcard.getTitle().fullTitle + " ");
         sb.append(PREFIX_DEFINITION + flashcard.getDefinition().value + " ");
         flashcard.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
@@ -41,7 +41,7 @@ public class FlashcardUtil {
      */
     public static String getEditPersonDescriptorDetails(EditPersonDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
+        descriptor.getTitle().ifPresent(name -> sb.append(PREFIX_TITLE).append(name.fullTitle).append(" "));
         descriptor.getDefinition().ifPresent(definition -> sb.append(PREFIX_DEFINITION)
                 .append(definition.value).append(" "));
         if (descriptor.getTags().isPresent()) {

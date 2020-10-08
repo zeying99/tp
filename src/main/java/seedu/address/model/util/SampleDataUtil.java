@@ -8,32 +8,33 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
+
     public static Flashcard[] getSamplePersons() {
         return new Flashcard[] {
-            new Flashcard(new Name("Alex Yeoh"),
-                new Definition("<DEFINITION_1> placeholder"),
+            new Flashcard(new Title("Alex Yeoh"),
+                    new Definition("Blk 30 Geylang Street 29, #06-40"),
                 getTagSet("friends")),
-            new Flashcard(new Name("Bernice Yu"),
-                new Definition("<DEFINITION_2> placeholder"),
+            new Flashcard(new Title("Bernice Yu"),
+                    new Definition("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
                 getTagSet("colleagues", "friends")),
-            new Flashcard(new Name("Charlotte Oliveiro"),
-                new Definition("<DEFINITION_3> placeholder"),
+            new Flashcard(new Title("Charlotte Oliveiro"),
+                    new Definition("Blk 11 Ang Mo Kio Street 74, #11-04"),
                 getTagSet("neighbours")),
-            new Flashcard(new Name("David Li"),
-                new Definition("<DEFINITION_4> placeholder"),
+            new Flashcard(new Title("David Li"),
+                    new Definition("Blk 436 Serangoon Gardens Street 26, #16-43"),
                 getTagSet("family")),
-            new Flashcard(new Name("Irfan Ibrahim"),
-                new Definition("<DEFINITION_5> placeholder"),
+            new Flashcard(new Title("Irfan Ibrahim"),
+                new Definition("Blk 47 Tampines Street 20, #17-35"),
                 getTagSet("classmates")),
-            new Flashcard(new Name("Roy Balakrishnan"),
-                new Definition("<DEFINITION_6> placeholder"),
+            new Flashcard(new Title("Roy Balakrishnan"),
+                new Definition("Blk 45 Aljunied Street 85, #11-31"),
                 getTagSet("colleagues"))
         };
     }

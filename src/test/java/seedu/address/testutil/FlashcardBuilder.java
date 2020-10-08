@@ -5,7 +5,7 @@ import java.util.Set;
 
 import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -17,7 +17,7 @@ public class FlashcardBuilder {
     public static final String DEFAULT_NAME = "Alicia Pauline";
     public static final String DEFAULT_DEFINITION = "<DEFAULT DEFINITION> placeholder";
 
-    private Name name;
+    private Title title;
     private Definition definition;
     private Set<Tag> tags;
 
@@ -25,7 +25,7 @@ public class FlashcardBuilder {
      * Creates a {@code FlashcardBuilder} with the default details.
      */
     public FlashcardBuilder() {
-        name = new Name(DEFAULT_NAME);
+        title = new Title(DEFAULT_NAME);
         definition = new Definition(DEFAULT_DEFINITION);
         tags = new HashSet<>();
     }
@@ -34,16 +34,16 @@ public class FlashcardBuilder {
      * Initializes the FlashcardBuilder with the data of {@code flashcardToCopy}.
      */
     public FlashcardBuilder(Flashcard flashcardToCopy) {
-        name = flashcardToCopy.getName();
+        title = flashcardToCopy.getTitle();
         definition = flashcardToCopy.getDefinition();
         tags = new HashSet<>(flashcardToCopy.getTags());
     }
 
     /**
-     * Sets the {@code Name} of the {@code Flashcard} that we are building.
+     * Sets the {@code Title} of the {@code Flashcard} that we are building.
      */
-    public FlashcardBuilder withName(String name) {
-        this.name = new Name(name);
+    public FlashcardBuilder withTitle(String title) {
+        this.title = new Title(title);
         return this;
     }
 
@@ -64,7 +64,7 @@ public class FlashcardBuilder {
     }
 
     public Flashcard build() {
-        return new Flashcard(name, definition, tags);
+        return new Flashcard(title, definition, tags);
     }
 
 }

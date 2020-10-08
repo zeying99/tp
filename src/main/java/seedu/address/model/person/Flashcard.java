@@ -16,7 +16,7 @@ import seedu.address.model.tag.Tag;
 public class Flashcard {
 
     // Identity fields
-    private final Name name;
+    private final Title title;
 
     // Data fields
     private final Definition definition;
@@ -25,15 +25,15 @@ public class Flashcard {
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Name name, Definition definition, Set<Tag> tags) {
-        requireAllNonNull(name, definition, tags);
-        this.name = name;
+    public Flashcard(Title title, Definition definition, Set<Tag> tags) {
+        requireAllNonNull(title, definition, tags);
+        this.title = title;
         this.definition = definition;
         this.tags.addAll(tags);
     }
 
-    public Name getName() {
-        return name;
+    public Title getTitle() {
+        return title;
     }
 
 
@@ -50,16 +50,15 @@ public class Flashcard {
     }
 
     /**
-     * Returns true if both flashcards of the same name have at least one other identity field that is the same.
+     * Returns true if both flashcards of the same title have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
     public boolean isSameFlashcard(Flashcard otherFlashcard) {
         if (otherFlashcard == this) {
             return true;
         }
-
         return otherFlashcard != null
-                && otherFlashcard.getName().equals(getName());
+                && otherFlashcard.getTitle().equals(getTitle());
     }
 
     /**
@@ -75,9 +74,8 @@ public class Flashcard {
         if (!(other instanceof Flashcard)) {
             return false;
         }
-
         Flashcard otherFlashcard = (Flashcard) other;
-        return otherFlashcard.getName().equals(getName())
+        return otherFlashcard.getTitle().equals(getTitle())
                 && otherFlashcard.getDefinition().equals(getDefinition())
                 && otherFlashcard.getTags().equals(getTags());
     }
@@ -85,13 +83,13 @@ public class Flashcard {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, definition, tags);
+        return Objects.hash(title, definition, tags);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
+        builder.append(getTitle())
                 .append(" Address: ")
                 .append(getDefinition())
                 .append(" Tags: ");
