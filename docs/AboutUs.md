@@ -30,9 +30,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Gan Jing Wen
 
-<img src="images/ganjingwen.png" width="200px">
+<img src="images/gan-jw.png" width="200px">
 
-[[github](http://github.com/gan-jw)] [[portfolio](team/ganjingwen.md)]
+[[github](http://github.com/gan-jw)] [[portfolio](team/gan-jw.md)]
 
 * Role: Developer
 * Responsibilities: Data
