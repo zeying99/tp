@@ -96,6 +96,7 @@ Format: `list`
 ### Deleting a flashcard : `delete`
 
 Deletes the specified flashcard from DSAce folder.
+>>>>>>> upstream/master
 
 Format: `delete INDEX`
 
