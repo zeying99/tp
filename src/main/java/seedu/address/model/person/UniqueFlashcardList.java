@@ -23,7 +23,7 @@ import seedu.address.model.person.exceptions.FlashcardNotFoundException;
  *
  * @see Flashcard#isSameFlashcard(Flashcard)
  */
-public class UniquePersonList implements Iterable<Flashcard> {
+public class UniqueFlashcardList implements Iterable<Flashcard> {
 
     private final ObservableList<Flashcard> internalList = FXCollections.observableArrayList();
     private final ObservableList<Flashcard> internalUnmodifiableList =
@@ -54,7 +54,7 @@ public class UniquePersonList implements Iterable<Flashcard> {
      * {@code target} must exist in the list.
      * The flashcard identity of {@code editedFlashcard} must not be the same as another existing flashcard in the list.
      */
-    public void setPerson(Flashcard target, Flashcard editedFlashcard) {
+    public void setFlashcard(Flashcard target, Flashcard editedFlashcard) {
         requireAllNonNull(target, editedFlashcard);
 
         int index = internalList.indexOf(target);
@@ -80,7 +80,7 @@ public class UniquePersonList implements Iterable<Flashcard> {
         }
     }
 
-    public void setPersons(UniquePersonList replacement) {
+    public void setFlashcards(UniqueFlashcardList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
     }
@@ -89,9 +89,9 @@ public class UniquePersonList implements Iterable<Flashcard> {
      * Replaces the contents of this list with {@code flashcards}.
      * {@code flashcards} must not contain duplicate flashcards.
      */
-    public void setPersons(List<Flashcard> flashcards) {
+    public void setFlashcards(List<Flashcard> flashcards) {
         requireAllNonNull(flashcards);
-        if (!personsAreUnique(flashcards)) {
+        if (!flashcardsAreUnique(flashcards)) {
             throw new DuplicateFlashcardException();
         }
 
@@ -113,8 +113,8 @@ public class UniquePersonList implements Iterable<Flashcard> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof UniquePersonList // instanceof handles nulls
-                        && internalList.equals(((UniquePersonList) other).internalList));
+                || (other instanceof UniqueFlashcardList // instanceof handles nulls
+                        && internalList.equals(((UniqueFlashcardList) other).internalList));
     }
 
     @Override
@@ -125,7 +125,7 @@ public class UniquePersonList implements Iterable<Flashcard> {
     /**
      * Returns true if {@code flashcards} contains only unique flashcards.
      */
-    private boolean personsAreUnique(List<Flashcard> flashcards) {
+    private boolean flashcardsAreUnique(List<Flashcard> flashcards) {
         for (int i = 0; i < flashcards.size() - 1; i++) {
             for (int j = i + 1; j < flashcards.size(); j++) {
                 if (flashcards.get(i).isSameFlashcard(flashcards.get(j))) {

@@ -42,7 +42,7 @@ public class SampleDataUtil {
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Flashcard sampleFlashcard : getSamplePersons()) {
-            sampleAb.addPerson(sampleFlashcard);
+            sampleAb.addFlashcard(sampleFlashcard);
         }
         return sampleAb;
     }
