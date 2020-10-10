@@ -18,7 +18,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 
-### Jane Doe
+### Calista Io
 
 <img src="images/calistaio.png" width="200px">
 
@@ -30,35 +30,25 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Gan Jing Wen
 
-<img src="images/ganjingwen.png" width="200px">
+<img src="images/gan-jw.png" width="200px">
 
-[[github](http://github.com/gan-jw)] [[portfolio](team/ganjingwen.md)]
+[[github](http://github.com/gan-jw)] [[portfolio](team/gan-jw.md)]
 
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Mehak Virdi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/mehak24k.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### James Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/mehak24k)]
+[[portfolio](team/mehakvirdi.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Testing + Code Quality
 
 ### Wu Zeying
-<img src="images/WuZeying.png" width="200px">
+<img src="images/Wuzeying.png" width="200px">
 
 [[github](http://github.com/zeying99)]
 [[portfolio](team/wuzeying.md)]
