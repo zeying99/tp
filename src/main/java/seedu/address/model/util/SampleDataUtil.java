@@ -32,7 +32,7 @@ public class SampleDataUtil {
                  getTagSet("searching")),
             new Flashcard(new Title("Chaining"),
                     new Definition("Technique for avoiding collisions in hash tables. The hash table is an array of"
-                    + " linked lists and all key-value pairs mapping to same index will be stored in link list"
+                    + " linked lists and all key-value pairs mapping to the same index will be stored in linked list"
                     + " of that index."),
                 getTagSet("hashing")),
             new Flashcard(new Title("Heap"),
