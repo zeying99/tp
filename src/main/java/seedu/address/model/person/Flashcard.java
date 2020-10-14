@@ -20,21 +20,27 @@ public class Flashcard {
 
     // Data fields
     private final Definition definition;
+    private final Priority priority;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Title title, Definition definition, Set<Tag> tags) {
-        requireAllNonNull(title, definition, tags);
+    public Flashcard(Title title, Definition definition, Set<Tag> tags, Priority priority) {
+        requireAllNonNull(title, definition, tags, priority);
         this.title = title;
         this.definition = definition;
         this.tags.addAll(tags);
+        this.priority = priority;
     }
+
+
 
     public Title getTitle() {
         return title;
     }
+
+    public Priority getPriority() {return priority;}
 
 
     public Definition getDefinition() {
@@ -90,8 +96,10 @@ public class Flashcard {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle())
-                .append(" Address: ")
+                .append(" Definition: ")
                 .append(getDefinition())
+                .append(" Priority: ")
+                .append(getPriority())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
