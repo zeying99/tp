@@ -24,6 +24,7 @@ class JsonAdaptedFlashcard {
 
     private final String title;
     private final String definition;
+    private String priority;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
@@ -32,9 +33,11 @@ class JsonAdaptedFlashcard {
     @JsonCreator
     public JsonAdaptedFlashcard(@JsonProperty("name") String name,
                                 @JsonProperty("definition") String definition,
+                                @JsonProperty("priority") String priority,
                                 @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.title = name;
         this.definition = definition;
+        this.priority = priority;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
