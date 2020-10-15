@@ -35,7 +35,7 @@ class JsonAdaptedFlashcard {
     public JsonAdaptedFlashcard(@JsonProperty("title") String tile,
                                 @JsonProperty("definition") String definition,
                                 @JsonProperty("priority") String priority,
-                                @JsonProperty("tagged") List<JsonAdaptedTag> tagged, String priority1) {
+                                @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.title = tile;
         this.priority = priority;
         this.definition = definition;

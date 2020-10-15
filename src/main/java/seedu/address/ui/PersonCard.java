@@ -8,6 +8,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Flashcard;
+import seedu.address.model.person.Priority;
 
 /**
  * An UI component that displays information of a {@code Flashcard}.
@@ -37,6 +38,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
+
+
     /**
      * Creates a {@code PersonCode} with the given {@code Flashcard} and index to display.
      */
@@ -49,6 +52,7 @@ public class PersonCard extends UiPart<Region> {
         flashcard.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+
     }
 
     @Override

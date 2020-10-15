@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEFINITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
@@ -30,7 +31,7 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DEFINITION, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DEFINITION, PREFIX_TAG, PREFIX_PRIORITY);
 
         Index index;
 
@@ -43,6 +44,10 @@ public class EditCommandParser implements Parser<EditCommand> {
         EditFlashcardDescriptor editFlashcardDescriptor = new EditFlashcardDescriptor();
         if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
             editFlashcardDescriptor.setTitle(ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));
+        }
+        if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
+            editFlashcardDescriptor.setPriority(ParserUtil
+                    .parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get()));
         }
         if (argMultimap.getValue(PREFIX_DEFINITION).isPresent()) {
             editFlashcardDescriptor.setDefinition(ParserUtil

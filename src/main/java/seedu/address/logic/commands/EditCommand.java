@@ -142,14 +142,14 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(title, definition, tags);
+            return CollectionUtil.isAnyNonNull(title, definition, tags, priority);
         }
 
         public void setTitle(Title title) {
             this.title = title;
         }
 
-        private void setPriority(Priority priority) {this.priority = priority;}
+        public void setPriority(Priority priority) {this.priority = priority;}
 
         public Optional<Title> getTitle() {
             return Optional.ofNullable(title);

@@ -78,7 +78,7 @@ public class ParserUtil {
         if (!Priority.isValid(trimmedPriority)) {
             throw new ParseException(Priority.MESSAGE_CONSTRAINTS);
         }
-        Priority newP = Priority.identifyPriority("trimmedPriority");
+        Priority newP = Priority.identifyPriority(trimmedPriority);
         return newP;
     }
 

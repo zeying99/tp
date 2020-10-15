@@ -7,11 +7,11 @@ public enum Priority {
     LOW("low"),
     MEDIUM("medium"),
     HIGH("high"),
-    NULL("null");
+    NULL("");
 
     public static final String MESSAGE_CONSTRAINTS =
             "Flashcard can only be labelled as high, medium and low priority";
-    private final String priority;
+    public final String priority;
 
     Priority(String priority) {
         this.priority = priority.toLowerCase();
@@ -23,11 +23,11 @@ public enum Priority {
 
     public static Priority identifyPriority(String priority) {
         Priority priorityEnum = Priority.NULL;
-        if (priority.toLowerCase() == "low") {
+        if (priority.equals("low")) {
             priorityEnum = Priority.LOW;
-        } else if (priority.toLowerCase() == "medium") {
+        } else if (priority.equals("medium")) {
             priorityEnum = Priority.MEDIUM;
-        } else if (priority.toLowerCase() == "high") {
+        } else if (priority.equals("high")) {
             priorityEnum = Priority.HIGH;
         }
         return priorityEnum;
@@ -38,5 +38,4 @@ public enum Priority {
     public String toString() {
         return this.priority;
     }
-
 }
