@@ -1,10 +1,12 @@
 {
-  "persons": [ {
-    "name": "Alice Pauline",
+  "flashcards": [ {
+    "title": "Alice Pauline",
     "definition": "<VALID DEFINITION PLACEHOLDER>",
+    "priority": "",
     "tagged": [ "friends" ]
   }, {
-    "name": "Alice Pauline",
+    "title": "Alice Pauline",
+    "priority": "",
     "definition": "<VALID DEFINITION PLACEHOLDER> 2"
   } ]
 }

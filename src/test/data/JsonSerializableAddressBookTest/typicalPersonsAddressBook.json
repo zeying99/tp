@@ -1,32 +1,39 @@
 {
   "_comment": "AddressBook save file which contains the same Person values as in TypicalPersons#getTypicalAddressBook()",
-  "persons" : [ {
-    "name" : "Alice Pauline",
+  "flashcards" : [ {
+    "title" : "Alice Pauline",
     "definition" : "<DEFINITION PLACEHOLDER> 1",
+    "priority": "",
     "tagged" : [ "friends" ]
   }, {
-    "name" : "Benson Meier",
+    "title" : "Benson Meier",
     "definition" : "<DEFINITION PLACEHOLDER> 2",
+    "priority": "",
     "tagged" : [ "owesMoney", "friends" ]
   }, {
-    "name" : "Carl Kurz",
+    "title" : "Carl Kurz",
     "definition" : "<DEFINITION PLACEHOLDER> 3",
+    "priority": "",
     "tagged" : [ ]
   }, {
-    "name" : "Daniel Meier",
+    "title" : "Daniel Meier",
     "definition" : "<DEFINITION PLACEHOLDER> 4",
+    "priority": "",
     "tagged" : [ "friends" ]
   }, {
-    "name" : "Elle Meyer",
+    "title" : "Elle Meyer",
     "definition" : "<DEFINITION PLACEHOLDER> 5",
+    "priority": "",
     "tagged" : [ ]
   }, {
-    "name" : "Fiona Kunz",
+    "title" : "Fiona Kunz",
     "definition" : "<DEFINITION PLACEHOLDER> 6",
+    "priority": "",
     "tagged" : [ ]
   }, {
-    "name" : "George Best",
+    "title" : "George Best",
     "definition" : "<DEFINITION PLACEHOLDER> 7",
+    "priority": "",
     "tagged" : [ ]
   } ]
 }
