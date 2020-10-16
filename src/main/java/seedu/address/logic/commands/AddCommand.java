@@ -17,7 +17,7 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a flashcard to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a flashcard to the flashcard list. "
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
             + PREFIX_DEFINITION + "Definition "
@@ -29,6 +29,7 @@ public class AddCommand extends Command {
             + PREFIX_DEFINITION + "<PREFIX_DEFINITION> placeholder "
             + PREFIX_TAG + "sorting"
             + PREFIX_PRIORITY + "high";
+
 
     public static final String MESSAGE_SUCCESS = "New flashcard added: %1$s";
     public static final String MESSAGE_DUPLICATE_FLASHCARD = "This flashcard already exists in the address book";
