@@ -40,8 +40,9 @@ public class Flashcard {
         return title;
     }
 
-    public Priority getPriority() {return priority;}
-
+    public Priority getPriority() {
+        return priority;
+    }
 
     public Definition getDefinition() {
         return definition;

@@ -17,10 +17,23 @@ public enum Priority {
         this.priority = priority.toLowerCase();
     }
 
+    /**
+     * This is a static
+     * @param priority
+     * @return
+     */
+
     public static boolean isValid(String priority) {
         return priority.equals("low") || priority.equals("medium") || priority.equals("high");
     }
 
+    /**
+     * This is a static method to create a Priority with string parameter.
+     * If the string input is not low/medium/high, the priority will be set to Priority.NULL,
+     * which means there is no priority order for this flashcard
+     * @param priority String to indicate priority level
+     * @return a Priority object
+     */
     public static Priority identifyPriority(String priority) {
         Priority priorityEnum = Priority.NULL;
         if (priority.equals("low")) {

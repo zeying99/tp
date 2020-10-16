@@ -85,8 +85,8 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Flashcard} with the details of {@code flashcardToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Flashcard createEditedFlashcard(Flashcard flashcardToEdit
-            , EditFlashcardDescriptor editFlashcardDescriptor) {
+    private static Flashcard createEditedFlashcard(Flashcard flashcardToEdit,
+                                                   EditFlashcardDescriptor editFlashcardDescriptor) {
         assert flashcardToEdit != null;
         Title updatedTitle = editFlashcardDescriptor.getTitle().orElse(flashcardToEdit.getTitle());
         Definition updatedDefinition = editFlashcardDescriptor.getDefinition().orElse(flashcardToEdit.getDefinition());
@@ -149,7 +149,9 @@ public class EditCommand extends Command {
             this.title = title;
         }
 
-        public void setPriority(Priority priority) {this.priority = priority;}
+        public void setPriority(Priority priority) {
+            this.priority = priority;
+        }
 
         public Optional<Title> getTitle() {
             return Optional.ofNullable(title);
@@ -163,7 +165,9 @@ public class EditCommand extends Command {
             return Optional.ofNullable(definition);
         }
 
-        private Optional<Priority> getPriority() {return Optional.ofNullable(priority);}
+        private Optional<Priority> getPriority() {
+            return Optional.ofNullable(priority);
+        }
 
         /**
          * Sets {@code tags} to this object's {@code tags}.
