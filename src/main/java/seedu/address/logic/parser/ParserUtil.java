@@ -142,9 +142,9 @@ public class ParserUtil {
 
     /**
      * Parses String into sort order.
-     * @param sortOrder
-     * @return
-     * @throws ParseException
+     * @param sortOrder order in which the flashcard list is sorted.
+     * @return String specifying the sort order.
+     * @throws ParseException if the sort order is not correctly specified.
      */
     public static String parseSortOrder(String sortOrder) throws ParseException {
         if (sortOrder.equals("")) {

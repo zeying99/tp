@@ -99,6 +99,10 @@ public class UniqueFlashcardList implements Iterable<Flashcard> {
         internalList.setAll(flashcards);
     }
 
+    /**
+     * Sorts the flashcard list in either ascending or descending order.
+     * @param sortOrder order in which the flashcard list is sorted.
+     */
     public void sortFlashcards(String sortOrder) {
         FlashcardComparator flashcardComparator = new FlashcardComparator();
         if (sortOrder.equals("desc")) {
