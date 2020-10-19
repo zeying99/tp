@@ -8,6 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.FlashcardComparator;
 import seedu.address.model.person.exceptions.DuplicateFlashcardException;
 import seedu.address.model.person.exceptions.FlashcardNotFoundException;
 
@@ -96,6 +97,10 @@ public class UniqueFlashcardList implements Iterable<Flashcard> {
         }
 
         internalList.setAll(flashcards);
+    }
+
+    public void sortFlashcards() {
+        FXCollections.sort(internalList, new FlashcardComparator());
     }
 
     /**
