@@ -87,5 +87,5 @@ public interface Model {
     void updateFilteredPersonList(Predicate<Flashcard> predicate);
 
     /** Sorts the flashcard list. */
-    void sortFilteredPersonList();
+    void sortFilteredPersonList(String sortOrder);
 }

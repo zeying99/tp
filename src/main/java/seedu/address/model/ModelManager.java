@@ -130,8 +130,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void sortFilteredPersonList() {
-        addressBook.sortFlashcard();
+    public void sortFilteredPersonList(String sortOrder) {
+        addressBook.sortFlashcard(sortOrder);
     }
 
     @Override

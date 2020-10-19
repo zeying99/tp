@@ -99,8 +99,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Sorts flashcards.
      */
-    public void sortFlashcard() {
-        flashcards.sortFlashcards();
+    public void sortFlashcard(String sortOrder) {
+        flashcards.sortFlashcards(sortOrder);
     }
 
     @Override

@@ -99,8 +99,13 @@ public class UniqueFlashcardList implements Iterable<Flashcard> {
         internalList.setAll(flashcards);
     }
 
-    public void sortFlashcards() {
-        FXCollections.sort(internalList, new FlashcardComparator());
+    public void sortFlashcards(String sortOrder) {
+        FlashcardComparator flashcardComparator = new FlashcardComparator();
+        if (sortOrder.equals("desc")) {
+            FXCollections.sort(internalList, flashcardComparator.reversed());
+        } else {
+            FXCollections.sort(internalList, flashcardComparator);
+        }
     }
 
     /**

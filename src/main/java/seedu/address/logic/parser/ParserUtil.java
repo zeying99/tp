@@ -22,6 +22,7 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_SORT_ORDER = "Sort order is not correctly specified.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -137,5 +138,23 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses String into sort order.
+     * @param sortOrder
+     * @return
+     * @throws ParseException
+     */
+    public static String parseSortOrder(String sortOrder) throws ParseException {
+        if (sortOrder.equals("")) {
+            return "asc";
+        }
+        String trimmedSortOrder = sortOrder.trim();
+        String lowerCaseSortOrder = trimmedSortOrder.toLowerCase();
+        if (!(lowerCaseSortOrder.equals("asc") || lowerCaseSortOrder.equals("desc"))) {
+            throw new ParseException(MESSAGE_INVALID_SORT_ORDER);
+        }
+        return lowerCaseSortOrder;
     }
 }

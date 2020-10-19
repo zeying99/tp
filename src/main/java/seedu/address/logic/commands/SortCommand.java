@@ -11,10 +11,21 @@ public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
 
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Sorts the flashcard list.\n"
+            + "Parameters: ASC / DESC (can be in lowercase)\n"
+            + "Example: " + COMMAND_WORD + " ASC";
+
+    private final String sortOrder;
+
+    public SortCommand(String sortOrder) {
+        this.sortOrder = sortOrder;
+    }
+
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.sortFilteredPersonList();
+        model.sortFilteredPersonList(sortOrder);
         return new CommandResult("Flashcards sorted.");
     }
 }
