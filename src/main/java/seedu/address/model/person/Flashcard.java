@@ -34,8 +34,6 @@ public class Flashcard {
         this.priority = priority;
     }
 
-
-
     public Title getTitle() {
         return title;
     }
