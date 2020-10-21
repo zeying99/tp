@@ -13,7 +13,7 @@ import seedu.address.model.tag.Tag;
  * Represents a Flashcard in the flashcard folder.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Flashcard {
+public class Flashcard implements Comparable<Flashcard> {
 
     // Identity fields
     private final Title title;
@@ -106,4 +106,7 @@ public class Flashcard {
         return builder.toString();
     }
 
+    public int compareTo(Flashcard other) {
+        return this.priority.compareTo(other.priority);
+    }
 }
