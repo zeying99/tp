@@ -133,6 +133,26 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Sort feature
+
+The sort feature sorts the flashcards in the flashcard list in either ascending or descending order of priority. This feature is implemented
+by creating an instance of `SortCommand` that can be executed on the model of the flashcard list. This particular implementation of the sort
+feature was chosen because it accesses and modifies the internal flashcard list in the same way as other commands such as `ListCommand`, hence
+preserving consistency in the program design.
+
+The following sequence diagram shows how the sort feature works:
+
+![sort0](images/Sort0.png)
+
+When the user executes a sort command, e.g. `sort asc`, `ParserUtil#parseSortOrder()` is called. This function trims whitespaces from the user
+input and converts it to lowercase. Hence, user inputs that are in lowercase, uppercase, or both, e.g. `AsC`, are all valid. If the user does not
+provide an argument, `asc` will be passed into the `SortCommand` object and the flashcard list will be sorted in ascending order of priority by
+default.
+
+The following activity diagram shows how user input is processed:
+
+![sort1](images/Sort1.png)
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
