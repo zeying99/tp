@@ -4,13 +4,13 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.util.List;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Flashcard;
-
-import java.util.List;
 
 /**
  * Flips a flashcard to show the definition.
@@ -30,6 +30,10 @@ public class FlipCommand extends Command {
 
     private final Index index;
 
+    /**
+     * Creates a FlipCommand to flip the flashcard with the specified {@code index}.
+     * @param index
+     */
     public FlipCommand(Index index) {
         requireAllNonNull(index);
 

@@ -80,6 +80,10 @@ public class UniqueFlashcardList implements Iterable<Flashcard> {
         }
     }
 
+    /**
+     * Flips a flashcard to show or hide the definition.
+     * @param toFlip flashcard to be flipped.
+     */
     public void flipFlashcard(Flashcard toFlip) {
         requireNonNull(toFlip);
 

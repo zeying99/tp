@@ -91,7 +91,9 @@ public class DefinitionBookParserTest {
 
     @Test
     public void parseCommand_flip() throws Exception {
-        assertTrue(parser.parseCommand(FlipCommand.COMMAND_WORD) instanceof FlipCommand);
+        FlipCommand command = (FlipCommand) parser.parseCommand(
+                FlipCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new FlipCommand(INDEX_FIRST_PERSON), command);
     }
 
     @Test
