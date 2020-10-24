@@ -92,4 +92,7 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Flashcard> predicate);
+
+    /** Sorts the flashcard list. */
+    void sortFilteredPersonList(String sortOrder);
 }

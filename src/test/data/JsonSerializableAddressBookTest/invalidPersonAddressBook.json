@@ -1,6 +1,7 @@
 {
-  "persons": [ {
-    "name": "Hans Muster",
-    "definition": " "
+  "flashcards": [ {
+    "title": "Hans Muster",
+    "definition": " ",
+    "priority" : ""
   } ]
 }

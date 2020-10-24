@@ -100,6 +100,13 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     //// util methods
 
+    /**
+     * Sorts flashcards.
+     */
+    public void sortFlashcard(String sortOrder) {
+        flashcards.sortFlashcards(sortOrder);
+    }
+
     @Override
     public String toString() {
         return flashcards.asUnmodifiableObservableList().size() + " flashcards";
