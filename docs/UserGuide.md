@@ -11,13 +11,15 @@ DSAce is a **desktop app for managing contacts, optimized for use via a Command 
    * [**`help`** : Viewing help.](#viewing-help--help)
    * [**`add`** : Adding a flashcard.](#adding-a-flashcard--add)
    * [**`list`** : Listing all flashcards.](#listing-all-flashcards--list)
+   * [**`sort`** : Sorting all flashcards.](#sorting-all-flashcards--sort)
+   * [**`edit`** : Editing a flashcard.](#editing-a-flashcard--edit)
+   * [**`find`** : Locating flashcards by name/tag/priority.](#locating-flashcards-by-nametagpriority-find)
    * [**`delete`** : Deleting a flashcard.](#deleting-a-flashcard--delete)
+   * [**`flip`** : Flipping a flashcard.](#flipping-a-flashcard--flip)
    * [**`clear`** : Clearing all flashcards.](#clearing-all-entries--clear)
    * [**`exit`** : Exiting the program.](#exiting-the-program--exit)
    * [Saving the data.](#saving-the-data)
    * [Archiving data files [coming in v2.0].](#archiving-data-files-coming-in-v20)
-   * [**`edit`** : Editing a flashcard [coming in v2.0].](#editing-a-flashcard--edit-coming-in-v20)
-   * [**`find`** : Locating flashcard by title/content [coming in v2.0].](#locating-a-flashcard--find-coming-in-v20)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
 
@@ -40,9 +42,18 @@ DSAce is a **desktop app for managing contacts, optimized for use via a Command 
 
    * **`list`** : Lists all flashcards.
 
-   * **`add`**`t/Insertion Sort c/Worse case: O(n^2)` : Adds a flashcard named `Insertion Sort` to the DSAce folder.
+   * **`add`**`n/Insertion Sort d/Worse case: O(n^2)` : Adds a flashcard named `Insertion Sort` to the DSAce folder.
+   
+   * **`edit`**`1 n/BubbleSort d/Average case: O(n^2)` : Edits the name and definition of the 1st flashcard in
+    current list to be `BubbleSort` and `Average case: O(n^2)` respectively.
+   
+   * **`sort`**`desc` : Sorts all flashcards by priority in descending order.
+   
+   * **`find`**`n/Trees` : Finds flashcards with names containing the keyword `Trees`
 
    * **`delete`**`3` : Deletes the 3rd flashcard shown in the current list.
+   
+   * **`flip`**`2` : Flips the 2nd flashcard shown in the current list.
 
    * **`clear`** : Deletes all flashcards.
 
@@ -61,10 +72,10 @@ DSAce is a **desktop app for managing contacts, optimized for use via a Command 
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user. <br>
-  e.g. in `add t/TITLE`, `TITLE` is a parameter which can be used as `add t/Sorting`.
+  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/Sorting`.
 
 * Parameters can be in any order. <br>
-  e.g. if the command specifies `t/TITLE c/CONTENT`, `c/CONTENT t/TITLE` is also acceptable.
+  e.g. if the command specifies `n/NAME d/DEFINITION`, `d/DEFINITION n/NAME` is also acceptable.
 
 </div>
 
@@ -81,11 +92,11 @@ Format: `help`
 
 Adds a flashcard to the default DSAce folder.
 
-Format: `add t/TITLE c/CONTENT`
+Format: `add n/NAME d/DEFINITION [/tTAGS] [p/PRIORITY]`
 
 Examples:
-* `add t/Bellman-Ford Search c/runtime: O(VE)`
-* `add t/Bubble Sort c/runtime: O(n^2)`
+* `add n/Bellman Ford Search d/runtime: O(VE) p/high`
+* `add n/Bubble Sort d/runtime: O(n^2)`
 
 ### Listing all flashcards : `list`
 
@@ -93,10 +104,65 @@ Shows a list of all flashcards in the DSAce folder.
 
 Format: `list`
 
+### Sorting all flashcards : `sort`
+
+Sorts all flashcards in the DSAce folder by priority.
+
+Format: `sort [ORDER]`
+
+* Order is specified as either `asc` or `desc`.
+* The order is case-insensitive. e.g `ASC` and `AsC` will both sort by ascending.
+* If no order is specified, default order is ascending.
+
+Examples:
+* `sort ASC` Sorts all flashcards by priority in ascending order.
+* `sort desc` Sorts all flashcards by priority in descending order.
+
+### Editing a flashcard : `edit`
+
+Edits an existing flashcard in the DSAce folder.
+
+Format: `edit INDEX [n/NAME] [d/DEFINITION] [t/TAGS] [p/PRIORITY]`
+
+* Edits the flashcard at the specified `INDEX`. 
+* The index refers to the index number associated with the edited flashcard, as shown in the displayed flashcard list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
+* You can remove all the person’s tags by typing t/ without specifying any tags after it.
+
+Examples:
+* `list` followed by `edit 1 n/BubbleSort d/Average case: O(n^2)` Edits the name and definition of the 1st flashcard to
+ be `BubbleSort
+` and `Average case: O(n^2)` respectively.
+* `list` followed by `edit 2 n/SelectionSort t/` Edits the name of the 2nd flashcard to be `SelectionSort` and clears
+ all existing tags.
+* `list` followed by `edit 3 p/high` Edits the priority of the 3rd flashcard to be `high`.
+
+### Locating flashcards by name/tag/priority: `find`
+
+Finds flashcards with names, tags or priorities containing any of the given keywords.
+
+Format: find `[n/KEYWORD …​]` `[t/KEYWORD …​]` `[p/KEYWORD …​]` 
+
+* The search is case-insensitive. e.g `sort` will match `Sort`
+* The order of the keywords does not matter. e.g. `runtime sort` will match `sort runtime`
+* Names, tags or priorities will be searched according to input prefixes.
+* Only full words will be matched e.g. `sort` will not match `sorting`
+* Flashcards matching at least one keyword will be returned (i.e. `OR` search). e.g. `graph algorithm` will return
+ `Directed Acyclic Graph` and `Dijkstra’s Algorithm`
+ 
+Examples:
+
+* `find n/Trees` returns `Balanced Trees` and `Range Trees`
+* `find n/graph algorithm` returns `Directed Acyclic Graph` and `Dijkstra’s Algorithm`
+* `find t/graph sort` returns flashcards with either `graph` or `sort` in tags.
+* `find p/high` returns flashcards with `high` priority.
+
 ### Deleting a flashcard : `delete`
 
 Deletes the specified flashcard from DSAce folder.
->>>>>>> upstream/master
 
 Format: `delete INDEX`
 
@@ -106,6 +172,19 @@ Format: `delete INDEX`
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd flashcard in the folder.
+
+### Flipping a flashcard : `flip`
+
+Flips the specified flashcard from DSAce folder.
+
+Format: `flip INDEX`
+
+* Flips the flashcard at the specified `INDEX`. 
+* The index refers to the index number associated with the flipped flashcard, as shown in the displayed flashcard list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `flip 2` flips the 2nd flashcard in the folder.
 
 ### Clearing all entries : `clear`
 
@@ -132,10 +211,12 @@ A: Install the app in the other computer and overwrite the empty data file it cr
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add t/TITLE c/CONTENT` <br> e.g., `add t/Bellman-Ford Search c/runtime: O(VE)`
+**Add** | `add n/NAME d/DEFINITION` <br> e.g., `add n/Bellman-Ford Search d/runtime: O(VE)`
 **Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** [v 2.0] | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​` <br> e.g., `edit 2 n/James Lee e/jameslee@example.com`
-**Find** [v 2.0] | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Bellman-Ford Search`
+**Sort** | `sort [ORDER]` <br> e.g., `sort ASC`
+**Delete** | `delete INDEX` <br> e.g., `delete 3`
+**Flip** | `flip INDEX` <br> e.g., `flip 2`
+**Edit** | `edit INDEX [n/NAME] [d/DEFINITION] [t/TAG]…​ [p/PRIORITY]` <br> e.g., `edit 1 n/BubbleSort d/Average case: O(n^2) p/low`
+**Find** | `find [n/KEYWORD]…​ [t/KEYWORD​]…​ [p/KEYWORD​]…​` <br> e.g., `find n/BellmanFord Search`
 **List** | `list`
 **Help** | `help`
