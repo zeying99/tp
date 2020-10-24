@@ -64,6 +64,13 @@ public interface Model {
     void deletePerson(Flashcard target);
 
     /**
+     * Flips the given flashcard.
+     * The flashcard must exist in the address book.
+     * @param target the flashcard to be flipped.
+     */
+    void flipFlashcard(Flashcard target);
+
+    /**
      * Adds the given flashcard.
      * {@code flashcard} must not already exist in the address book.
      */

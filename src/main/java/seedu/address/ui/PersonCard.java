@@ -49,8 +49,8 @@ public class PersonCard extends UiPart<Region> {
         this.flashcard = flashcard;
         id.setText(displayedIndex + ". ");
         name.setText(flashcard.getTitle().fullTitle);
+        definition.setText(flashcard.getVisibleDefinition().value);
         priority.setText("Priority: " + flashcard.getPriority().priority);
-        definition.setText(flashcard.getDefinition().value);
         flashcard.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

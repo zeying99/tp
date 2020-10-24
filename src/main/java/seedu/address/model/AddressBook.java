@@ -94,6 +94,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         flashcards.remove(key);
     }
 
+    public void flipFlashcard(Flashcard target) {
+        flashcards.flipFlashcard(target);
+    }
+
     //// util methods
 
     /**
@@ -125,4 +129,5 @@ public class AddressBook implements ReadOnlyAddressBook {
     public int hashCode() {
         return flashcards.hashCode();
     }
+
 }

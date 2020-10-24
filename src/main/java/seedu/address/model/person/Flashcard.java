@@ -20,6 +20,7 @@ public class Flashcard implements Comparable<Flashcard> {
 
     // Data fields
     private final Definition definition;
+    private Definition visibleDefinition;
     private final Priority priority;
     private final Set<Tag> tags = new HashSet<>();
 
@@ -30,6 +31,7 @@ public class Flashcard implements Comparable<Flashcard> {
         requireAllNonNull(title, definition, tags, priority);
         this.title = title;
         this.definition = definition;
+        this.visibleDefinition = new Definition();
         this.tags.addAll(tags);
         this.priority = priority;
     }
@@ -44,6 +46,10 @@ public class Flashcard implements Comparable<Flashcard> {
 
     public Definition getDefinition() {
         return definition;
+    }
+
+    public Definition getVisibleDefinition() {
+        return visibleDefinition;
     }
 
     /**
@@ -64,6 +70,17 @@ public class Flashcard implements Comparable<Flashcard> {
         }
         return otherFlashcard != null
                 && otherFlashcard.getTitle().equals(getTitle());
+    }
+
+    /**
+     * Switches between an empty "hidden" displayed definition and the full definition of the flashcard.
+     */
+    public void toggleDefinition() {
+        if (this.visibleDefinition.toString().equals("")) {
+            this.visibleDefinition = this.definition;
+        } else {
+            this.visibleDefinition = new Definition();
+        }
     }
 
     /**

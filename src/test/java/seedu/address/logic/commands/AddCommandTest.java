@@ -140,6 +140,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void flipFlashcard(Flashcard target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setPerson(Flashcard target, Flashcard editedFlashcard) {
             throw new AssertionError("This method should not be called.");
         }
