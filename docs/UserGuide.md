@@ -92,7 +92,7 @@ Format: `help`
 
 Adds a flashcard to the default DSAce folder.
 
-Format: `add n/NAME d/DEFINITION [/tTAGS] [p/PRIORITY]`
+Format: `add n/NAME d/DEFINITION [t/TAGS] [p/PRIORITY]`
 
 Examples:
 * `add n/Bellman Ford Search d/runtime: O(VE) p/high`
@@ -144,7 +144,7 @@ Examples:
 
 Finds flashcards with names, tags or priorities containing any of the given keywords.
 
-Format: find `[n/KEYWORD …​]` `[t/KEYWORD …​]` `[p/KEYWORD …​]` 
+Format: find `[n/KEYWORD​S]​` `[t/KEYWORD​]​` `[p/KEYWORD​]​` 
 
 * The search is case-insensitive. e.g `sort` will match `Sort`
 * The order of the keywords does not matter. e.g. `runtime sort` will match `sort runtime`
@@ -216,7 +216,7 @@ Action | Format, Examples
 **Sort** | `sort [ORDER]` <br> e.g., `sort ASC`
 **Delete** | `delete INDEX` <br> e.g., `delete 3`
 **Flip** | `flip INDEX` <br> e.g., `flip 2`
-**Edit** | `edit INDEX [n/NAME] [d/DEFINITION] [t/TAG]…​ [p/PRIORITY]` <br> e.g., `edit 1 n/BubbleSort d/Average case: O(n^2) p/low`
-**Find** | `find [n/KEYWORD]…​ [t/KEYWORD​]…​ [p/KEYWORD​]…​` <br> e.g., `find n/BellmanFord Search`
+**Edit** | `edit INDEX [n/NAME] [d/DEFINITION] [t/TAGS] [p/PRIORITY]` <br> e.g., `edit 1 n/BubbleSort d/Average case: O(n^2) p/low`
+**Find** | `find [n/KEYWORDS] [t/KEYWORD​S] [p/KEYWORD​S]​` <br> e.g., `find n/BellmanFord Search`
 **List** | `list`
 **Help** | `help`
