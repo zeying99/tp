@@ -80,6 +80,18 @@ public class UniqueFlashcardList implements Iterable<Flashcard> {
         }
     }
 
+    public void flipFlashcard(Flashcard toFlip) {
+        requireNonNull(toFlip);
+
+        int index = internalList.indexOf(toFlip);
+        if (index == -1) {
+            throw new FlashcardNotFoundException();
+        }
+
+        internalList.get(index).toggleDefinition();
+        internalList.set(index, toFlip);
+    }
+
     public void setFlashcards(UniqueFlashcardList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);

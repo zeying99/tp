@@ -75,9 +75,11 @@ class JsonAdaptedFlashcard {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Definition.class.getSimpleName()));
         }
+
         if (!Definition.isValidDefinition(definition)) {
             throw new IllegalValueException(Definition.MESSAGE_CONSTRAINTS);
         }
+
         final Definition modelDefinition = new Definition(definition);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
