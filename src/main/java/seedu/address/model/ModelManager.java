@@ -100,6 +100,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void flipFlashcard(Flashcard target) {
+        addressBook.flipFlashcard(target);
+    }
+
+    @Override
     public void addPerson(Flashcard flashcard) {
         addressBook.addFlashcard(flashcard);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -127,6 +132,11 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Flashcard> predicate) {
         requireNonNull(predicate);
         filteredFlashcards.setPredicate(predicate);
+    }
+
+    @Override
+    public void sortFilteredPersonList(String sortOrder) {
+        addressBook.sortFlashcard(sortOrder);
     }
 
     @Override

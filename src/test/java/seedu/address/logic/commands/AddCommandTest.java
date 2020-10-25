@@ -120,6 +120,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void sortFilteredPersonList(String sortOrder) {
+            throw new AssertionError("This method could not be called.");
+        }
+
+        @Override
         public ReadOnlyAddressBook getAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
@@ -131,6 +136,11 @@ public class AddCommandTest {
 
         @Override
         public void deletePerson(Flashcard target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void flipFlashcard(Flashcard target) {
             throw new AssertionError("This method should not be called.");
         }
 

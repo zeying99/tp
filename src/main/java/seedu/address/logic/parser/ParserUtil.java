@@ -12,6 +12,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Definition;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Priority;
 import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
 
@@ -21,6 +22,7 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_SORT_ORDER = "Sort order is not correctly specified.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -63,6 +65,22 @@ public class ParserUtil {
             throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
         }
         return new Phone(trimmedPhone);
+    }
+
+    /**
+     * Parses a {@code String priority} into a {@code Priority}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code priority} is invalid.
+     */
+    public static Priority parsePriority(String priority) throws ParseException {
+        requireNonNull(priority);
+        String trimmedPriority = priority.trim().toLowerCase();
+        if (!Priority.isValid(trimmedPriority)) {
+            throw new ParseException(Priority.MESSAGE_CONSTRAINTS);
+        }
+        Priority newP = Priority.identifyPriority(trimmedPriority);
+        return newP;
     }
 
     /**
@@ -120,5 +138,23 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses String into sort order.
+     * @param sortOrder order in which the flashcard list is sorted.
+     * @return String specifying the sort order.
+     * @throws ParseException if the sort order is not correctly specified.
+     */
+    public static String parseSortOrder(String sortOrder) throws ParseException {
+        if (sortOrder.equals("")) {
+            return "asc";
+        }
+        String trimmedSortOrder = sortOrder.trim();
+        String lowerCaseSortOrder = trimmedSortOrder.toLowerCase();
+        if (!(lowerCaseSortOrder.equals("asc") || lowerCaseSortOrder.equals("desc"))) {
+            throw new ParseException(MESSAGE_INVALID_SORT_ORDER);
+        }
+        return lowerCaseSortOrder;
     }
 }
