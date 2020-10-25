@@ -7,14 +7,20 @@ import static seedu.address.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIE
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalFlashcards.getTypicalAddressBook;
 
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.PriorityContainsKeywordsPredicate;
+import seedu.address.model.person.TagContainsKeywordsPredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
@@ -53,7 +59,7 @@ public class FindCommandTest {
     @Test
     public void execute_zeroKeywords_noPersonFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
-        NameContainsKeywordsPredicate predicate = preparePredicate(" ");
+        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(" ");
         FindCommand command = new FindCommand(Collections.singletonList(predicate));
         expectedModel.updateFilteredPersonList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -72,9 +78,26 @@ public class FindCommandTest {
     //    }
 
     /**
-     * Parses {@code userInput} into a {@code NameContainsKeywordsPredicate}.
+     * Parses {@code userInput} into a {@code List<Predicate<Flashcard>>}.
      */
-    private NameContainsKeywordsPredicate preparePredicate(String userInput) {
-        return new NameContainsKeywordsPredicate(userInput);
+    @SafeVarargs
+    private List<Predicate<Flashcard>> preparePredicateList(Predicate<Flashcard> ... predicates) {
+        return Arrays.asList(predicates);
+    }
+
+    /**
+     * Parses {@code userInput} into a {@code Predicate<Flashcard>}.
+     */
+    private Predicate<Flashcard> preparePredicate(String type, String userInput) {
+        switch (type) {
+        case "name":
+            return new NameContainsKeywordsPredicate(userInput);
+        case "tag":
+            return new TagContainsKeywordsPredicate(userInput);
+        case "priority":
+            return new PriorityContainsKeywordsPredicate(userInput);
+        default:
+            return null;
+        }
     }
 }
