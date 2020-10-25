@@ -7,7 +7,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
@@ -71,7 +71,7 @@ public class DefinitionBookParserTest {
     public void parseCommand_find() throws Exception {
         FindCommand command = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_WORD + " " + "n/foo");
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList("foo"))), command);
+        assertEquals(new FindCommand(Collections.singletonList(new NameContainsKeywordsPredicate("foo"))), command);
     }
 
     @Test

@@ -74,27 +74,27 @@ public class SampleDataUtil {
             new TrueFalse("The sequence [20, 15, 18, 7, 9, 5, 12, 3, 6, 2) is a max-heap", true),
             new Mcq("The maximum number of rotations necessary to rebalance an AVL tree "
                     + "containing n elements during the insertion of a new item is:", 3,
-                    (ArrayList<String>) Arrays.asList(new String[]{"0", "1", "2", "3"})),
+                    (ArrayList<String>) Arrays.asList("0", "1", "2", "3")),
             new Mcq("Assume that [19, 7, 8, 1, 16, 25, 62, 47, 80] was just partitioned by"
                     + " a Quicksort partitioning algorithm. Which option is a possible pivot?", 4,
-                    (ArrayList<String>) Arrays.asList(new String[]{"19", "8", "16", "25"})),
+                    (ArrayList<String>) Arrays.asList("19", "8", "16", "25")),
             new Mcq("Which of the following is a good loop invariant for the outer loop in InsertionSort?", 1,
-                    (ArrayList<String>) Arrays.asList(new String[]{"For all k such that k < i: A[k] <= A[k+1]",
+                    (ArrayList<String>) Arrays.asList("For all k such that k < i: A[k] <= A[k+1]",
                         "For all k such that j < k < i: A[k] <= A[i]",
                         "The subarray A[0..i] contains the i+1 smallest elements in the array",
-                        "The subarray A[0..i-1] contains the i smallest elements in the array"})),
+                        "The subarray A[0..i-1] contains the i smallest elements in the array")),
             new Mcq("Assume that comparing two strings of length k1 and k2 takes min(k1, k2) time. "
                     + "The worst-case running time for inserting a string of length L into an AVL tree of size n "
                     + "where all the keys in the tree have length L is: ", 4,
-                    (ArrayList<String>) Arrays.asList(new String[]{"O(1)", "O(L)", "O(nlogn)", "O(Llogn)"})),
+                    (ArrayList<String>) Arrays.asList("O(1)", "O(L)", "O(nlogn)", "O(Llogn)")),
             new Mcq("What is the time complexity of Bubble Sort?", 4,
-                    (ArrayList<String>) Arrays.asList(new String[]{"O(1)", "O(n)", "O(nlogn)", "O(n^2)"})),
+                    (ArrayList<String>) Arrays.asList("O(1)", "O(n)", "O(nlogn)", "O(n^2)")),
             new Mcq("What is the time complexity of Selection Sort?", 4,
-                    (ArrayList<String>) Arrays.asList(new String[]{"O(1)", "O(n)", "O(nlogn)", "O(n^2)"})),
+                    (ArrayList<String>) Arrays.asList("O(1)", "O(n)", "O(nlogn)", "O(n^2)")),
             new Mcq("What is the time complexity of Insertion Sort?", 4,
-                    (ArrayList<String>) Arrays.asList(new String[]{"O(1)", "O(n)", "O(nlogn)", "O(n^2)"})),
+                    (ArrayList<String>) Arrays.asList("O(1)", "O(n)", "O(nlogn)", "O(n^2)")),
             new Mcq("What is the time complexity of Merge Sort?", 3,
-                    (ArrayList<String>) Arrays.asList(new String[]{"O(1)", "O(n)", "O(nlogn)", "O(n^2)"}))
+                    (ArrayList<String>) Arrays.asList("O(1)", "O(n)", "O(nlogn)", "O(n^2)"))
         };
     }
 
