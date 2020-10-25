@@ -16,6 +16,9 @@ public class TagContainsKeywordsPredicate implements Predicate<Flashcard> {
 
     @Override
     public boolean test(Flashcard flashcard) {
+        if (keyword.isBlank()) {
+            return false;
+        }
         return flashcard.getTags().stream()
                 .anyMatch(tag -> StringUtil.containsWordIgnoreCase(keyword, tag.tagName));
     }

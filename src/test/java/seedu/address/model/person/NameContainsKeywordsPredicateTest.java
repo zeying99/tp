@@ -1,6 +1,8 @@
 package seedu.address.model.person;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -15,20 +17,20 @@ public class NameContainsKeywordsPredicateTest {
         NameContainsKeywordsPredicate secondPredicate = new NameContainsKeywordsPredicate("second");
 
         // same object -> returns true
-        assertTrue(firstPredicate.equals(firstPredicate));
+        assertEquals(firstPredicate, firstPredicate);
 
         // same values -> returns true
         NameContainsKeywordsPredicate firstPredicateCopy = new NameContainsKeywordsPredicate("first");
-        assertTrue(firstPredicate.equals(firstPredicateCopy));
+        assertEquals(firstPredicate, firstPredicateCopy);
 
         // different types -> returns false
-        assertFalse(firstPredicate.equals(1));
+        assertNotEquals(1, firstPredicate);
 
         // null -> returns false
-        assertFalse(firstPredicate.equals(null));
+        assertNotEquals(null, firstPredicate);
 
         // different flashcard -> returns false
-        assertFalse(firstPredicate.equals(secondPredicate));
+        assertNotEquals(firstPredicate, secondPredicate);
     }
 
     @Test
@@ -36,18 +38,6 @@ public class NameContainsKeywordsPredicateTest {
         // One keyword
         NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate("Alice");
         assertTrue(predicate.test(new FlashcardBuilder().withTitle("Alice Bob").build()));
-
-        // Multiple keywords
-        //        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Alice", "Bob"));
-        //        assertTrue(predicate.test(new FlashcardBuilder().withTitle("Alice Bob").build()));
-
-        // Only one matching keyword
-        //        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Bob", "Carol"));
-        //        assertTrue(predicate.test(new FlashcardBuilder().withTitle("Alice Carol").build()));
-
-        // Mixed-case keywords
-        //        predicate = new NameContainsKeywordsPredicate(Arrays.asList("aLIce", "bOB"));
-        //        assertTrue(predicate.test(new FlashcardBuilder().withTitle("Alice Bob").build()));
     }
 
     @Test
@@ -61,8 +51,8 @@ public class NameContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new FlashcardBuilder().withTitle("Alice Bob").build()));
 
         // Keywords match address, but does not match name
-        //        predicate = new NameContainsKeywordsPredicate(Arrays.asList("12345", "Main", "Street"));
-        //        assertFalse(predicate.test(new FlashcardBuilder().withTitle("Alice")
-        //                .withDefinition("Main Street").build()));
+        predicate = new NameContainsKeywordsPredicate("Main");
+        assertFalse(predicate.test(new FlashcardBuilder().withTitle("Alice")
+                .withDefinition("Main Street").build()));
     }
 }

@@ -16,6 +16,9 @@ public class PriorityContainsKeywordsPredicate implements Predicate<Flashcard> {
 
     @Override
     public boolean test(Flashcard flashcard) {
+        if (keyword.isBlank()) {
+            return false;
+        }
         return StringUtil.containsWordIgnoreCase(flashcard.getPriority().toString(), keyword);
     }
 
