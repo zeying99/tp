@@ -10,6 +10,8 @@ import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.Priority;
 import seedu.address.model.person.Title;
+import seedu.address.model.quiz.Question;
+import seedu.address.model.quiz.TrueFalse;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -53,6 +55,24 @@ public class SampleDataUtil {
         }
         return sampleAb;
     }
+
+    public static Question[] getSampleQuestions() {
+        return new Question[]{
+                new TrueFalse("test", true)
+
+
+        };
+    }
+
+//    public static ReadOnlyAddressBook getSampleAddressBook() {
+//        AddressBook sampleAb = new AddressBook();
+//        for (Flashcard sampleFlashcard : getSamplePersons()) {
+//            sampleAb.addFlashcard(sampleFlashcard);
+//        }
+//        return sampleAb;
+//    }
+
+
 
     /**
      * Returns a tag set containing the list of strings given.

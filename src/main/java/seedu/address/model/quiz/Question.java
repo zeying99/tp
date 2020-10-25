@@ -1,13 +1,13 @@
-package seedu.address.model.person.quiz;
+package seedu.address.model.quiz;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.address.model.person.exceptions.InvalidQuestionAttemptException;
+import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
 
 /**
  * Represents a question in a quiz.
  */
-public abstract class Question {
+public abstract class Question implements Comparable<Question> {
 
     protected String prompt;
 
@@ -35,4 +35,18 @@ public abstract class Question {
      * @throws InvalidQuestionAttemptException if the response is not valid
      */
     public abstract boolean checkResponse(String response) throws InvalidQuestionAttemptException;
+
+    public abstract int compareTo(Question f2);
+
+    /**
+     * Returns true if both questions of the same title have at least one other identity field that is the same.
+     * This defines a weaker notion of equality between two questions.
+     */
+    public boolean isSameQuestion(Question otherQuestion) {
+        if (otherQuestion == this) {
+            return true;
+        }
+        return otherQuestion != null
+                && otherQuestion.getPrompt().equals(getPrompt());
+    }
 }

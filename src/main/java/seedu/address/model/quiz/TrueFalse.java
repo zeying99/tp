@@ -1,10 +1,10 @@
-package seedu.address.model.person.quiz;
+package seedu.address.model.quiz;
 
 import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
 
-import seedu.address.model.person.exceptions.InvalidQuestionAttemptException;
+import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
 
 /**
  * Represents a True/False question. This question has only two valid options: true and false.
@@ -61,7 +61,10 @@ public class TrueFalse extends Question {
             return !answer;
         }
     }
-
+    @Override
+    public int compareTo(Question f2) {
+        return prompt.compareTo(f2.prompt);
+    }
     @Override
     public boolean equals(Object other) {
         if (other == this) {

@@ -1,11 +1,11 @@
-package seedu.address.model.person.quiz;
+package seedu.address.model.quiz;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-import seedu.address.model.person.exceptions.InvalidQuestionAttemptException;
+import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
 
 /**
  * Represents a MCQ question. It is assumed that the options are numerically indexed, starting from 1.
@@ -74,7 +74,10 @@ public class Mcq extends Question {
             throw new InvalidQuestionAttemptException("Response is not a valid option.");
         }
     }
-
+    @Override
+    public int compareTo(Question f2) {
+        return prompt.compareTo(f2.prompt);
+    }
     @Override
     public boolean equals(Object other) {
         if (other == this) {
