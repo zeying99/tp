@@ -16,7 +16,7 @@ public class TrueFalse extends Question {
     /**
      * Every field must be present and not null.
      */
-    public TrueFalse(String prompt, boolean answer) {
+    public TrueFalse(String prompt, Boolean answer) {
         super(prompt);
         requireNonNull(answer);
         this.answer = answer;

@@ -2,7 +2,7 @@ package seedu.address.model.quiz;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
@@ -13,14 +13,14 @@ import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
 public class Mcq extends Question {
 
     private int answer;
-    private ArrayList<String> options;
+    private List<String> options;
 
     /**
      * Every field must be present and not null.
      */
-    public Mcq(String prompt, int answer, ArrayList<String> options) {
+    public Mcq(String prompt, Integer answer, List<String> options) {
         super(prompt);
-        requireAllNonNull(answer, options);
+        requireAllNonNull(prompt, answer, options);
         this.answer = answer;
         this.options = options;
         assert(isValidResponse(answer));
@@ -30,7 +30,7 @@ public class Mcq extends Question {
         return answer;
     }
 
-    public ArrayList<String> getOptions() {
+    public List<String> getOptions() {
         return options;
     }
 
