@@ -70,7 +70,7 @@ public class SampleDataUtil {
                     + "longest path in the graph by negating all the edge weights "
                     + "and running Dijkstra's algorithm", false),
             new TrueFalse("Every directed acyclic graph has exactly one valid topological ordering", false),
-            new TrueFalse("The sequence [20, 15, 18, 7, 9, 5, 12, 3, 6, 2) is a max-heap", true),
+            new TrueFalse("The sequence [20, 15, 18, 7, 9, 5, 12, 3, 6, 2] is a max-heap", true),
             new Mcq("The maximum number of rotations necessary to rebalance an AVL tree "
                     + "containing n elements during the insertion of a new item is:", 3,
                      Arrays.asList("0", "1", "2", "3")),
