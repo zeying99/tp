@@ -1,10 +1,11 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.testutil.TypicalFlashcards.ALICE;
+import static seedu.address.testutil.TypicalFlashcards.BENSON;
 import static seedu.address.testutil.TypicalFlashcards.getTypicalAddressBook;
 
 import java.util.Arrays;
@@ -17,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.ContainsAllKeywordsPredicate;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.PriorityContainsKeywordsPredicate;
@@ -31,29 +33,27 @@ public class FindCommandTest {
 
     @Test
     public void equals() {
-        NameContainsKeywordsPredicate firstPredicate =
-                new NameContainsKeywordsPredicate("first");
-        NameContainsKeywordsPredicate secondPredicate =
-                new NameContainsKeywordsPredicate("second");
-
-        FindCommand findFirstCommand = new FindCommand(Collections.singletonList(firstPredicate));
-        FindCommand findSecondCommand = new FindCommand(Collections.singletonList(secondPredicate));
+        FindCommand findFirstCommand = new FindCommand(preparePredicateList(
+                preparePredicate("name", "first")));
+        FindCommand findSecondCommand = new FindCommand(preparePredicateList(
+                preparePredicate("name", "second")));
 
         // same object -> returns true
-        assertTrue(findFirstCommand.equals(findFirstCommand));
+        assertEquals(findFirstCommand, findFirstCommand);
 
         // same values -> returns true
-        FindCommand findFirstCommandCopy = new FindCommand(Collections.singletonList(firstPredicate));
-        assertTrue(findFirstCommand.equals(findFirstCommandCopy));
+        FindCommand findFirstCommandCopy = new FindCommand(preparePredicateList(
+                preparePredicate("name", "first")));
+        assertEquals(findFirstCommand, findFirstCommandCopy);
 
         // different types -> returns false
-        assertFalse(findFirstCommand.equals(1));
+        assertNotEquals(1, findFirstCommand);
 
         // null -> returns false
-        assertFalse(findFirstCommand.equals(null));
+        assertNotEquals(null, findFirstCommand);
 
-        // different flashcard -> returns false
-        assertFalse(findFirstCommand.equals(findSecondCommand));
+        // different commands -> returns false
+        assertNotEquals(findFirstCommand, findSecondCommand);
     }
 
     @Test
@@ -66,16 +66,38 @@ public class FindCommandTest {
         assertEquals(Collections.emptyList(), model.getFilteredPersonList());
     }
 
-    //    @Test
-    //    public void execute_multipleKeywords_multiplePersonsFound() {
-    //        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
-    //        List<Predicate<Flashcard>> predicates = Arrays.asList(preparePredicate("Kurz"),
-    //                preparePredicate("Elle"), preparePredicate("Kunz"));
-    //        FindCommand command = new FindCommand(predicates);
-    //        expectedModel.updateFilteredPersonList(new ContainsAllKeywordsPredicate(predicates));
-    //        assertCommandSuccess(command, model, expectedMessage, expectedModel);
-    //        assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredPersonList());
-    //    }
+    @Test
+    public void execute_oneKeyword_multiplePersonsFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 2);
+        List<Predicate<Flashcard>> predicateList = preparePredicateList(
+                preparePredicate("priority", "low"));
+        FindCommand command = new FindCommand(predicateList);
+        expectedModel.updateFilteredPersonList(new ContainsAllKeywordsPredicate(predicateList));
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(ALICE, BENSON), model.getFilteredPersonList());
+    }
+
+    @Test
+    public void execute_multipleKeywords_onePersonFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        List<Predicate<Flashcard>> predicateList = preparePredicateList(
+                preparePredicate("priority", "low"), preparePredicate("name", "Alice"));
+        FindCommand command = new FindCommand(predicateList);
+        expectedModel.updateFilteredPersonList(new ContainsAllKeywordsPredicate(predicateList));
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(ALICE), model.getFilteredPersonList());
+    }
+
+    @Test
+    public void execute_multipleKeywords_noPersonFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        List<Predicate<Flashcard>> predicateList = preparePredicateList(
+                preparePredicate("priority", "high"), preparePredicate("name", "Alice"));
+        FindCommand command = new FindCommand(predicateList);
+        expectedModel.updateFilteredPersonList(new ContainsAllKeywordsPredicate(predicateList));
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Collections.emptyList(), model.getFilteredPersonList());
+    }
 
     /**
      * Parses {@code userInput} into a {@code List<Predicate<Flashcard>>}.
