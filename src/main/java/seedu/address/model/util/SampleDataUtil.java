@@ -1,15 +1,19 @@
 package seedu.address.model.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
+import seedu.address.model.QuizBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyQuizBook;
 import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.Priority;
 import seedu.address.model.person.Title;
+import seedu.address.model.quiz.Mcq;
 import seedu.address.model.quiz.Question;
 import seedu.address.model.quiz.TrueFalse;
 import seedu.address.model.tag.Tag;
@@ -58,21 +62,49 @@ public class SampleDataUtil {
 
     public static Question[] getSampleQuestions() {
         return new Question[]{
-                new TrueFalse("test", true)
-
-
+            new TrueFalse("G is a weighted, undirected graph, and u is a node in the graph. "
+                    + "Edge (u, v) is the edge adjacent to u with the smallest weight. Then some"
+                    + " minimum spanning tree of G contains edge (u, v)", true),
+            new TrueFalse("Given an array sorted from smallest to largest, we can build a min-heap"
+                    + " (i.e, a heap where the smallest element is at the root) in time <= O(logn)", true),
+            new TrueFalse("Assume you have a graph with no positive weight cycles. Then you can find the "
+                    + "longest path in the graph by negating all the edge weights "
+                    + "and running Dijkstra's algorithm", false),
+            new TrueFalse("Every directed acyclic graph has exactly one valid topological ordering", false),
+            new TrueFalse("The sequence [20, 15, 18, 7, 9, 5, 12, 3, 6, 2) is a max-heap", true),
+            new Mcq("The maximum number of rotations necessary to rebalance an AVL tree "
+                    + "containing n elements during the insertion of a new item is:", 3,
+                    (ArrayList<String>) Arrays.asList(new String[]{"0", "1", "2", "3"})),
+            new Mcq("Assume that [19, 7, 8, 1, 16, 25, 62, 47, 80] was just partitioned by"
+                    + " a Quicksort partitioning algorithm. Which option is a possible pivot?", 4,
+                    (ArrayList<String>) Arrays.asList(new String[]{"19", "8", "16", "25"})),
+            new Mcq("Which of the following is a good loop invariant for the outer loop in InsertionSort?", 1,
+                    (ArrayList<String>) Arrays.asList(new String[]{"For all k such that k < i: A[k] <= A[k+1]",
+                        "For all k such that j < k < i: A[k] <= A[i]",
+                        "The subarray A[0..i] contains the i+1 smallest elements in the array",
+                        "The subarray A[0..i-1] contains the i smallest elements in the array"})),
+            new Mcq("Assume that comparing two strings of length k1 and k2 takes min(k1, k2) time. "
+                    + "The worst-case running time for inserting a string of length L into an AVL tree of size n "
+                    + "where all the keys in the tree have length L is: ", 4,
+                    (ArrayList<String>) Arrays.asList(new String[]{"O(1)", "O(L)", "O(nlogn)", "O(Llogn)"})),
+            new Mcq("What is the time complexity of Bubble Sort?", 4,
+                    (ArrayList<String>) Arrays.asList(new String[]{"O(1)", "O(n)", "O(nlogn)", "O(n^2)"})),
+            new Mcq("What is the time complexity of Selection Sort?", 4,
+                    (ArrayList<String>) Arrays.asList(new String[]{"O(1)", "O(n)", "O(nlogn)", "O(n^2)"})),
+            new Mcq("What is the time complexity of Insertion Sort?", 4,
+                    (ArrayList<String>) Arrays.asList(new String[]{"O(1)", "O(n)", "O(nlogn)", "O(n^2)"})),
+            new Mcq("What is the time complexity of Merge Sort?", 3,
+                    (ArrayList<String>) Arrays.asList(new String[]{"O(1)", "O(n)", "O(nlogn)", "O(n^2)"}))
         };
     }
 
-//    public static ReadOnlyAddressBook getSampleAddressBook() {
-//        AddressBook sampleAb = new AddressBook();
-//        for (Flashcard sampleFlashcard : getSamplePersons()) {
-//            sampleAb.addFlashcard(sampleFlashcard);
-//        }
-//        return sampleAb;
-//    }
-
-
+    public static ReadOnlyQuizBook getSampleQuizBook() {
+        QuizBook sampleQb = new QuizBook();
+        for (Question sampleQuestion : getSampleQuestions()) {
+            sampleQb.addQuestion(sampleQuestion);
+        }
+        return sampleQb;
+    }
 
     /**
      * Returns a tag set containing the list of strings given.
