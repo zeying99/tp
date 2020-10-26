@@ -30,7 +30,6 @@ public class FlashcardBuilder {
     public FlashcardBuilder() {
         title = new Title(DEFAULT_NAME);
         definition = new Definition(DEFAULT_DEFINITION);
-        priority = Priority.identifyPriority(DEFAULT_PRIORITY);
         tags = new HashSet<>();
     }
 
@@ -41,7 +40,6 @@ public class FlashcardBuilder {
         title = flashcardToCopy.getTitle();
         definition = flashcardToCopy.getDefinition();
         tags = new HashSet<>(flashcardToCopy.getTags());
-        priority = flashcardToCopy.getPriority();
     }
 
     /**
@@ -68,16 +66,9 @@ public class FlashcardBuilder {
         return this;
     }
 
-    /**
-     * Sets the {@code Priority} of the {@code Flashcard} that we are building.
-     */
-    public FlashcardBuilder withPriority(String priority) {
-        this.priority = Priority.identifyPriority(priority);
-        return this;
-    }
 
     public Flashcard build() {
-        return new Flashcard(title, definition, tags, priority);
+        return new Flashcard(title, definition, tags);
     }
 
 }

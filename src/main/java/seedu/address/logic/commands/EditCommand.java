@@ -91,9 +91,8 @@ public class EditCommand extends Command {
         Title updatedTitle = editFlashcardDescriptor.getTitle().orElse(flashcardToEdit.getTitle());
         Definition updatedDefinition = editFlashcardDescriptor.getDefinition().orElse(flashcardToEdit.getDefinition());
         Set<Tag> updatedTags = editFlashcardDescriptor.getTags().orElse(flashcardToEdit.getTags());
-        Priority updatedPriority = editFlashcardDescriptor.getPriority().orElse(flashcardToEdit.getPriority());
 
-        return new Flashcard(updatedTitle, updatedDefinition, updatedTags, updatedPriority);
+        return new Flashcard(updatedTitle, updatedDefinition, updatedTags);
     }
 
     @Override

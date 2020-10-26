@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEFINITION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
@@ -17,18 +16,20 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a flashcard to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a flashcard to the flashcard list. "
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
             + PREFIX_DEFINITION + "Definition "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_TITLE + "Bubblesort "
+
+            + PREFIX_TITLE + "Bobosort "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_DEFINITION + "<PREFIX_DEFINITION> placeholder "
-            + PREFIX_TAG + "sorting"
-            + PREFIX_PRIORITY + "high";
+            + PREFIX_TAG + "sorting "
+            + PREFIX_TAG + "algorithm";
+
 
     public static final String MESSAGE_SUCCESS = "New flashcard added: %1$s";
     public static final String MESSAGE_DUPLICATE_FLASHCARD = "This flashcard already exists in the address book";

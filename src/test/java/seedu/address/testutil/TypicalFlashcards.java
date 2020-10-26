@@ -21,38 +21,38 @@ public class TypicalFlashcards {
 
     public static final Flashcard ALICE = new FlashcardBuilder().withTitle("Alice Pauline")
             .withDefinition("<DEFINITION PLACEHOLDER> 1")
-            .withTags("friends").withPriority("").build();
+            .withTags("friends").build();
     public static final Flashcard BENSON = new FlashcardBuilder().withTitle("Benson Meier")
             .withDefinition("<DEFINITION PLACEHOLDER> 2")
-            .withTags("owesMoney", "friends").withPriority("").build();
+            .withTags("owesMoney", "friends").build();
     public static final Flashcard CARL =
-            new FlashcardBuilder().withTitle("Carl Kurz").withPriority("")
+            new FlashcardBuilder().withTitle("Carl Kurz")
                     .withDefinition("<DEFINITION PLACEHOLDER> 3").build();
     public static final Flashcard DANIEL =
-            new FlashcardBuilder().withTitle("Daniel Meier").withPriority("")
+            new FlashcardBuilder().withTitle("Daniel Meier")
                     .withDefinition("<DEFINITION PLACEHOLDER> 4").withTags("friends").build();
-    public static final Flashcard ELLE = new FlashcardBuilder().withTitle("Elle Meyer").withPriority("")
+    public static final Flashcard ELLE = new FlashcardBuilder().withTitle("Elle Meyer")
             .withDefinition("<DEFINITION PLACEHOLDER> 5").build();
     public static final Flashcard FIONA =
-            new FlashcardBuilder().withTitle("Fiona Kunz").withPriority("")
+            new FlashcardBuilder().withTitle("Fiona Kunz")
                     .withDefinition("<DEFINITION PLACEHOLDER> 6").build();
     public static final Flashcard GEORGE =
-            new FlashcardBuilder().withTitle("George Best").withPriority("")
+            new FlashcardBuilder().withTitle("George Best")
                     .withDefinition("<DEFINITION PLACEHOLDER> 7").build();
 
     // Manually added
     public static final Flashcard HOON =
             new FlashcardBuilder().withTitle("Hoon Meier").withDefinition("<DEFINITION PLACEHOLDER> 8")
-                .withPriority("").build();
+                .build();
     public static final Flashcard IDA =
             new FlashcardBuilder().withTitle("Ida Mueller").withDefinition("<DEFINITION PLACEHOLDER> 9")
-                .withPriority("").build();
+                .build();
 
     // Manually added - Flashcard's details found in {@code CommandTestUtil}
     public static final Flashcard AMY = new FlashcardBuilder().withTitle(VALID_NAME_AMY)
-            .withDefinition(VALID_DEFINITION_AMY).withPriority("").withTags(VALID_TAG_FRIEND).build();
+            .withDefinition(VALID_DEFINITION_AMY).withTags(VALID_TAG_FRIEND).build();
     public static final Flashcard BOB = new FlashcardBuilder().withTitle(VALID_NAME_BOB)
-            .withDefinition(VALID_DEFINITION_BOB).withPriority("")
+            .withDefinition(VALID_DEFINITION_BOB)
             .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER

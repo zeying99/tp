@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
-import seedu.address.model.person.Priority;
 import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
 
@@ -54,7 +53,6 @@ class JsonAdaptedFlashcard {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
-        priority = source.getPriority().toString();
 
     }
 
@@ -88,9 +86,7 @@ class JsonAdaptedFlashcard {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        final Priority priorityEnum = Priority.identifyPriority(priority);
-
-        return new Flashcard(modelName, modelDefinition, modelTags, priorityEnum);
+        return new Flashcard(modelName, modelDefinition, modelTags);
     }
 
 }
