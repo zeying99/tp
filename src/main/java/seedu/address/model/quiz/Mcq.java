@@ -1,11 +1,11 @@
-package seedu.address.model.person.quiz;
+package seedu.address.model.quiz;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-import seedu.address.model.person.exceptions.InvalidQuestionAttemptException;
+import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
 
 /**
  * Represents a MCQ question. It is assumed that the options are numerically indexed, starting from 1.
@@ -13,14 +13,14 @@ import seedu.address.model.person.exceptions.InvalidQuestionAttemptException;
 public class Mcq extends Question {
 
     private int answer;
-    private ArrayList<String> options;
+    private List<String> options;
 
     /**
      * Every field must be present and not null.
      */
-    public Mcq(String prompt, int answer, ArrayList<String> options) {
+    public Mcq(String prompt, Integer answer, List<String> options) {
         super(prompt);
-        requireAllNonNull(answer, options);
+        requireAllNonNull(prompt, answer, options);
         this.answer = answer;
         this.options = options;
         assert(isValidResponse(answer));
@@ -30,7 +30,7 @@ public class Mcq extends Question {
         return answer;
     }
 
-    public ArrayList<String> getOptions() {
+    public List<String> getOptions() {
         return options;
     }
 
@@ -74,7 +74,10 @@ public class Mcq extends Question {
             throw new InvalidQuestionAttemptException("Response is not a valid option.");
         }
     }
-
+    @Override
+    public int compareTo(Question f2) {
+        return prompt.compareTo(f2.prompt);
+    }
     @Override
     public boolean equals(Object other) {
         if (other == this) {

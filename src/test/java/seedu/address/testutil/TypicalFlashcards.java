@@ -21,23 +21,23 @@ public class TypicalFlashcards {
 
     public static final Flashcard ALICE = new FlashcardBuilder().withTitle("Alice Pauline")
             .withDefinition("<DEFINITION PLACEHOLDER> 1")
-            .withTags("friends").withPriority("").build();
+            .withTags("friends").withPriority("low").build();
     public static final Flashcard BENSON = new FlashcardBuilder().withTitle("Benson Meier")
             .withDefinition("<DEFINITION PLACEHOLDER> 2")
-            .withTags("owesMoney", "friends").withPriority("").build();
+            .withTags("owesMoney", "friends").withPriority("low").build();
     public static final Flashcard CARL =
-            new FlashcardBuilder().withTitle("Carl Kurz").withPriority("")
+            new FlashcardBuilder().withTitle("Carl Kurz").withPriority("medium")
                     .withDefinition("<DEFINITION PLACEHOLDER> 3").build();
     public static final Flashcard DANIEL =
-            new FlashcardBuilder().withTitle("Daniel Meier").withPriority("")
+            new FlashcardBuilder().withTitle("Daniel Meier").withPriority("medium")
                     .withDefinition("<DEFINITION PLACEHOLDER> 4").withTags("friends").build();
     public static final Flashcard ELLE = new FlashcardBuilder().withTitle("Elle Meyer").withPriority("")
             .withDefinition("<DEFINITION PLACEHOLDER> 5").build();
     public static final Flashcard FIONA =
-            new FlashcardBuilder().withTitle("Fiona Kunz").withPriority("")
+            new FlashcardBuilder().withTitle("Fiona Kunz").withPriority("high")
                     .withDefinition("<DEFINITION PLACEHOLDER> 6").build();
     public static final Flashcard GEORGE =
-            new FlashcardBuilder().withTitle("George Best").withPriority("")
+            new FlashcardBuilder().withTitle("George Best").withPriority("high")
                     .withDefinition("<DEFINITION PLACEHOLDER> 7").build();
 
     // Manually added
