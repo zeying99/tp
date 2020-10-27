@@ -8,7 +8,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -44,8 +43,8 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditPersonDescriptor DESC_AMY;
-    public static final EditCommand.EditPersonDescriptor DESC_BOB;
+    public static final EditCommand.EditFlashcardDescriptor DESC_AMY;
+    public static final EditCommand.EditFlashcardDescriptor DESC_BOB;
 
     static {
         DESC_AMY = new EditFlashcardDescriptorBuilder().withName(VALID_NAME_AMY)
@@ -106,7 +105,7 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredPersonList().size());
         Flashcard flashcard = model.getFilteredPersonList().get(targetIndex.getZeroBased());
         final String[] splitName = flashcard.getTitle().fullTitle.split("\\s+");
-        model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredPersonList(new NameContainsKeywordsPredicate(splitName[0]));
 
         assertEquals(1, model.getFilteredPersonList().size());
     }

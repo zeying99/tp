@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
+import seedu.address.model.person.Priority;
 import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
 
@@ -24,16 +25,19 @@ class JsonAdaptedFlashcard {
 
     private final String title;
     private final String definition;
+    private String priority;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedFlashcard} with the given flashcard details.
      */
     @JsonCreator
-    public JsonAdaptedFlashcard(@JsonProperty("name") String name,
+    public JsonAdaptedFlashcard(@JsonProperty("title") String tile,
                                 @JsonProperty("definition") String definition,
+                                @JsonProperty("priority") String priority,
                                 @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
-        this.title = name;
+        this.title = tile;
+        this.priority = priority;
         this.definition = definition;
         if (tagged != null) {
             this.tagged.addAll(tagged);
@@ -50,6 +54,8 @@ class JsonAdaptedFlashcard {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        priority = source.getPriority().toString();
+
     }
 
     /**
@@ -75,14 +81,18 @@ class JsonAdaptedFlashcard {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Definition.class.getSimpleName()));
         }
+
         if (!Definition.isValidDefinition(definition)) {
             throw new IllegalValueException(Definition.MESSAGE_CONSTRAINTS);
         }
+
         final Definition modelDefinition = new Definition(definition);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        return new Flashcard(modelName, modelDefinition, modelTags);
+        final Priority priorityEnum = Priority.identifyPriority(priority);
+
+        return new Flashcard(modelName, modelDefinition, modelTags, priorityEnum);
     }
 
 }
