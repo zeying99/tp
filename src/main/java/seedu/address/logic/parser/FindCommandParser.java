@@ -6,10 +6,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Priority;
 import seedu.address.model.person.PriorityContainsKeywordsPredicate;
@@ -37,21 +40,27 @@ public class FindCommandParser implements Parser<FindCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_TAG, PREFIX_PRIORITY);
+        List<Predicate<Flashcard>> predicates = new ArrayList<>();
+        List<String> allTitleKeywords = argMultimap.getAllValues(PREFIX_TITLE);
+        List<String> allTagKeywords = argMultimap.getAllValues(PREFIX_TAG);
+        List<String> allPriorityKeywords = argMultimap.getAllValues(PREFIX_PRIORITY);
 
-        if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
-            Title keyword = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
-            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(keyword.fullTitle)));
+        for (String str : allTitleKeywords) {
+            Title keyword = ParserUtil.parseTitle(str);
+            predicates.add(new NameContainsKeywordsPredicate(keyword.fullTitle));
         }
-        if (argMultimap.getValue(PREFIX_TAG).isPresent()) {
-            Tag keyword = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
-            return new FindCommand(new TagContainsKeywordsPredicate(Arrays.asList(keyword.tagName)));
+
+        for (String str : allTagKeywords) {
+            Tag keyword = ParserUtil.parseTag(str);
+            predicates.add(new TagContainsKeywordsPredicate(keyword.tagName));
         }
-        if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
-            Priority keyword = ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get());
-            return new FindCommand(new PriorityContainsKeywordsPredicate(Arrays.asList(keyword.priority)));
+
+        for (String str : allPriorityKeywords) {
+            Priority keyword = ParserUtil.parsePriority(str);
+            predicates.add(new PriorityContainsKeywordsPredicate(keyword.priority));
         }
-        throw new ParseException(
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+
+        return new FindCommand(predicates);
     }
 
 }

@@ -1,4 +1,4 @@
-package seedu.address.model.person.exceptions;
+package seedu.address.model.quiz.exceptions;
 
 /**
  * Signals that an attempt for a particular question is not a valid option.
