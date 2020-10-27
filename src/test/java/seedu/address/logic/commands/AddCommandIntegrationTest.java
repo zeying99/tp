@@ -30,7 +30,7 @@ public class AddCommandIntegrationTest {
         Flashcard validFlashcard = new FlashcardBuilder().build();
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        expectedModel.addPerson(validFlashcard);
+        expectedModel.addFlashcard(validFlashcard);
 
         assertCommandSuccess(new AddCommand(validFlashcard), model,
                 String.format(AddCommand.MESSAGE_SUCCESS, validFlashcard), expectedModel);

@@ -11,6 +11,7 @@ import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.EnterQuizCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.FlipCommand;
@@ -79,8 +80,9 @@ public class AddressBookParser {
             System.out.println("quiz started");
             return new HelpCommand();
 
-        //case StartQuizCommand.COMMAND_WORD:
-            //return new StartQuizCommandParser().parse(arguments);
+        case EnterQuizCommand.COMMAND_WORD:
+            return new EnterQuizCommandParser().parse(arguments);
+
         case SortCommand.COMMAND_WORD:
             return new SortCommandParser().parse(arguments);
 
