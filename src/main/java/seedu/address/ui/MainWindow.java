@@ -168,6 +168,7 @@ public class MainWindow extends UiPart<Stage> {
     public void handleQuiz() {
         personListPanelPlaceholder.setVisible(false);
         personListPanelPlaceholder.setManaged(false);
+        // TODO: Implement QuizList to display questions
         // quizListPanel = new QuizListPanel(logic.getFilteredQuizList());
         quizListPanelPlaceholder.getChildren().add(quizListPanel.getRoot());
         quizListPanelPlaceholder.setVisible(true);
@@ -227,6 +228,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isSwitchToQuiz()) {
                 handleQuiz();
+            }
+
+            if (commandResult.isSwitchToFlashcards()) {
+                handleExitQuiz();
             }
 
             if (commandResult.isExit()) {

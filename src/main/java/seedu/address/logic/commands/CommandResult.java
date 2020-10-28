@@ -17,6 +17,9 @@ public class CommandResult {
     /** Application should be switched to quiz mode. */
     private final boolean switchToQuiz;
 
+    /** Application should be switched to flashcards mode. */
+    private final boolean switchToFlashcards;
+
     /** The application should exit. */
     private final boolean exit;
 
@@ -28,6 +31,7 @@ public class CommandResult {
         this.showHelp = showHelp;
         this.exit = exit;
         this.switchToQuiz = false;
+        this.switchToFlashcards = false;
     }
 
     /**
@@ -38,6 +42,7 @@ public class CommandResult {
         this.showHelp = showHelp;
         this.exit = exit;
         this.switchToQuiz = isQuiz;
+        this.switchToFlashcards = isExitQuiz;
     }
 
     /**
@@ -58,6 +63,10 @@ public class CommandResult {
 
     public boolean isSwitchToQuiz() {
         return switchToQuiz;
+    }
+
+    public boolean isSwitchToFlashcards() {
+        return switchToFlashcards;
     }
 
     public boolean isExit() {

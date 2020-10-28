@@ -12,6 +12,6 @@ public class ExitQuizCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.flipQuizMode();
-        return new CommandResult(MESSAGE_EXIT_ACKNOWLEDGEMENT, false, false);
+        return new CommandResult(MESSAGE_EXIT_ACKNOWLEDGEMENT, false, true, false, false);
     }
 }
