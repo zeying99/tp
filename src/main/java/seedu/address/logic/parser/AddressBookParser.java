@@ -75,11 +75,6 @@ public class AddressBookParser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
-        // for testing to be replaced with code below afterwards
-        case "startquiz":
-            System.out.println("quiz started");
-            return new HelpCommand();
-
         case EnterQuizCommand.COMMAND_WORD:
             return new EnterQuizCommandParser().parse(arguments);
 

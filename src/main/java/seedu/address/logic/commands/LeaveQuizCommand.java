@@ -4,8 +4,9 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.model.Model;
 
-public class ExitQuizCommand extends Command {
-    public static final String COMMAND_WORD = "exit quiz";
+public class LeaveQuizCommand extends Command {
+    public static final String COMMAND_WORD = "leave";
+    public static final String MESSAGE_USAGE = "leave quiz";
     public static final String MESSAGE_EXIT_ACKNOWLEDGEMENT = "Switching from quiz mode to flashcard mode.";
 
     @Override
