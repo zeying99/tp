@@ -45,6 +45,19 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
             editFlashcardDescriptor.setTitle(ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));
         }
+        if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
+            editFlashcardDescriptor.setPriority(ParserUtil
+                    .parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get()));
+        }
+
+        try {
+            if (argMultimap.getValue(PREFIX_DEFINITION).isPresent()) {
+                editFlashcardDescriptor.setDefinition(ParserUtil
+                        .parseDefinition(argMultimap.getValue(PREFIX_DEFINITION).get()));
+            }
+        } catch (ParseException exception) {
+            throw exception;
+        }
 
         try {
             if (argMultimap.getValue(PREFIX_DEFINITION).isPresent()) {

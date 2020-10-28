@@ -13,23 +13,27 @@ import seedu.address.model.tag.Tag;
  * Represents a Flashcard in the flashcard folder.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Flashcard {
+public class Flashcard implements Comparable<Flashcard> {
 
     // Identity fields
     private final Title title;
 
     // Data fields
     private final Definition definition;
+    private Definition visibleDefinition;
+    private final Priority priority;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Title title, Definition definition, Set<Tag> tags) {
-        requireAllNonNull(title, definition, tags);
+    public Flashcard(Title title, Definition definition, Set<Tag> tags, Priority priority) {
+        requireAllNonNull(title, definition, tags, priority);
         this.title = title;
         this.definition = definition;
+        this.visibleDefinition = new Definition();
         this.tags.addAll(tags);
+        this.priority = priority;
     }
 
 
@@ -38,9 +42,16 @@ public class Flashcard {
         return title;
     }
 
+    public Priority getPriority() {
+        return priority;
+    }
 
     public Definition getDefinition() {
         return definition;
+    }
+
+    public Definition getVisibleDefinition() {
+        return visibleDefinition;
     }
 
     /**
@@ -61,6 +72,17 @@ public class Flashcard {
         }
         return otherFlashcard != null
                 && otherFlashcard.getTitle().equals(getTitle());
+    }
+
+    /**
+     * Switches between an empty "hidden" displayed definition and the full definition of the flashcard.
+     */
+    public void toggleDefinition() {
+        if (this.visibleDefinition.toString().equals("")) {
+            this.visibleDefinition = this.definition;
+        } else {
+            this.visibleDefinition = new Definition();
+        }
     }
 
     /**
@@ -94,9 +116,14 @@ public class Flashcard {
         builder.append(getTitle())
                 .append(" Definition: ")
                 .append(getDefinition())
+                .append(" Priority: ")
+                .append(getPriority())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
     }
 
+    public int compareTo(Flashcard other) {
+        return this.priority.compareTo(other.priority);
+    }
 }

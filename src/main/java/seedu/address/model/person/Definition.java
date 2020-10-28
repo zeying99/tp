@@ -31,7 +31,14 @@ public class Definition {
     }
 
     /**
-     * Returns true if a given string is a valid email.
+     * Constructs an empty {@code Definition}
+     */
+    public Definition() {
+        value = "";
+    }
+
+    /**
+     * Returns true if a given string is a valid definition.
      */
     public static boolean isValidDefinition(String test) {
         return test.matches(VALIDATION_REGEX);

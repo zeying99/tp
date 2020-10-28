@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.EditCommand.EditFlashcardDescriptor;
 import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
+import seedu.address.model.person.Priority;
 import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
 
@@ -32,6 +33,7 @@ public class EditFlashcardDescriptorBuilder {
         descriptor = new EditFlashcardDescriptor();
         descriptor.setTitle(flashcard.getTitle());
         descriptor.setDefinition(flashcard.getDefinition());
+        descriptor.setPriority(flashcard.getPriority());
         descriptor.setTags(flashcard.getTags());
     }
 
@@ -50,6 +52,14 @@ public class EditFlashcardDescriptorBuilder {
         descriptor.setDefinition(new Definition(definition));
         return this;
     }
+    /**
+     * Sets the {@code Definition} of the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditFlashcardDescriptorBuilder withPriority(String priority) {
+        descriptor.setPriority(Priority.identifyPriority(priority));
+        return this;
+    }
+
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
      * that we are building.

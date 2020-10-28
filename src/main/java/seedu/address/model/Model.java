@@ -12,7 +12,7 @@ import seedu.address.model.person.Flashcard;
  */
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Flashcard> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<Flashcard> PREDICATE_SHOW_ALL_FLASHCARD = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -55,19 +55,26 @@ public interface Model {
     /**
      * Returns true if a flashcard with the same identity as {@code flashcard} exists in the address book.
      */
-    boolean hasPerson(Flashcard flashcard);
+    boolean hasFlashcard(Flashcard flashcard);
 
     /**
      * Deletes the given flashcard.
      * The flashcard must exist in the address book.
      */
-    void deletePerson(Flashcard target);
+    void deleteFlashcard(Flashcard target);
+
+    /**
+     * Flips the given flashcard.
+     * The flashcard must exist in the address book.
+     * @param target the flashcard to be flipped.
+     */
+    void flipFlashcard(Flashcard target);
 
     /**
      * Adds the given flashcard.
      * {@code flashcard} must not already exist in the address book.
      */
-    void addPerson(Flashcard flashcard);
+    void addFlashcard(Flashcard flashcard);
 
     /**
      * Replaces the given flashcard {@code target} with {@code editedFlashcard}.
@@ -75,7 +82,7 @@ public interface Model {
      * The flashcard identity of {@code editedFlashcard} must not be the same as another existing flashcard
      * in the address book.
      */
-    void setPerson(Flashcard target, Flashcard editedFlashcard);
+    void setFlashcard(Flashcard target, Flashcard editedFlashcard);
 
     /** Returns an unmodifiable view of the filtered flashcard list */
     ObservableList<Flashcard> getFilteredPersonList();
@@ -85,4 +92,15 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Flashcard> predicate);
+
+    /** Sorts the flashcard list. */
+    void sortFilteredPersonList(String sortOrder);
+
+
+    /** Returns an boolean indicating whether the application is in quiz mode */
+    boolean getIsQuizMode();
+
+    /** Allows flipping the boolean isQuizMode in model */
+    void flipQuizMode();
+
 }

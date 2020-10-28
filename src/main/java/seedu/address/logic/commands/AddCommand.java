@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEFINITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
@@ -22,13 +23,13 @@ public class AddCommand extends Command {
             + PREFIX_DEFINITION + "Definition "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-
-            + PREFIX_TITLE + "Bobosort "
+            + PREFIX_TITLE + "Bubblesort "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_DEFINITION + "<PREFIX_DEFINITION> placeholder "
-            + PREFIX_TAG + "sorting "
-            + PREFIX_TAG + "algorithm";
+            + PREFIX_TAG + "sorting"
+            + PREFIX_PRIORITY + "high";
+
 
 
     public static final String MESSAGE_SUCCESS = "New flashcard added: %1$s";
@@ -48,11 +49,11 @@ public class AddCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.hasPerson(toAdd)) {
+        if (model.hasFlashcard(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_FLASHCARD);
         }
 
-        model.addPerson(toAdd);
+        model.addFlashcard(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

@@ -110,7 +110,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addPerson(Flashcard flashcard) {
+        public void addFlashcard(Flashcard flashcard) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -120,22 +120,37 @@ public class AddCommandTest {
         }
 
         @Override
+        public void sortFilteredPersonList(String sortOrder) {
+            throw new AssertionError("This method could not be called.");
+        }
+
+        @Override
+        public boolean getIsQuizMode() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ReadOnlyAddressBook getAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public boolean hasPerson(Flashcard flashcard) {
+        public boolean hasFlashcard(Flashcard flashcard) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePerson(Flashcard target) {
+        public void deleteFlashcard(Flashcard target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPerson(Flashcard target, Flashcard editedFlashcard) {
+        public void flipFlashcard(Flashcard target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setFlashcard(Flashcard target, Flashcard editedFlashcard) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -146,6 +161,10 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredPersonList(Predicate<Flashcard> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+        @Override
+        public void flipQuizMode() {
             throw new AssertionError("This method should not be called.");
         }
     }
@@ -162,7 +181,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Flashcard flashcard) {
+        public boolean hasFlashcard(Flashcard flashcard) {
             requireNonNull(flashcard);
             return this.flashcard.isSameFlashcard(flashcard);
         }
@@ -175,13 +194,13 @@ public class AddCommandTest {
         final ArrayList<Flashcard> personsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Flashcard flashcard) {
+        public boolean hasFlashcard(Flashcard flashcard) {
             requireNonNull(flashcard);
             return personsAdded.stream().anyMatch(flashcard::isSameFlashcard);
         }
 
         @Override
-        public void addPerson(Flashcard flashcard) {
+        public void addFlashcard(Flashcard flashcard) {
             requireNonNull(flashcard);
             personsAdded.add(flashcard);
         }

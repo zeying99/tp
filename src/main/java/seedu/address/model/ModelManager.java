@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Flashcard;
 
+
 /**
  * Represents the in-memory model of the address book data.
  */
@@ -22,6 +23,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Flashcard> filteredFlashcards;
+    private boolean isQuizMode = false;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -89,30 +91,32 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasPerson(Flashcard flashcard) {
+    public boolean hasFlashcard(Flashcard flashcard) {
         requireNonNull(flashcard);
         return addressBook.hasFlashcard(flashcard);
     }
 
     @Override
-    public void deletePerson(Flashcard target) {
+    public void deleteFlashcard(Flashcard target) {
         addressBook.removeFlashcard(target);
     }
 
     @Override
-    public void addPerson(Flashcard flashcard) {
-        addressBook.addFlashcard(flashcard);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    public void flipFlashcard(Flashcard target) {
+        addressBook.flipFlashcard(target);
     }
 
     @Override
-    public void setPerson(Flashcard target, Flashcard editedFlashcard) {
-        requireAllNonNull(target, editedFlashcard);
-
-        addressBook.setFlashcard(target, editedFlashcard);
+    public void addFlashcard(Flashcard flashcard) {
+        addressBook.addFlashcard(flashcard);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_FLASHCARD);
     }
 
-    //=========== Filtered Flashcard List Accessors =============================================================
+    @Override
+    public void setFlashcard(Flashcard target, Flashcard editedFlashcard) {
+        requireAllNonNull(target, editedFlashcard);
+        addressBook.setFlashcard(target, editedFlashcard);
+    }
 
     /**
      * Returns an unmodifiable view of the list of {@code Flashcard} backed by the internal list of
@@ -127,6 +131,11 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Flashcard> predicate) {
         requireNonNull(predicate);
         filteredFlashcards.setPredicate(predicate);
+    }
+
+    @Override
+    public void sortFilteredPersonList(String sortOrder) {
+        addressBook.sortFlashcard(sortOrder);
     }
 
     @Override
@@ -147,5 +156,17 @@ public class ModelManager implements Model {
                 && userPrefs.equals(other.userPrefs)
                 && filteredFlashcards.equals(other.filteredFlashcards);
     }
+
+    //=========== Filtered Question List Accessors =============================================================
+
+    @Override
+    public boolean getIsQuizMode() {
+        return this.isQuizMode;
+    }
+    @Override
+    public void flipQuizMode() {
+        this.isQuizMode = !isQuizMode;
+    }
+
 
 }

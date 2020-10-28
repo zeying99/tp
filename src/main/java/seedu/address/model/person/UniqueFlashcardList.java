@@ -8,6 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.FlashcardComparator;
 import seedu.address.model.person.exceptions.DuplicateFlashcardException;
 import seedu.address.model.person.exceptions.FlashcardNotFoundException;
 
@@ -80,6 +81,22 @@ public class UniqueFlashcardList implements Iterable<Flashcard> {
         }
     }
 
+    /**
+     * Flips a flashcard to show or hide the definition.
+     * @param toFlip flashcard to be flipped.
+     */
+    public void flipFlashcard(Flashcard toFlip) {
+        requireNonNull(toFlip);
+
+        int index = internalList.indexOf(toFlip);
+        if (index == -1) {
+            throw new FlashcardNotFoundException();
+        }
+
+        internalList.get(index).toggleDefinition();
+        internalList.set(index, toFlip);
+    }
+
     public void setFlashcards(UniqueFlashcardList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
@@ -96,6 +113,19 @@ public class UniqueFlashcardList implements Iterable<Flashcard> {
         }
 
         internalList.setAll(flashcards);
+    }
+
+    /**
+     * Sorts the flashcard list in either ascending or descending order.
+     * @param sortOrder order in which the flashcard list is sorted.
+     */
+    public void sortFlashcards(String sortOrder) {
+        FlashcardComparator flashcardComparator = new FlashcardComparator();
+        if (sortOrder.equals("desc")) {
+            FXCollections.sort(internalList, flashcardComparator.reversed());
+        } else {
+            FXCollections.sort(internalList, flashcardComparator);
+        }
     }
 
     /**

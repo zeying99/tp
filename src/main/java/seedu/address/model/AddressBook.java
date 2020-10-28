@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.UniqueFlashcardList;
 
+
 /**
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSameFlashcard comparison)
@@ -94,7 +95,18 @@ public class AddressBook implements ReadOnlyAddressBook {
         flashcards.remove(key);
     }
 
+    public void flipFlashcard(Flashcard target) {
+        flashcards.flipFlashcard(target);
+    }
+
     //// util methods
+
+    /**
+     * Sorts flashcards.
+     */
+    public void sortFlashcard(String sortOrder) {
+        flashcards.sortFlashcards(sortOrder);
+    }
 
     @Override
     public String toString() {
@@ -118,4 +130,5 @@ public class AddressBook implements ReadOnlyAddressBook {
     public int hashCode() {
         return flashcards.hashCode();
     }
+
 }
