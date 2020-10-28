@@ -5,6 +5,7 @@ import java.util.Set;
 
 import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
+import seedu.address.model.person.Priority;
 import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
@@ -16,10 +17,12 @@ public class FlashcardBuilder {
 
     public static final String DEFAULT_NAME = "Alicia Pauline";
     public static final String DEFAULT_DEFINITION = "<DEFAULT DEFINITION> placeholder";
+    public static final String DEFAULT_PRIORITY = "";
 
     private Title title;
     private Definition definition;
     private Set<Tag> tags;
+    private Priority priority;
 
     /**
      * Creates a {@code FlashcardBuilder} with the default details.
@@ -56,12 +59,13 @@ public class FlashcardBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code Flashcard} that we are building.
+     * Sets the {@code Definition} of the {@code Flashcard} that we are building.
      */
     public FlashcardBuilder withDefinition(String definition) {
         this.definition = new Definition(definition);
         return this;
     }
+
 
     public Flashcard build() {
         return new Flashcard(title, definition, tags);

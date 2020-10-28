@@ -26,29 +26,34 @@ public class TypicalFlashcards {
             .withDefinition("<DEFINITION PLACEHOLDER> 2")
             .withTags("owesMoney", "friends").build();
     public static final Flashcard CARL =
-            new FlashcardBuilder().withTitle("Carl Kurz").withDefinition("<DEFINITION PLACEHOLDER> 3").build();
+            new FlashcardBuilder().withTitle("Carl Kurz")
+                    .withDefinition("<DEFINITION PLACEHOLDER> 3").build();
     public static final Flashcard DANIEL =
             new FlashcardBuilder().withTitle("Daniel Meier")
                     .withDefinition("<DEFINITION PLACEHOLDER> 4").withTags("friends").build();
     public static final Flashcard ELLE = new FlashcardBuilder().withTitle("Elle Meyer")
             .withDefinition("<DEFINITION PLACEHOLDER> 5").build();
     public static final Flashcard FIONA =
-            new FlashcardBuilder().withTitle("Fiona Kunz").withDefinition("<DEFINITION PLACEHOLDER> 6").build();
+            new FlashcardBuilder().withTitle("Fiona Kunz")
+                    .withDefinition("<DEFINITION PLACEHOLDER> 6").build();
     public static final Flashcard GEORGE =
-            new FlashcardBuilder().withTitle("George Best").withDefinition("<DEFINITION PLACEHOLDER> 7").build();
+            new FlashcardBuilder().withTitle("George Best")
+                    .withDefinition("<DEFINITION PLACEHOLDER> 7").build();
 
     // Manually added
     public static final Flashcard HOON =
-            new FlashcardBuilder().withTitle("Hoon Meier").withDefinition("<DEFINITION PLACEHOLDER> 8").build();
+            new FlashcardBuilder().withTitle("Hoon Meier").withDefinition("<DEFINITION PLACEHOLDER> 8")
+                .build();
     public static final Flashcard IDA =
-            new FlashcardBuilder().withTitle("Ida Mueller").withDefinition("<DEFINITION PLACEHOLDER> 9").build();
+            new FlashcardBuilder().withTitle("Ida Mueller").withDefinition("<DEFINITION PLACEHOLDER> 9")
+                .build();
 
     // Manually added - Flashcard's details found in {@code CommandTestUtil}
     public static final Flashcard AMY = new FlashcardBuilder().withTitle(VALID_NAME_AMY)
             .withDefinition(VALID_DEFINITION_AMY).withTags(VALID_TAG_FRIEND).build();
     public static final Flashcard BOB = new FlashcardBuilder().withTitle(VALID_NAME_BOB)
-            .withDefinition(VALID_DEFINITION_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
-            .build();
+            .withDefinition(VALID_DEFINITION_BOB)
+            .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

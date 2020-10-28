@@ -36,6 +36,10 @@ public class PersonCard extends UiPart<Region> {
     private Label definition;
     @FXML
     private FlowPane tags;
+    @FXML
+    private Label priority;
+
+
 
     /**
      * Creates a {@code PersonCode} with the given {@code Flashcard} and index to display.
@@ -49,6 +53,7 @@ public class PersonCard extends UiPart<Region> {
         flashcard.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+
     }
 
     @Override

@@ -6,6 +6,7 @@ package seedu.address.model.person;
 public enum Priority {
     LOW("low"),
     MEDIUM("medium"),
+
     HIGH("high");
 
     private final String priority;

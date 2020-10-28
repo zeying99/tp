@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditCommand.EditFlashcardDescriptor;
 import seedu.address.model.person.Definition;
 import seedu.address.model.person.Title;
 import seedu.address.model.tag.Tag;
@@ -90,7 +90,7 @@ public class EditCommandParserTest {
         String userInput = targetIndex.getOneBased() + TAG_DESC_HUSBAND
                 + DEFINITION_DESC_AMY + NAME_DESC_AMY + TAG_DESC_FRIEND;
 
-        EditPersonDescriptor descriptor = new EditFlashcardDescriptorBuilder().withName(VALID_NAME_AMY)
+        EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withDefinition(VALID_DEFINITION_AMY)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -103,7 +103,7 @@ public class EditCommandParserTest {
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + DEFINITION_DESC_AMY;
 
-        EditPersonDescriptor descriptor = new EditFlashcardDescriptorBuilder()
+        EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder()
                 .withDefinition(VALID_DEFINITION_AMY).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -115,7 +115,7 @@ public class EditCommandParserTest {
         // name
         Index targetIndex = INDEX_THIRD_PERSON;
         String userInput = targetIndex.getOneBased() + NAME_DESC_AMY;
-        EditPersonDescriptor descriptor = new EditFlashcardDescriptorBuilder().withName(VALID_NAME_AMY).build();
+        EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder().withName(VALID_NAME_AMY).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -139,7 +139,7 @@ public class EditCommandParserTest {
                 + TAG_DESC_FRIEND + DEFINITION_DESC_AMY + TAG_DESC_FRIEND
                 + DEFINITION_DESC_BOB + TAG_DESC_HUSBAND;
 
-        EditPersonDescriptor descriptor = new EditFlashcardDescriptorBuilder()
+        EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder()
                 .withDefinition(VALID_DEFINITION_BOB).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
                 .build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -152,7 +152,7 @@ public class EditCommandParserTest {
         // no other valid values specified
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + INVALID_DEFINITION_DESC + DEFINITION_DESC_BOB;
-        EditPersonDescriptor descriptor = new EditFlashcardDescriptorBuilder()
+        EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder()
                 .withDefinition(VALID_DEFINITION_BOB).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -170,7 +170,7 @@ public class EditCommandParserTest {
         Index targetIndex = INDEX_THIRD_PERSON;
         String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
-        EditPersonDescriptor descriptor = new EditFlashcardDescriptorBuilder().withTags().build();
+        EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder().withTags().build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);

@@ -32,6 +32,8 @@ public class Flashcard {
         this.tags.addAll(tags);
     }
 
+
+
     public Title getTitle() {
         return title;
     }

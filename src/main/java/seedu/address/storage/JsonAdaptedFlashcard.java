@@ -24,16 +24,19 @@ class JsonAdaptedFlashcard {
 
     private final String title;
     private final String definition;
+    private String priority;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedFlashcard} with the given flashcard details.
      */
     @JsonCreator
-    public JsonAdaptedFlashcard(@JsonProperty("name") String name,
+    public JsonAdaptedFlashcard(@JsonProperty("title") String tile,
                                 @JsonProperty("definition") String definition,
+                                @JsonProperty("priority") String priority,
                                 @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
-        this.title = name;
+        this.title = tile;
+        this.priority = priority;
         this.definition = definition;
         if (tagged != null) {
             this.tagged.addAll(tagged);
@@ -50,6 +53,7 @@ class JsonAdaptedFlashcard {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+
     }
 
     /**

@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditCommand.EditFlashcardDescriptor;
 import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.Title;
@@ -15,21 +15,21 @@ import seedu.address.model.tag.Tag;
  */
 public class EditFlashcardDescriptorBuilder {
 
-    private EditPersonDescriptor descriptor;
+    private EditFlashcardDescriptor descriptor;
 
     public EditFlashcardDescriptorBuilder() {
-        descriptor = new EditPersonDescriptor();
+        descriptor = new EditFlashcardDescriptor();
     }
 
-    public EditFlashcardDescriptorBuilder(EditPersonDescriptor descriptor) {
-        this.descriptor = new EditPersonDescriptor(descriptor);
+    public EditFlashcardDescriptorBuilder(EditFlashcardDescriptor descriptor) {
+        this.descriptor = new EditFlashcardDescriptor(descriptor);
     }
 
     /**
      * Returns an {@code EditPersonDescriptor} with fields containing {@code flashcard}'s details
      */
     public EditFlashcardDescriptorBuilder(Flashcard flashcard) {
-        descriptor = new EditPersonDescriptor();
+        descriptor = new EditFlashcardDescriptor();
         descriptor.setTitle(flashcard.getTitle());
         descriptor.setDefinition(flashcard.getDefinition());
         descriptor.setTags(flashcard.getTags());
@@ -50,7 +50,6 @@ public class EditFlashcardDescriptorBuilder {
         descriptor.setDefinition(new Definition(definition));
         return this;
     }
-
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
      * that we are building.
@@ -61,7 +60,7 @@ public class EditFlashcardDescriptorBuilder {
         return this;
     }
 
-    public EditPersonDescriptor build() {
+    public EditFlashcardDescriptor build() {
         return descriptor;
     }
 }
