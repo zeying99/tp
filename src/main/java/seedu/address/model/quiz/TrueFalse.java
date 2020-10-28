@@ -2,6 +2,8 @@ package seedu.address.model.quiz;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
@@ -12,6 +14,7 @@ import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
 public class TrueFalse extends Question {
 
     private boolean answer;
+    public static final ArrayList<String> options = new ArrayList<>(Arrays.asList("True", "False"));
 
     /**
      * Every field must be present and not null.

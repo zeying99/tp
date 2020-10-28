@@ -8,6 +8,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Flashcard;
+import seedu.address.model.quiz.Mcq;
+import seedu.address.model.quiz.Question;
+import seedu.address.model.quiz.TrueFalse;
 
 /**
  * An UI component that displays information of a {@code Flashcard}.
@@ -24,37 +27,34 @@ public class QuizCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Flashcard flashcard;
+    public final Question question;
 
     @FXML
     private HBox cardPane;
     @FXML
-    private Label question;
+    private Label prompt;
     @FXML
     private Label id;
     @FXML
-    private Label options;
-    @FXML
-    private FlowPane tags;
-    @FXML
-    private Label priority;
-
-
+    private FlowPane options;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Flashcard} and index to display.
      */
-    public QuizCard(Flashcard flashcard, int displayedIndex) {
+    public QuizCard(Question question, int displayedIndex) {
         super(FXML);
-        this.flashcard = flashcard;
+        this.question = question;
         id.setText(displayedIndex + ". ");
-        question.setText(flashcard.getTitle().fullTitle);
-        options.setText(flashcard.getVisibleDefinition().value);
-        priority.setText("Priority: " + flashcard.getPriority().priority);
-        flashcard.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-
+        prompt.setText(question.getPrompt());
+        if (question instanceof Mcq) {
+            ((Mcq) question).getOptions().stream()
+                    .sorted(Comparator.comparing(option -> option))
+                    .forEach(option -> options.getChildren().add(new Label(option)));
+        } else {
+            TrueFalse.options.stream()
+                    .sorted(Comparator.comparing(option -> option))
+                    .forEach(option -> options.getChildren().add(new Label(option)));
+        }
     }
 
     @Override
@@ -72,6 +72,6 @@ public class QuizCard extends UiPart<Region> {
         // state check
         QuizCard card = (QuizCard) other;
         return id.getText().equals(card.id.getText())
-                && flashcard.equals(card.flashcard);
+                && question.equals(card.question);
     }
 }

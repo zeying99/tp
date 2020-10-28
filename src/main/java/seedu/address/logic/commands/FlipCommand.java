@@ -52,7 +52,7 @@ public class FlipCommand extends Command {
         Flashcard flashcardToFlip = lastShownList.get(index.getZeroBased());
         model.flipFlashcard(flashcardToFlip);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_FLIP_FLASHCARD_SUCCESS, flashcardToFlip), true, false, false);
+        return new CommandResult(String.format(MESSAGE_FLIP_FLASHCARD_SUCCESS, flashcardToFlip));
     }
 
     private String generateSuccessMessage(Flashcard flashcardToFlip) {

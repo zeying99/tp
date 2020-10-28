@@ -168,7 +168,7 @@ public class MainWindow extends UiPart<Stage> {
     public void handleQuiz() {
         personListPanelPlaceholder.setVisible(false);
         personListPanelPlaceholder.setManaged(false);
-        quizListPanel = new QuizListPanel(logic.getFilteredPersonList());
+        // quizListPanel = new QuizListPanel(logic.getFilteredQuizList());
         quizListPanelPlaceholder.getChildren().add(quizListPanel.getRoot());
         quizListPanelPlaceholder.setVisible(true);
         quizListPanelPlaceholder.setManaged(true);
@@ -176,6 +176,22 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.getScene().lookup("#quizList").setManaged(true);
         primaryStage.getScene().getStylesheets().remove("/view/DarkTheme.css");
         primaryStage.getScene().getStylesheets().add("/view/LightTheme.css");
+    }
+
+    /**
+     * Switches to flashcard settings.
+     */
+    @FXML
+    public void handleExitQuiz() {
+        quizListPanelPlaceholder.setVisible(false);
+        quizListPanelPlaceholder.setManaged(false);
+        primaryStage.getScene().lookup("#quizList").setVisible(false);
+        primaryStage.getScene().lookup("#quizList").setManaged(false);
+        personListPanelPlaceholder.setVisible(true);
+        personListPanelPlaceholder.setManaged(true);
+
+        primaryStage.getScene().getStylesheets().remove("/view/LightTheme.css");
+        primaryStage.getScene().getStylesheets().add("/view/DarkTheme.css");
     }
 
     /**

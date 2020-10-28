@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Flashcard;
+import seedu.address.model.quiz.Question;
 
 /**
  * Panel containing the list of persons.
@@ -18,30 +19,30 @@ public class QuizListPanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
 
     @FXML
-    private ListView<Flashcard> personListView;
+    private ListView<Question> quizListView;
 
     /**
      * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
      */
-    public QuizListPanel(ObservableList<Flashcard> flashcardList) {
+    public QuizListPanel(ObservableList<Question> quizList) {
         super(FXML);
-        personListView.setItems(flashcardList);
-        personListView.setCellFactory(listView -> new QuizListViewCell());
+        quizListView.setItems(quizList);
+        quizListView.setCellFactory(listView -> new QuizListViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Flashcard} using a {@code PersonCard}.
      */
-    class QuizListViewCell extends ListCell<Flashcard> {
+    class QuizListViewCell extends ListCell<Question> {
         @Override
-        protected void updateItem(Flashcard flashcard, boolean empty) {
-            super.updateItem(flashcard, empty);
+        protected void updateItem(Question question, boolean empty) {
+            super.updateItem(question, empty);
 
-            if (empty || flashcard == null) {
+            if (empty || question == null) {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new PersonCard(flashcard, getIndex() + 1).getRoot());
+                setGraphic(new QuizCard(question, getIndex() + 1).getRoot());
             }
         }
     }
