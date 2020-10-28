@@ -2,6 +2,8 @@ package seedu.address.model.quiz;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
@@ -10,6 +12,8 @@ import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
  * Represents a True/False question. This question has only two valid options: true and false.
  */
 public class TrueFalse extends Question {
+
+    public static final ArrayList<String> OPTIONS = new ArrayList<>(Arrays.asList("True", "False"));
 
     private boolean answer;
 

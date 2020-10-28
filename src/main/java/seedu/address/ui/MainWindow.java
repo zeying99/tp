@@ -34,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private QuizListPanel quizListPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -49,6 +50,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private StackPane quizListPanelPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -121,6 +125,12 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        quizListPanelPlaceholder.setVisible(false);
+        quizListPanelPlaceholder.setManaged(false);
+        primaryStage.getScene().lookup("#quizList").setVisible(false);
+        primaryStage.getScene().lookup("#quizList").setManaged(false);
+
     }
 
     /**
@@ -152,6 +162,46 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Switches to quiz settings.
+     */
+    @FXML
+    public void handleQuiz() {
+        personListPanelPlaceholder.setVisible(false);
+        personListPanelPlaceholder.setManaged(false);
+        // TODO: Implement QuizList to display questions
+        /*
+        quizListPanel = new QuizListPanel(logic.getFilteredQuizList());
+        quizListPanelPlaceholder.getChildren().add(quizListPanel.getRoot());
+        quizListPanelPlaceholder.setVisible(true);
+        quizListPanelPlaceholder.setManaged(true);
+        primaryStage.getScene().lookup("#quizList").setVisible(true);
+        primaryStage.getScene().lookup("#quizList").setManaged(true);
+         */
+        primaryStage.getScene().getStylesheets().remove("/view/DarkTheme.css");
+        primaryStage.getScene().getStylesheets().add("/view/LightTheme.css");
+    }
+
+    /**
+     * Switches to flashcard settings.
+     */
+    @FXML
+    public void handleExitQuiz() {
+        // TODO: Implement QuizList to display questions and hide them when switching back
+        /*
+        quizListPanelPlaceholder.setVisible(false);
+        quizListPanelPlaceholder.setManaged(false);
+        primaryStage.getScene().lookup("#quizList").setVisible(false);
+        primaryStage.getScene().lookup("#quizList").setManaged(false);
+         */
+
+        personListPanelPlaceholder.setVisible(true);
+        personListPanelPlaceholder.setManaged(true);
+
+        primaryStage.getScene().getStylesheets().remove("/view/LightTheme.css");
+        primaryStage.getScene().getStylesheets().add("/view/DarkTheme.css");
+    }
+
+    /**
      * Closes the application.
      */
     @FXML
@@ -180,6 +230,14 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
+            }
+
+            if (commandResult.isSwitchToQuiz()) {
+                handleQuiz();
+            }
+
+            if (commandResult.isSwitchToFlashcards()) {
+                handleExitQuiz();
             }
 
             if (commandResult.isExit()) {
