@@ -7,8 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.ExitQuizCommand;
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.LeaveQuizCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -47,8 +47,8 @@ public class QuizParser {
             return new HelpCommand();
          */
 
-        case ExitQuizCommand.COMMAND_WORD:
-            return new ExitQuizCommandParser().parse(arguments);
+        case LeaveQuizCommand.COMMAND_WORD:
+            return new LeaveQuizParser().parse(arguments);
 
         //case ListQuestionsCommand.COMMAND_WORD:
             //return new ListQuestionsCommand();

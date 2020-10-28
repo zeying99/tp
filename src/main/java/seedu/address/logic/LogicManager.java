@@ -29,7 +29,6 @@ public class LogicManager implements Logic {
     private final Storage storage;
     private final AddressBookParser addressBookParser;
     private final QuizParser quizParser;
-    private boolean isQuizMode;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -39,7 +38,6 @@ public class LogicManager implements Logic {
         this.storage = storage;
         addressBookParser = new AddressBookParser();
         quizParser = new QuizParser();
-        this.isQuizMode = false;
     }
 
     @Override
@@ -49,18 +47,12 @@ public class LogicManager implements Logic {
         CommandResult commandResult;
         Command command;
 
-        if (isQuizMode) {
+        if (model.getIsQuizMode()) {
             command = quizParser.parseCommand(commandText);
         } else {
             command = addressBookParser.parseCommand(commandText);
         }
         commandResult = command.execute(model);
-
-        if (commandText.equals("startquiz")) {
-            this.isQuizMode = true;
-        } else if (commandText.equals("exitquiz")) {
-            this.isQuizMode = false;
-        }
 
         try {
             storage.saveAddressBook(model.getAddressBook());
