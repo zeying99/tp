@@ -31,6 +31,7 @@ public class AddCommand extends Command {
             + PREFIX_PRIORITY + "high";
 
 
+
     public static final String MESSAGE_SUCCESS = "New flashcard added: %1$s";
     public static final String MESSAGE_DUPLICATE_FLASHCARD = "This flashcard already exists in the address book";
 
@@ -48,11 +49,11 @@ public class AddCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.hasPerson(toAdd)) {
+        if (model.hasFlashcard(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_FLASHCARD);
         }
 
-        model.addPerson(toAdd);
+        model.addFlashcard(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

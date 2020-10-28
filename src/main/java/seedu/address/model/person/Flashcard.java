@@ -36,6 +36,8 @@ public class Flashcard implements Comparable<Flashcard> {
         this.priority = priority;
     }
 
+
+
     public Title getTitle() {
         return title;
     }

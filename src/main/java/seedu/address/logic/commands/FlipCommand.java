@@ -2,7 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_FLASHCARD;
 
 import java.util.List;
 
@@ -48,10 +48,9 @@ public class FlipCommand extends Command {
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
-
         Flashcard flashcardToFlip = lastShownList.get(index.getZeroBased());
         model.flipFlashcard(flashcardToFlip);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_FLASHCARD);
         return new CommandResult(String.format(MESSAGE_FLIP_FLASHCARD_SUCCESS, flashcardToFlip));
     }
 

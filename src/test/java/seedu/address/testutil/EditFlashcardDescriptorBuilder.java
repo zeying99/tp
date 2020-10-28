@@ -52,7 +52,6 @@ public class EditFlashcardDescriptorBuilder {
         descriptor.setDefinition(new Definition(definition));
         return this;
     }
-
     /**
      * Sets the {@code Definition} of the {@code EditPersonDescriptor} that we are building.
      */
