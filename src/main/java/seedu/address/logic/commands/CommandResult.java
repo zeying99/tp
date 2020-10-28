@@ -14,6 +14,9 @@ public class CommandResult {
     /** Help information should be shown to the user. */
     private final boolean showHelp;
 
+    /** Application should be switched to quiz mode. */
+    private final boolean switchToQuiz;
+
     /** The application should exit. */
     private final boolean exit;
 
@@ -24,6 +27,17 @@ public class CommandResult {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.switchToQuiz = false;
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields (2).
+     */
+    public CommandResult(String feedbackToUser, boolean isQuiz, boolean showHelp, boolean exit) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showHelp = showHelp;
+        this.exit = exit;
+        this.switchToQuiz = isQuiz;
     }
 
     /**
@@ -40,6 +54,10 @@ public class CommandResult {
 
     public boolean isShowHelp() {
         return showHelp;
+    }
+
+    public boolean isSwitchToQuiz() {
+        return switchToQuiz;
     }
 
     public boolean isExit() {
