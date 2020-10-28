@@ -13,8 +13,9 @@ import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
  */
 public class TrueFalse extends Question {
 
+    public static final ArrayList<String> OPTIONS = new ArrayList<>(Arrays.asList("True", "False"));
+
     private boolean answer;
-    public static final ArrayList<String> options = new ArrayList<>(Arrays.asList("True", "False"));
 
     /**
      * Every field must be present and not null.

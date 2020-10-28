@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.model.person.Flashcard;
 import seedu.address.model.quiz.Mcq;
 import seedu.address.model.quiz.Question;
 import seedu.address.model.quiz.TrueFalse;
@@ -47,11 +46,12 @@ public class QuizCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         prompt.setText(question.getPrompt());
         if (question instanceof Mcq) {
-            ((Mcq) question).getOptions().stream()
+            Mcq mcqQuestion = (Mcq) question;
+            mcqQuestion.getOptions().stream()
                     .sorted(Comparator.comparing(option -> option))
                     .forEach(option -> options.getChildren().add(new Label(option)));
         } else {
-            TrueFalse.options.stream()
+            TrueFalse.OPTIONS.stream()
                     .sorted(Comparator.comparing(option -> option))
                     .forEach(option -> options.getChildren().add(new Label(option)));
         }
