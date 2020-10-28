@@ -6,25 +6,16 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.FlipCommand;
+//import seedu.address.logic.commands.ExitQuizCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListCommand;
-//import seedu.address.logic.commands.StartQuizCommand;
-import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Parses user input.
  */
-public class AddressBookParser {
 
+public class QuizParser {
     /**
      * Used for initial separation of command word and args.
      */
@@ -47,46 +38,22 @@ public class AddressBookParser {
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
 
-        case AddCommand.COMMAND_WORD:
-            return new AddCommandParser().parse(arguments);
-
-        case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
-
-        case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
-
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
-
-        case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
-
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
-
-        case FlipCommand.COMMAND_WORD:
-            return new FlipCommandParser().parse(arguments);
-
-        case ExitCommand.COMMAND_WORD:
-            return new ExitCommand();
-
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
         // for testing to be replaced with code below afterwards
-        case "startquiz":
-            System.out.println("quiz started");
+        case "exitquiz":
+            System.out.println("quiz ended");
             return new HelpCommand();
 
-        //case StartQuizCommand.COMMAND_WORD:
-            //return new StartQuizCommandParser().parse(arguments);
-        case SortCommand.COMMAND_WORD:
-            return new SortCommandParser().parse(arguments);
+        //case ExitQuizCommand.COMMAND_WORD:
+            //return new ExitQuizCommandParser().parse(arguments);
+
+        //case ListQuestionsCommand.COMMAND_WORD:
+            //return new ListQuestionsCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
-
 }
