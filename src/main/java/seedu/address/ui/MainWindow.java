@@ -186,7 +186,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleExitQuiz() {
-        // TODO: Implement QuizList to display questions
+        // TODO: Implement QuizList to display questions and hide them when switching back
         /*
         quizListPanelPlaceholder.setVisible(false);
         quizListPanelPlaceholder.setManaged(false);
