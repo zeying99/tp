@@ -42,7 +42,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedFlashcard);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setPerson(model.getFilteredPersonList().get(0), editedFlashcard);
+        expectedModel.setFlashcard(model.getFilteredPersonList().get(0), editedFlashcard);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -63,7 +63,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedFlashcard);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setPerson(lastFlashcard, editedFlashcard);
+        expectedModel.setFlashcard(lastFlashcard, editedFlashcard);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -92,7 +92,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedFlashcard);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setPerson(model.getFilteredPersonList().get(0), editedFlashcard);
+        expectedModel.setFlashcard(model.getFilteredPersonList().get(0), editedFlashcard);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
