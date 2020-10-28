@@ -43,7 +43,6 @@ public class AddCommandParser implements Parser<AddCommand> {
         if (arePrefixesPresent(argMultimap, PREFIX_PRIORITY)) {
             priority = ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get());
         }
-
         Flashcard flashcard = new Flashcard(title, definition, tagList, priority);
 
         return new AddCommand(flashcard);

@@ -9,6 +9,7 @@ public enum Priority {
     HIGH("high"),
     NULL("");
 
+
     public static final String MESSAGE_CONSTRAINTS =
             "Flashcard can only be labelled as high, medium and low priority";
     public final String priority;

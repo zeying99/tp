@@ -31,6 +31,7 @@ public class AddCommand extends Command {
             + PREFIX_PRIORITY + "high";
 
 
+
     public static final String MESSAGE_SUCCESS = "New flashcard added: %1$s";
     public static final String MESSAGE_DUPLICATE_FLASHCARD = "This flashcard already exists in the address book";
 
