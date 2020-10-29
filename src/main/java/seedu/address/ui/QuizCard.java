@@ -1,7 +1,5 @@
 package seedu.address.ui;
 
-import java.util.Comparator;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -48,11 +46,9 @@ public class QuizCard extends UiPart<Region> {
         if (question instanceof Mcq) {
             Mcq mcqQuestion = (Mcq) question;
             mcqQuestion.getOptions().stream()
-                    .sorted(Comparator.comparing(option -> option))
                     .forEach(option -> options.getChildren().add(new Label(option)));
         } else {
             TrueFalse.OPTIONS.stream()
-                    .sorted(Comparator.comparing(option -> option))
                     .forEach(option -> options.getChildren().add(new Label(option)));
         }
     }
