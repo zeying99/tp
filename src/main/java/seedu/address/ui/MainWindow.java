@@ -169,14 +169,14 @@ public class MainWindow extends UiPart<Stage> {
         personListPanelPlaceholder.setVisible(false);
         personListPanelPlaceholder.setManaged(false);
         // TODO: Implement QuizList to display questions
-        /*
-        quizListPanel = new QuizListPanel(logic.getFilteredQuizList());
+
+        quizListPanel = new QuizListPanel(logic.getQuizList());
         quizListPanelPlaceholder.getChildren().add(quizListPanel.getRoot());
         quizListPanelPlaceholder.setVisible(true);
         quizListPanelPlaceholder.setManaged(true);
         primaryStage.getScene().lookup("#quizList").setVisible(true);
         primaryStage.getScene().lookup("#quizList").setManaged(true);
-         */
+
         primaryStage.getScene().getStylesheets().remove("/view/DarkTheme.css");
         primaryStage.getScene().getStylesheets().add("/view/LightTheme.css");
     }
@@ -187,12 +187,12 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleExitQuiz() {
         // TODO: Implement QuizList to display questions and hide them when switching back
-        /*
+
         quizListPanelPlaceholder.setVisible(false);
         quizListPanelPlaceholder.setManaged(false);
         primaryStage.getScene().lookup("#quizList").setVisible(false);
         primaryStage.getScene().lookup("#quizList").setManaged(false);
-         */
+
 
         personListPanelPlaceholder.setVisible(true);
         personListPanelPlaceholder.setManaged(true);
