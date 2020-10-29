@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Flashcard;
+import seedu.address.model.quiz.Question;
 
 /**
  * The API of the Model component.
@@ -102,5 +103,8 @@ public interface Model {
 
     /** Allows flipping the boolean isQuizMode in model */
     void flipQuizMode();
+
+    /** Get QuizList */
+    ObservableList<Question> getQuizList();
 
 }
