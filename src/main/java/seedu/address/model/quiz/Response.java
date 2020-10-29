@@ -1,8 +1,9 @@
 package seedu.address.model.quiz;
 
-import seedu.address.model.quiz.exceptions.InvalidQuestionAnswerException;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
+import seedu.address.model.quiz.exceptions.InvalidQuestionAnswerException;
 
 /**
  * Represents a response to a question in a quiz.
@@ -12,14 +13,17 @@ public class Response {
     private Question question;
     private boolean isCorrect = false;
 
+    /**
+     * Every field must be present and not null.
+     */
     public Response(String response, Question question) {
         requireAllNonNull(response, question);
         this.response = response;
         this.question = question;
     }
+
     /**
      * Executes the command and returns the result.
-     * @return boolean representing whether response to its question is correct.
      * @throws InvalidQuestionAnswerException if the response is not valid.
      */
     public void markResponse() throws InvalidQuestionAnswerException {

@@ -1,10 +1,10 @@
 package seedu.address.model.quiz;
 
-import seedu.address.model.quiz.exceptions.InvalidQuestionAnswerException;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import seedu.address.model.quiz.exceptions.InvalidQuestionAnswerException;
 
 /**
  * Represents a record of user's responses to the respective questions within a quiz attempt.
@@ -13,6 +13,9 @@ public class Attempt {
     private ArrayList<Response> responses;
     private LocalDateTime timestamp;
 
+    /**
+     * Constructor of Attempt
+     */
     public Attempt() {
         if (this.responses == null) {
             this.responses = new ArrayList<>();

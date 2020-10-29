@@ -1,11 +1,11 @@
 package seedu.address.model.quiz;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * Represents a history of past attempts.
@@ -13,12 +13,15 @@ import static java.util.Objects.requireNonNull;
 public class Performance {
     private ArrayList<Attempt> attempts;
 
-    // called when no past attempts exists
+    /**
+     * Constructor of Performance called when no past attempts exists
+     */
     public Performance() {
         this.attempts = new ArrayList<>();
     }
-
-    // called when local cache of attempts exists
+    /**
+     * Constructor of Performance called when local cache of attempts exists
+     */
     public Performance(ArrayList<Attempt> attempts) {
         requireNonNull(attempts);
         this.attempts = attempts;
