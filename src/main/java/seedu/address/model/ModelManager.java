@@ -172,7 +172,9 @@ public class ModelManager implements Model {
         this.isQuizMode = !isQuizMode;
     }
 
-    public ObservableList<Question> getQuizList() { return this.filteredQuizList; }
+    public ObservableList<Question> getQuizList() {
+        return this.filteredQuizList;
+    }
 
 
 }

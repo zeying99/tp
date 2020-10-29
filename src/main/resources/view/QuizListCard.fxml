@@ -25,11 +25,9 @@
                         <Region fx:constant="USE_PREF_SIZE" />
                     </minWidth>
                 </Label>
-                <Label fx:id="question" text="\$first" styleClass="cell_big_label" />
+                <Label fx:id="prompt" text="\$first" styleClass="cell_big_label" />
             </HBox>
-            <FlowPane fx:id="tags" />
-            <Label fx:id="priority" styleClass="cell_small_label" text="\$priority" />
-            <Label fx:id="options" styleClass="cell_small_label" text="\$definition" />
+            <FlowPane fx:id="options" />
         </VBox>
     </GridPane>
 </HBox>
