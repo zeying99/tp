@@ -17,6 +17,8 @@ DSAce is a **desktop app for managing contacts, optimized for use via a Command 
    * [**`delete`** : Deleting a flashcard.](#deleting-a-flashcard--delete)
    * [**`flip`** : Flipping a flashcard.](#flipping-a-flashcard--flip)
    * [**`clear`** : Clearing all flashcards.](#clearing-all-entries--clear)
+   * [**`enter quiz`** : Entering Quiz mode.](#entering-quiz-mode--enter-quiz)
+   * [**`leave quiz`** : Leaving Quiz mode.](#leaving-quiz-mode--leave-quiz)
    * [**`exit`** : Exiting the program.](#exiting-the-program--exit)
    * [Saving the data.](#saving-the-data)
    * [Archiving data files [coming in v2.0].](#archiving-data-files-coming-in-v20)
@@ -56,12 +58,18 @@ DSAce is a **desktop app for managing contacts, optimized for use via a Command 
    * **`flip`**`2` : Flips the 2nd flashcard shown in the current list.
 
    * **`clear`** : Deletes all flashcards.
+   
+   * **`enter quiz`** : Enters Quiz mode.
+   
+   * **`leave quiz`** : Leaves Quiz mode.
 
    * **`exit`** : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
 1. All sample data and flashcards created by the user will be stored in the `DSAce` folder.
+
+1. Other commands in Quiz mode are to be implemented in v1.4.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -192,6 +200,18 @@ Clears all entries from the flashcards folder.
 
 Format: `clear`
 
+### Entering Quiz mode : `enter quiz`
+
+Enters quiz mode and disables all commands in flashcard mode.
+
+Format: `enter quiz`
+
+### Leaving Quiz mode : `leave quiz`
+
+Leaves quiz mode and disables all commands in quiz mode.
+
+Format: `leave quiz`
+
 ### Exiting the program : `exit`
 
 Exits the program.
@@ -220,3 +240,5 @@ Action | Format, Examples
 **Find** | `find [n/KEYWORDS] [t/KEYWORD​S] [p/KEYWORD​S]​` <br> e.g., `find n/BellmanFord Search`
 **List** | `list`
 **Help** | `help`
+**Enter Quiz** | `enter quiz`
+**Leave Quiz** | `leave quiz`
