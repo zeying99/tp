@@ -45,22 +45,22 @@ DSAce is a **desktop app for managing contacts, optimized for use via a Command 
    * **`list`** : Lists all flashcards.
 
    * **`add`**`n/Insertion Sort d/Worse case: O(n^2)` : Adds a flashcard named `Insertion Sort` to the DSAce folder.
-   
+
    * **`edit`**`1 n/BubbleSort d/Average case: O(n^2)` : Edits the name and definition of the 1st flashcard in
     current list to be `BubbleSort` and `Average case: O(n^2)` respectively.
-   
+
    * **`sort`**`desc` : Sorts all flashcards by priority in descending order.
-   
+
    * **`find`**`n/Trees` : Finds flashcards with names containing the keyword `Trees`
 
    * **`delete`**`3` : Deletes the 3rd flashcard shown in the current list.
-   
+
    * **`flip`**`2` : Flips the 2nd flashcard shown in the current list.
 
    * **`clear`** : Deletes all flashcards.
-   
+
    * **`enter quiz`** : Enters Quiz mode.
-   
+
    * **`leave quiz`** : Leaves Quiz mode.
 
    * **`exit`** : Exits the app.
@@ -132,7 +132,7 @@ Edits an existing flashcard in the DSAce folder.
 
 Format: `edit INDEX [n/NAME] [d/DEFINITION] [t/TAGS] [p/PRIORITY]`
 
-* Edits the flashcard at the specified `INDEX`. 
+* Edits the flashcard at the specified `INDEX`.
 * The index refers to the index number associated with the edited flashcard, as shown in the displayed flashcard list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -152,7 +152,7 @@ Examples:
 
 Finds flashcards with names, tags or priorities containing any of the given keywords.
 
-Format: find `[n/KEYWORD​S]​` `[t/KEYWORD​]​` `[p/KEYWORD​]​` 
+Format: find `[n/KEYWORD​S]​` `[t/KEYWORD​]​` `[p/KEYWORD​]​`
 
 * The search is case-insensitive. e.g `sort` will match `Sort`
 * The order of the keywords does not matter. e.g. `runtime sort` will match `sort runtime`
@@ -160,7 +160,7 @@ Format: find `[n/KEYWORD​S]​` `[t/KEYWORD​]​` `[p/KEYWORD​]​`
 * Only full words will be matched e.g. `sort` will not match `sorting`
 * Flashcards matching at least one keyword will be returned (i.e. `OR` search). e.g. `graph algorithm` will return
  `Directed Acyclic Graph` and `Dijkstra’s Algorithm`
- 
+
 Examples:
 
 * `find n/Trees` returns `Balanced Trees` and `Range Trees`
@@ -174,7 +174,7 @@ Deletes the specified flashcard from DSAce folder.
 
 Format: `delete INDEX`
 
-* Deletes the flashcard at the specified `INDEX`. 
+* Deletes the flashcard at the specified `INDEX`.
 * The index refers to the index number associated with the deleted flashcard, as shown in the displayed flashcard list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
@@ -187,7 +187,7 @@ Flips the specified flashcard from DSAce folder.
 
 Format: `flip INDEX`
 
-* Flips the flashcard at the specified `INDEX`. 
+* Flips the flashcard at the specified `INDEX`.
 * The index refers to the index number associated with the flipped flashcard, as shown in the displayed flashcard list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
