@@ -3,7 +3,7 @@ package seedu.address.model.quiz;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
+import seedu.address.model.quiz.exceptions.InvalidQuestionAnswerException;
 
 /**
  * Represents a question in a quiz.
@@ -47,9 +47,9 @@ public abstract class Question implements Comparable<Question> {
      * Checks whether the response is correct.
      * @param response user response
      * @return true if the response is correct and false otherwise
-     * @throws InvalidQuestionAttemptException if the response is not valid
+     * @throws InvalidQuestionAnswerException if the response is not valid
      */
-    public abstract boolean checkResponse(String response) throws InvalidQuestionAttemptException;
+    public abstract boolean checkResponse(String response) throws InvalidQuestionAnswerException;
 
     public abstract int compareTo(Question f2);
 
