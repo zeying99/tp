@@ -6,7 +6,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -18,7 +17,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.quiz.*;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.PerformanceStorage;
+import seedu.address.storage.PerformanceBook;
 
 
 /**
@@ -33,8 +32,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Flashcard> filteredFlashcards;
     private boolean isQuizMode = false;
-    private PerformanceStorage performanceStorage;
-    private Performance performance;
+    private PerformanceBook performanceBook;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -50,15 +48,14 @@ public class ModelManager implements Model {
         filteredFlashcards = new FilteredList<>(this.addressBook.getFlashcardList());
 
         try {
-            this.performanceStorage = new PerformanceStorage("data/performance.txt");
-            this.performance = performanceStorage.load();
+            performanceBook = new PerformanceBook();
         } catch (IOException e) {
-            System.out.println("Uh oh.");
+            performanceBook = PerformanceBook.createDefaultPerformanceBook();
         }
-        System.out.println(performance.getAttempts().size());
+        System.out.println(performanceBook.getPerformance().getAttempts().get(0).getResponses().size());
     }
 
-    public ModelManager() {
+    public ModelManager() throws IOException {
         this(new AddressBook(), new UserPrefs());
     }
 
@@ -197,17 +194,21 @@ public class ModelManager implements Model {
      */
     public void tester() throws IOException {
         String prompt = "Who is the smartest person?";
+        String prompt1 = "Am I dead?";
         int answer = 3;
+        boolean answer1 = false;
         ArrayList<String> options = new ArrayList<>();
         options.add("1)Steve Jobs");
         options.add("2)Albert Einstein");
         options.add("3)Me");
         Mcq mcq = new Mcq(prompt, answer, options);
+        TrueFalse trueFalse = new TrueFalse(prompt1, answer1);
         Response response = new Response("3", mcq, true);
+        Response response1 = new Response("true", trueFalse, false);
         ArrayList<Response> responses = new ArrayList<>();
         responses.add(response);
+        responses.add(response1);
         Attempt attempt = new Attempt(responses, LocalDateTime.now());
-        performance.addAttempt(attempt);
-        performanceStorage.save(performance);
+        performanceBook.saveAttempt(attempt);
     }
 }

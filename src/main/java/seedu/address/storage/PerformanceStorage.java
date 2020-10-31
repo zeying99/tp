@@ -39,9 +39,11 @@ public class PerformanceStorage {
         File file = new File(filepath);
         new FileWriter(file, false).close();
         FileWriter filewriter = new FileWriter(file, true);
+        String composedAttempt = "";
         for (Attempt attempt : performance.getAttempts()) {
-            String composedAttempt = new AttemptComposer().composeAttempt(attempt);
-            filewriter.write(composedAttempt + System.lineSeparator());
+            composedAttempt = new AttemptComposer().composeAttempt(attempt);
+            composedAttempt += System.lineSeparator();
+            filewriter.write(composedAttempt);
         }
         filewriter.close();
     }

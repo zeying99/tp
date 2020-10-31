@@ -108,6 +108,5 @@ public interface Model {
     /** Get QuizList */
     ObservableList<Question> getQuizList();
 
-    void tester() throws IOException;
-
+    public void tester() throws IOException;
 }

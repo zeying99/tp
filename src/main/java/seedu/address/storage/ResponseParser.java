@@ -11,7 +11,7 @@ public class ResponseParser {
      * Returns list of responses
      */
     public ArrayList<Response> parseResponses(String stringResponse) {
-        String[] stringResponses = stringResponse.split(" \\| ");
+        String[] stringResponses = stringResponse.split("\\|");
         ArrayList<Response> responses = new ArrayList<>();
         for (String s : stringResponses) {
             responses.add(parseResponseFields(s));

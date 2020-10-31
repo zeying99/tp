@@ -20,7 +20,6 @@ public class AttemptParser {
 
         String stringResponses = userArguments[1];
         ArrayList<Response> responses = new ResponseParser().parseResponses(stringResponses);
-
         return new Attempt(responses, dateTime);
     }
 }
