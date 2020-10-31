@@ -24,6 +24,14 @@ public class Attempt {
     }
 
     /**
+     * Constructs Attempt;
+     */
+    public Attempt(ArrayList<Response> responses, LocalDateTime timestamp) {
+        this.responses = responses;
+        this.timestamp = timestamp;
+    }
+
+    /**
      * Adds a response to current attempt.
      * If response to question already exists, replace previous response.
      * @param qn Question
@@ -65,5 +73,9 @@ public class Attempt {
 
     public int getNumOfResponses() {
         return responses.size();
+    }
+
+    public ArrayList<Response> getResponses() {
+        return responses;
     }
 }
