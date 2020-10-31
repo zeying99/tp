@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-DSAce is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, DSAce can get your revision tasks done faster than traditional GUI apps.
+DSAce is a **desktop app for creating flashcards for CS2040s, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, DSAce can get your revision tasks done faster than traditional GUI apps.
 
 ## Table of Contents
 * [Quick start](#quick-start)
@@ -98,7 +98,7 @@ Format: `help`
 
 ### Adding a flashcard : `add`
 
-Adds a flashcard to the default DSAce folder.
+Adds a flashcard to the default DSAce folder. Priority will default to low when unspecified.
 
 Format: `add n/NAME d/DEFINITION [t/TAGS] [p/PRIORITY]`
 
