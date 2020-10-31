@@ -41,11 +41,6 @@ public class QuizParser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
-        /* for testing to be replaced with code below afterwards
-        case "exitquiz":
-            System.out.println("quiz ended");
-            return new HelpCommand();
-         */
 
         case LeaveQuizCommand.COMMAND_WORD:
             return new LeaveQuizParser().parse(arguments);

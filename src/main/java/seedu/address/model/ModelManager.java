@@ -12,6 +12,8 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Flashcard;
+import seedu.address.model.quiz.Question;
+import seedu.address.model.util.SampleDataUtil;
 
 
 /**
@@ -21,6 +23,8 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
+    private final ReadOnlyQuizBook quizBook = new SampleDataUtil().getSampleQuizBook();
+    private final ObservableList<Question> filteredQuizList = this.quizBook.getQuestionList();
     private final UserPrefs userPrefs;
     private final FilteredList<Flashcard> filteredFlashcards;
     private boolean isQuizMode = false;
@@ -166,6 +170,10 @@ public class ModelManager implements Model {
     @Override
     public void flipQuizMode() {
         this.isQuizMode = !isQuizMode;
+    }
+
+    public ObservableList<Question> getQuizList() {
+        return this.filteredQuizList;
     }
 
 
