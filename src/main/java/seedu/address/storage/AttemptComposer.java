@@ -35,7 +35,7 @@ public class AttemptComposer {
      * @return string representing formatted timestamp
      */
     private String getFormattedTimestamp(LocalDateTime timestamp) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return dtf.format(timestamp);
     }
 }

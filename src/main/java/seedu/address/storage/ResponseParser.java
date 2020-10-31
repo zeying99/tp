@@ -20,7 +20,7 @@ public class ResponseParser {
     }
 
     private Response parseResponseFields(String stringResponse) {
-        String[] responseFields = stringResponse.split(" ### ");
+        String[] responseFields = stringResponse.split("###");
         String response = responseFields[0];
         boolean isCorrect = responseFields[1].equals("true");
         Question question = new QuestionParser().parseQuestion(responseFields[2]);

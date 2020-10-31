@@ -12,11 +12,11 @@ public class QuestionParser {
      * Parses a Question.
      */
     public Question parseQuestion(String stringQuestion) {
-        String[] questionFields = stringQuestion.split(" ## ");
+        String[] questionFields = stringQuestion.split("##");
         String prompt = questionFields[0];
         if (questionFields.length > 2) { // for MCQ
             int answer = Integer.parseInt(questionFields[1]);
-            String[] options = questionFields[2].split(" # ");
+            String[] options = questionFields[2].split("#");
             ArrayList<String> optionsList = new ArrayList<>();
             for (String option : options) {
                 optionsList.add(option);

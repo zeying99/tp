@@ -12,6 +12,7 @@ public class ResponseComposer {
         composedResponse += response.getResponse();
         composedResponse += "###";
         composedResponse += response.getIsCorrect();
+        composedResponse += "###";
         QuestionComposer questionComposer = new QuestionComposer();
         composedResponse += questionComposer.composeQuestion(response.getQuestion());
         return composedResponse;
