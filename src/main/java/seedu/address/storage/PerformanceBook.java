@@ -35,6 +35,10 @@ public class PerformanceBook {
         performanceStorage.save(performance);
     }
 
+    public void savePerformance() throws IOException {
+        performanceStorage.save(performance);
+    }
+
     public Performance getPerformance() {
         return performance;
     }

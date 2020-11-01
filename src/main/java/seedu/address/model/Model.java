@@ -108,5 +108,6 @@ public interface Model {
     /** Get QuizList */
     ObservableList<Question> getQuizList();
 
-    public void tester() throws IOException;
+    /** Saves Performance in performance book **/
+    void savePerformance() throws IOException;
 }

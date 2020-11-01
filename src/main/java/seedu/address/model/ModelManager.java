@@ -5,8 +5,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -15,7 +13,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Flashcard;
-import seedu.address.model.quiz.*;
+import seedu.address.model.quiz.Question;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.PerformanceBook;
 
@@ -52,10 +50,9 @@ public class ModelManager implements Model {
         } catch (IOException e) {
             performanceBook = PerformanceBook.createDefaultPerformanceBook();
         }
-        System.out.println(performanceBook.getPerformance().getAttempts().get(0).getResponses().size());
     }
 
-    public ModelManager() throws IOException {
+    public ModelManager() {
         this(new AddressBook(), new UserPrefs());
     }
 
@@ -190,25 +187,9 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Test method.
+     * Saves performance in performance book.
      */
-    public void tester() throws IOException {
-        String prompt = "Who is the smartest person?";
-        String prompt1 = "Am I dead?";
-        int answer = 3;
-        boolean answer1 = false;
-        ArrayList<String> options = new ArrayList<>();
-        options.add("1)Steve Jobs");
-        options.add("2)Albert Einstein");
-        options.add("3)Me");
-        Mcq mcq = new Mcq(prompt, answer, options);
-        TrueFalse trueFalse = new TrueFalse(prompt1, answer1);
-        Response response = new Response("3", mcq, true);
-        Response response1 = new Response("true", trueFalse, false);
-        ArrayList<Response> responses = new ArrayList<>();
-        responses.add(response);
-        responses.add(response1);
-        Attempt attempt = new Attempt(responses, LocalDateTime.now());
-        performanceBook.saveAttempt(attempt);
+    public void savePerformance() throws IOException {
+        performanceBook.savePerformance();
     }
 }

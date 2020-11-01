@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,7 +34,7 @@ public class AddCommandTest {
 
     @Test
     public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
+        ModelStub.ModelStubAcceptingPersonAdded modelStub = new ModelStub.ModelStubAcceptingPersonAdded();
         Flashcard validFlashcard = new FlashcardBuilder().build();
 
         CommandResult commandResult = new AddCommand(validFlashcard).execute(modelStub);
@@ -87,12 +88,14 @@ public class AddCommandTest {
 
         @Override
         public ReadOnlyUserPrefs getUserPrefs() {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(
+                    "This method should not be called.");
         }
 
         @Override
         public GuiSettings getGuiSettings() {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(
+                    "This method should not be called.");
         }
 
         @Override
@@ -102,7 +105,8 @@ public class AddCommandTest {
 
         @Override
         public Path getAddressBookFilePath() {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(
+                    "This method should not be called.");
         }
 
         @Override
@@ -112,7 +116,8 @@ public class AddCommandTest {
 
         @Override
         public void addFlashcard(Flashcard flashcard) {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(
+                    "This method should not be called.");
         }
 
         @Override
@@ -127,12 +132,14 @@ public class AddCommandTest {
 
         @Override
         public boolean getIsQuizMode() {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(
+                    "This method should not be called.");
         }
 
         @Override
         public ReadOnlyAddressBook getAddressBook() {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(
+                    "This method should not be called.");
         }
 
         @Override
@@ -142,12 +149,14 @@ public class AddCommandTest {
 
         @Override
         public void deleteFlashcard(Flashcard target) {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(
+                    "This method should not be called.");
         }
 
         @Override
         public void flipFlashcard(Flashcard target) {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(
+                    "This method should not be called.");
         }
 
         @Override
@@ -173,7 +182,11 @@ public class AddCommandTest {
         public ObservableList<Question> getQuizList() {
             throw new AssertionError("This method should not be called.");
         }
-    }
+
+        @Override
+        public void savePerformance() throws IOException {
+            throw new AssertionError("This method should not be called.");
+        }
 
     /**
      * A Model stub that contains a single flashcard.
