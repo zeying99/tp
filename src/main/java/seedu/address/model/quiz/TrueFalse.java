@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
-import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
+import seedu.address.model.quiz.exceptions.InvalidQuestionAnswerException;
 
 /**
  * Represents a True/False question. This question has only two valid options: true and false.
@@ -52,11 +52,12 @@ public class TrueFalse extends Question {
      * Checks whether the response is correct.
      * @param response user response
      * @return true if the response is correct and false otherwise
-     * @throws InvalidQuestionAttemptException if the response is not valid
+     * @throws InvalidQuestionAnswerException if the response is not valid
      */
-    public boolean checkResponse(String response) throws InvalidQuestionAttemptException {
+    @Override
+    public boolean checkResponse(String response) throws InvalidQuestionAnswerException {
         if (!isValidResponse(response)) {
-            throw new InvalidQuestionAttemptException("Response is not a valid option.");
+            throw new InvalidQuestionAnswerException("Response is not a valid option.");
         }
         String formattedResponse = response.toLowerCase();
         if (formattedResponse.equals("true")) {
