@@ -24,7 +24,6 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final ReadOnlyQuizBook quizBook = new SampleDataUtil().getSampleQuizBook();
-    
     private final ObservableList<Question> filteredQuizList = this.quizBook.getQuestionList();
     private final UserPrefs userPrefs;
     private final FilteredList<Flashcard> filteredFlashcards;
@@ -173,7 +172,9 @@ public class ModelManager implements Model {
         this.isQuizMode = !isQuizMode;
     }
 
-    public ObservableList<Question> getQuizList() { return this.filteredQuizList; }
+    public ObservableList<Question> getQuizList() {
+        return this.filteredQuizList;
+    }
 
 
 }
