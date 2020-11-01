@@ -34,7 +34,7 @@ public class AddCommandTest {
 
     @Test
     public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStub.ModelStubAcceptingPersonAdded modelStub = new ModelStub.ModelStubAcceptingPersonAdded();
+        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
         Flashcard validFlashcard = new FlashcardBuilder().build();
 
         CommandResult commandResult = new AddCommand(validFlashcard).execute(modelStub);
@@ -88,14 +88,12 @@ public class AddCommandTest {
 
         @Override
         public ReadOnlyUserPrefs getUserPrefs() {
-            throw new AssertionError(
-                    "This method should not be called.");
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public GuiSettings getGuiSettings() {
-            throw new AssertionError(
-                    "This method should not be called.");
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -105,8 +103,7 @@ public class AddCommandTest {
 
         @Override
         public Path getAddressBookFilePath() {
-            throw new AssertionError(
-                    "This method should not be called.");
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -115,9 +112,8 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addFlashcard(Flashcard flashcard) {
-            throw new AssertionError(
-                    "This method should not be called.");
+        public boolean hasFlashcard(Flashcard flashcard) {
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -132,31 +128,37 @@ public class AddCommandTest {
 
         @Override
         public boolean getIsQuizMode() {
-            throw new AssertionError(
-                    "This method should not be called.");
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void flipQuizMode() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Question> getQuizList() {
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public ReadOnlyAddressBook getAddressBook() {
-            throw new AssertionError(
-                    "This method should not be called.");
-        }
-
-        @Override
-        public boolean hasFlashcard(Flashcard flashcard) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void deleteFlashcard(Flashcard target) {
-            throw new AssertionError(
-                    "This method should not be called.");
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void flipFlashcard(Flashcard target) {
-            throw new AssertionError(
-                    "This method should not be called.");
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addFlashcard(Flashcard flashcard) {
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -173,20 +175,12 @@ public class AddCommandTest {
         public void updateFilteredPersonList(Predicate<Flashcard> predicate) {
             throw new AssertionError("This method should not be called.");
         }
-        @Override
-        public void flipQuizMode() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public ObservableList<Question> getQuizList() {
-            throw new AssertionError("This method should not be called.");
-        }
 
         @Override
         public void savePerformance() throws IOException {
             throw new AssertionError("This method should not be called.");
         }
+    }
 
     /**
      * A Model stub that contains a single flashcard.
