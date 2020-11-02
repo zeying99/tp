@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.function.Predicate;
 
@@ -107,4 +108,6 @@ public interface Model {
     /** Get QuizList */
     ObservableList<Question> getQuizList();
 
+    /** Saves Performance in performance book **/
+    void savePerformance() throws IOException;
 }

@@ -23,6 +23,16 @@ public class Response {
     }
 
     /**
+     * Every field must be present and not null.
+     */
+    public Response(String response, Question question, boolean isCorrect) {
+        requireAllNonNull(response, question, isCorrect);
+        this.response = response;
+        this.question = question;
+        this.isCorrect = isCorrect;
+    }
+
+    /**
      * Executes the command and returns the result.
      * @throws InvalidQuestionAnswerException if the response is not valid.
      */
@@ -36,6 +46,10 @@ public class Response {
 
     public Question getQuestion() {
         return this.question;
+    }
+
+    public String getResponse() {
+        return this.response;
     }
 
 }
