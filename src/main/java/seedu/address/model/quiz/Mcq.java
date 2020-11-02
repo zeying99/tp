@@ -106,4 +106,9 @@ public class Mcq extends Question {
     public String toString() {
         return getQuestion();
     }
+
+    @Override
+    public boolean isMcq() {
+        return true;
+    }
 }

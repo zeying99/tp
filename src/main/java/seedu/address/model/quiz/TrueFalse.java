@@ -91,4 +91,9 @@ public class TrueFalse extends Question {
     public String toString() {
         return getQuestion();
     }
+
+    @Override
+    public boolean isMcq() {
+        return false;
+    }
 }

@@ -27,6 +27,13 @@ public class Performance {
         this.attempts = attempts;
     }
 
+    public void addAttempt(Attempt attempt) {
+        attempts.add(attempt);
+    }
+
+    public ArrayList<Attempt> getAttempts() {
+        return attempts;
+    }
 
     /**
      * Calculates statistics of all past attempts.
