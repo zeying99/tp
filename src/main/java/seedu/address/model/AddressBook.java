@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.UniqueFlashcardList;
+import seedu.address.model.quiz.Attempt;
 
 
 /**
@@ -16,6 +17,7 @@ import seedu.address.model.person.UniqueFlashcardList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniqueFlashcardList flashcards;
+    private Attempt currentAttempt;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -97,6 +99,15 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     public void flipFlashcard(Flashcard target) {
         flashcards.flipFlashcard(target);
+    }
+
+    //// quiz methods
+
+    /**
+     * Starts a new quiz attempt.
+     */
+    public void startAttempt() {
+        this.currentAttempt = new Attempt();
     }
 
     //// util methods

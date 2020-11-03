@@ -30,6 +30,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Flashcard> filteredFlashcards;
     private boolean isQuizMode = false;
+    private boolean hasCurrentAttempt = false;
     private PerformanceBook performanceBook;
 
     /**
@@ -180,6 +181,17 @@ public class ModelManager implements Model {
     @Override
     public void flipQuizMode() {
         this.isQuizMode = !isQuizMode;
+    }
+
+    @Override
+    public boolean hasCurrentAttempt() {
+        return this.hasCurrentAttempt;
+    }
+
+    @Override
+    public void startAttempt() {
+        this.hasCurrentAttempt = true;
+        addressBook.startAttempt();
     }
 
     public ObservableList<Question> getQuizList() {
