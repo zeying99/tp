@@ -132,17 +132,17 @@ public class AddCommandTest {
         }
 
         @Override
+        public void flipQuizMode() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasCurrentAttempt() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void startAttempt() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void flipQuizMode() {
             throw new AssertionError("This method should not be called.");
         }
 
