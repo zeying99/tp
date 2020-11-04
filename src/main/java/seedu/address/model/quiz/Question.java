@@ -3,7 +3,7 @@ package seedu.address.model.quiz;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
+import seedu.address.model.quiz.exceptions.InvalidQuestionAnswerException;
 
 /**
  * Represents a question in a quiz.
@@ -16,7 +16,7 @@ public abstract class Question implements Comparable<Question> {
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
-    protected String prompt;
+    public final String prompt;
 
     /**
      * Every field must be present and not null.
@@ -47,9 +47,9 @@ public abstract class Question implements Comparable<Question> {
      * Checks whether the response is correct.
      * @param response user response
      * @return true if the response is correct and false otherwise
-     * @throws InvalidQuestionAttemptException if the response is not valid
+     * @throws InvalidQuestionAnswerException if the response is not valid
      */
-    public abstract boolean checkResponse(String response) throws InvalidQuestionAttemptException;
+    public abstract boolean checkResponse(String response) throws InvalidQuestionAnswerException;
 
     public abstract int compareTo(Question f2);
 
@@ -64,4 +64,9 @@ public abstract class Question implements Comparable<Question> {
         return otherQuestion != null
                 && otherQuestion.getPrompt().equals(getPrompt());
     }
+
+    /**
+     * Returns true if Question is MCQ question, other wise returns false
+     */
+    public abstract boolean isMcq();
 }
