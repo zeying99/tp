@@ -34,13 +34,10 @@ public class Attempt {
     /**
      * Adds a response to current attempt.
      * If response to question already exists, replace previous response.
-     * @param qn Question
-     * @param ans Answer to question
-     * @throws InvalidQuestionAnswerException If
+     * @param newResponse Response to add.
      */
-    public void createResponse(Question qn, String ans) throws InvalidQuestionAnswerException {
-        Response newResponse = new Response(ans, qn);
-        newResponse.markResponse();
+    public void addResponse(Response newResponse) {
+        Question qn = newResponse.getQuestion();
         Iterator<Response> itr = responses.iterator();
         while (itr.hasNext()) {
             Response oldResponse = itr.next();

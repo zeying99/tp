@@ -19,13 +19,6 @@ public class Performance {
     public Performance() {
         this.attempts = new ArrayList<>();
     }
-    /**
-     * Constructor of Performance called when local cache of attempts exists
-     */
-    public Performance(ArrayList<Attempt> attempts) {
-        requireNonNull(attempts);
-        this.attempts = attempts;
-    }
 
     public void addAttempt(Attempt attempt) {
         attempts.add(attempt);

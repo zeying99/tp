@@ -14,6 +14,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.quiz.Question;
+import seedu.address.model.quiz.Response;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.PerformanceBook;
 
@@ -193,6 +194,11 @@ public class ModelManager implements Model {
     public void startAttempt() {
         this.hasCurrentAttempt = true;
         quizBook.startAttempt();
+    }
+
+    @Override
+    public void recordResponse(Response response) {
+        quizBook.recordResponse(response);
     }
 
     public ObservableList<Question> getQuizList() {
