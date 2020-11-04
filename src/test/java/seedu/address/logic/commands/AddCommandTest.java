@@ -147,11 +147,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public void flipQuizMode() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public ObservableList<Question> getQuizList() {
             throw new AssertionError("This method should not be called.");
         }
