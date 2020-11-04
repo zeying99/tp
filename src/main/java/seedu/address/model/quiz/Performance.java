@@ -1,7 +1,5 @@
 package seedu.address.model.quiz;
 
-import static java.util.Objects.requireNonNull;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

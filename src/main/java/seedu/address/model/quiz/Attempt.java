@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import seedu.address.model.quiz.exceptions.InvalidQuestionAnswerException;
-
 /**
  * Represents a record of user's responses to the respective questions within a quiz attempt.
  */

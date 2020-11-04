@@ -17,7 +17,7 @@ import seedu.address.model.quiz.exceptions.InvalidQuestionAnswerException;
 /**
  * Answers a question identified using it's displayed index from the quiz book.
  */
-public class AnswerCommand extends Command{
+public class AnswerCommand extends Command {
     public static final String COMMAND_WORD = "answer";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
@@ -30,8 +30,8 @@ public class AnswerCommand extends Command{
 
     public static final String MESSAGE_ANSWER_SUCCESS = "Your answer has successfully been recorded.";
 
-    public static final String MESSAGE_CURRENTLY_NOT_ATTEMPTING = "Please start an attempt before answering a " +
-            "question!";
+    public static final String MESSAGE_CURRENTLY_NOT_ATTEMPTING = "Please start an attempt before answering a "
+            + "question!";
 
     private final Index index;
     private final String answer;
