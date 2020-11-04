@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-DSAce is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, DSAce can get your revision tasks done faster than traditional GUI apps.
+DSAce is a **desktop app for creating flashcards for CS2040s, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, DSAce can get your revision tasks done faster than traditional GUI apps.
 
 ## Table of Contents
 * [Quick start](#quick-start)
@@ -98,7 +98,7 @@ Format: `help`
 
 ### Adding a flashcard : `add`
 
-Adds a flashcard to the default DSAce folder.
+Adds a flashcard to the default DSAce folder. Priority will default to low when unspecified.
 
 Format: `add n/NAME d/DEFINITION [t/TAGS] [p/PRIORITY]`
 
@@ -137,8 +137,8 @@ Format: `edit INDEX [n/NAME] [d/DEFINITION] [t/TAGS] [p/PRIORITY]`
 * The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing t/ without specifying any tags after it.
+* When editing tags, the existing tags of the flashcard will be removed i.e adding of tags is not cumulative.
+* You can remove all the flashcard’s tags by typing t/ without specifying any tags after it.
 
 Examples:
 * `list` followed by `edit 1 n/BubbleSort d/Average case: O(n^2)` Edits the name and definition of the 1st flashcard to
