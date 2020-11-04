@@ -102,6 +102,12 @@ public interface Model {
     /** Returns an boolean indicating whether the application is in quiz mode */
     boolean getIsQuizMode();
 
+    /** Returns a boolean indicating whether a current quiz attempt is ongoing. */
+    boolean hasCurrentAttempt();
+
+    /** Starts a new quiz attempt. */
+    void startAttempt();
+
     /** Allows flipping the boolean isQuizMode in model */
     void flipQuizMode();
 
