@@ -23,15 +23,12 @@ public class PerformanceWindow extends UiPart<Stage> {
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
-    private Stage primaryStage;
+    private Stage root;
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
-    private HelpWindow helpWindow;
-    private PerformanceWindow performanceWindow;
-    private QuizListPanel quizListPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -48,22 +45,23 @@ public class PerformanceWindow extends UiPart<Stage> {
     @FXML
     private StackPane statusbarPlaceholder;
 
-    @FXML
-    private StackPane quizListPanelPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
-    public PerformanceWindow(Stage root) {
+    public PerformanceWindow(Stage root, Logic logic) {
         super(FXML, root);
-        //primaryStage.setTitle("DSAce");
+        this.logic = logic;
+        this.root = root;
+        setWindowDefaultSize(logic.getGuiSettings());
+        fillInnerParts();
     }
 
     /**
      * Creates a new PerformanceWindow.
      */
-    public PerformanceWindow() {
-        this(new Stage());
+    public PerformanceWindow(Logic logic) {
+        this(new Stage(), logic);
     }
 
     /**
@@ -81,23 +79,17 @@ public class PerformanceWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
-
-        quizListPanelPlaceholder.setVisible(false);
-        quizListPanelPlaceholder.setManaged(false);
-        primaryStage.getScene().lookup("#quizList").setVisible(false);
-        primaryStage.getScene().lookup("#quizList").setManaged(false);
-
     }
 
     /**
      * Sets the default size based on {@code guiSettings}.
      */
     private void setWindowDefaultSize(GuiSettings guiSettings) {
-        primaryStage.setHeight(guiSettings.getWindowHeight());
-        primaryStage.setWidth(guiSettings.getWindowWidth());
+        root.setHeight(guiSettings.getWindowHeight());
+        root.setWidth(guiSettings.getWindowWidth());
         if (guiSettings.getWindowCoordinates() != null) {
-            primaryStage.setX(guiSettings.getWindowCoordinates().getX());
-            primaryStage.setY(guiSettings.getWindowCoordinates().getY());
+            root.setX(guiSettings.getWindowCoordinates().getX());
+            root.setY(guiSettings.getWindowCoordinates().getY());
         }
     }
 
@@ -123,22 +115,6 @@ public class PerformanceWindow extends UiPart<Stage> {
         logger.fine("Showing performance page");
         getRoot().show();
         getRoot().centerOnScreen();
-    }
-
-    /**
-     * Closes the application.
-     */
-    @FXML
-    private void handleExit() {
-        GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY());
-        logic.setGuiSettings(guiSettings);
-        helpWindow.hide();
-        primaryStage.hide();
-    }
-
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
     }
 
     /**
@@ -172,10 +148,6 @@ public class PerformanceWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
-
-            if (commandResult.isExit()) {
-                handleExit();
-            }
 
             return commandResult;
         } catch (CommandException | ParseException e) {

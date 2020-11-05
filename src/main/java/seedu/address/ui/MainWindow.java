@@ -72,7 +72,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
-        performanceWindow = new PerformanceWindow();
+        performanceWindow = new PerformanceWindow(logic);
     }
 
     public Stage getPrimaryStage() {
@@ -133,7 +133,6 @@ public class MainWindow extends UiPart<Stage> {
         quizListPanelPlaceholder.setManaged(false);
         primaryStage.getScene().lookup("#quizList").setVisible(false);
         primaryStage.getScene().lookup("#quizList").setManaged(false);
-
     }
 
     /**
@@ -225,6 +224,7 @@ public class MainWindow extends UiPart<Stage> {
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
+        performanceWindow.hide();
         primaryStage.hide();
     }
 
