@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.function.Predicate;
 
@@ -7,6 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.quiz.Question;
+import seedu.address.model.quiz.Response;
 
 /**
  * The API of the Model component.
@@ -101,10 +103,21 @@ public interface Model {
     /** Returns an boolean indicating whether the application is in quiz mode */
     boolean getIsQuizMode();
 
+    /** Returns a boolean indicating whether a current quiz attempt is ongoing. */
+    boolean hasCurrentAttempt();
+
+    /** Starts a new quiz attempt. */
+    void startAttempt();
+
+    /** Records a new response to current attempt. */
+    void recordResponse(Response response);
+
     /** Allows flipping the boolean isQuizMode in model */
     void flipQuizMode();
 
     /** Get QuizList */
     ObservableList<Question> getQuizList();
 
+    /** Saves Performance in performance book **/
+    void savePerformance() throws IOException;
 }

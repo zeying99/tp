@@ -16,7 +16,7 @@ public abstract class Question implements Comparable<Question> {
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
-    protected String prompt;
+    public final String prompt;
 
     /**
      * Every field must be present and not null.
@@ -64,4 +64,9 @@ public abstract class Question implements Comparable<Question> {
         return otherQuestion != null
                 && otherQuestion.getPrompt().equals(getPrompt());
     }
+
+    /**
+     * Returns true if Question is MCQ question, other wise returns false
+     */
+    public abstract boolean isMcq();
 }

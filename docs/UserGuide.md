@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-DSAce is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, DSAce can get your revision tasks done faster than traditional GUI apps.
+DSAce is a **desktop app for creating flashcards for CS2040s, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, DSAce can get your revision tasks done faster than traditional GUI apps.
 
 ## Table of Contents
 * [Quick start](#quick-start)
@@ -21,7 +21,6 @@ DSAce is a **desktop app for managing contacts, optimized for use via a Command 
    * [**`leave quiz`** : Leaving Quiz mode.](#leaving-quiz-mode--leave-quiz)
    * [**`exit`** : Exiting the program.](#exiting-the-program--exit)
    * [Saving the data.](#saving-the-data)
-   * [Archiving data files [coming in v2.0].](#archiving-data-files-coming-in-v20)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
 
@@ -98,13 +97,19 @@ Format: `help`
 
 ### Adding a flashcard : `add`
 
-Adds a flashcard to the default DSAce folder.
+Adds a flashcard to the default DSAce folder. 
 
-Format: `add n/NAME d/DEFINITION [t/TAGS] [p/PRIORITY]`
+Format: `add n/NAME d/DEFINITION [t/TAG] [p/PRIORITY]`
 
 Examples:
 * `add n/Bellman Ford Search d/runtime: O(VE) p/high`
-* `add n/Bubble Sort d/runtime: O(n^2)`
+* `add n/Bubble Sort d/runtime: O(n^2) t/sorting t/midterm`
+
+Note: 
+- Priority will default to low when unspecified.
+- To add multiple tags, each of them requires its own label e.g `t/sorting t/midterm`
+- If there are multiple instances of name and/or definition, the one that appears last is taken 
+e.g second is the name of `n/first n/second`
 
 ### Listing all flashcards : `list`
 
@@ -130,15 +135,15 @@ Examples:
 
 Edits an existing flashcard in the DSAce folder.
 
-Format: `edit INDEX [n/NAME] [d/DEFINITION] [t/TAGS] [p/PRIORITY]`
+Format: `edit INDEX [n/NAME] [d/DEFINITION] [t/TAG] [p/PRIORITY]`
 
 * Edits the flashcard at the specified `INDEX`.
 * The index refers to the index number associated with the edited flashcard, as shown in the displayed flashcard list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing t/ without specifying any tags after it.
+* When editing tags, the existing tags of the flashcard will be removed i.e adding of tags is not cumulative.
+* You can remove all the flashcard’s tags by typing t/ without specifying any tags after it.
 
 Examples:
 * `list` followed by `edit 1 n/BubbleSort d/Average case: O(n^2)` Edits the name and definition of the 1st flashcard to
@@ -148,25 +153,29 @@ Examples:
  all existing tags.
 * `list` followed by `edit 3 p/high` Edits the priority of the 3rd flashcard to be `high`.
 
+Note: 
+- To edit multiple tags, each of them requires its own label e.g `t/sorting t/midterm`
+- If there are multiple instances of name and/or definition, the one that appears last is taken 
+  e.g second will be the name of `n/first n/second`
+
 ### Locating flashcards by name/tag/priority: `find`
 
 Finds flashcards with names, tags or priorities containing any of the given keywords.
 
-Format: find `[n/KEYWORD​S]​` `[t/KEYWORD​]​` `[p/KEYWORD​]​`
+Format: find `[n/KEYWORD]​` `[t/KEYWORD]​` `[p/KEYWORD]​`
 
 * The search is case-insensitive. e.g `sort` will match `Sort`
 * The order of the keywords does not matter. e.g. `runtime sort` will match `sort runtime`
 * Names, tags or priorities will be searched according to input prefixes.
 * Only full words will be matched e.g. `sort` will not match `sorting`
-* Flashcards matching at least one keyword will be returned (i.e. `OR` search). e.g. `graph algorithm` will return
- `Directed Acyclic Graph` and `Dijkstra’s Algorithm`
+* Only flashcards matching all keywords will be returned (i.e. `AND` search).
 
 Examples:
 
-* `find n/Trees` returns `Balanced Trees` and `Range Trees`
-* `find n/graph algorithm` returns `Directed Acyclic Graph` and `Dijkstra’s Algorithm`
-* `find t/graph sort` returns flashcards with either `graph` or `sort` in tags.
-* `find p/high` returns flashcards with `high` priority.
+* `find n/Quicksort` returns `Quicksort`
+* `find n/Chaining t/hashing` returns `Chaining`
+* `find n/Heap p/medium` returns `Heaps`
+* `find n/Heap p/low` or `find n/Chaining t/metal` returns no flashcards because not all conditions are satisfied
 
 ### Deleting a flashcard : `delete`
 
@@ -190,6 +199,7 @@ Format: `flip INDEX`
 * Flips the flashcard at the specified `INDEX`.
 * The index refers to the index number associated with the flipped flashcard, as shown in the displayed flashcard list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* The flashcard will not stay flipped upon user exiting and re-entering the app.
 
 Examples:
 * `list` followed by `flip 2` flips the 2nd flashcard in the folder.
@@ -231,7 +241,7 @@ A: Install the app in the other computer and overwrite the empty data file it cr
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME d/DEFINITION` <br> e.g., `add n/Bellman-Ford Search d/runtime: O(VE)`
+**Add** | `add n/NAME d/DEFINITION [t/TAG] [p/PRIORITY]` <br> e.g., `add n/Bellman-Ford Search d/runtime: O(VE)`
 **Clear** | `clear`
 **Sort** | `sort [ORDER]` <br> e.g., `sort ASC`
 **Delete** | `delete INDEX` <br> e.g., `delete 3`
@@ -240,5 +250,6 @@ Action | Format, Examples
 **Find** | `find [n/KEYWORDS] [t/KEYWORD​S] [p/KEYWORD​S]​` <br> e.g., `find n/BellmanFord Search`
 **List** | `list`
 **Help** | `help`
+**Exit** | `exit`
 **Enter Quiz** | `enter quiz`
 **Leave Quiz** | `leave quiz`

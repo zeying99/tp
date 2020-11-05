@@ -60,6 +60,12 @@ public class FindCommandParser implements Parser<FindCommand> {
             predicates.add(new PriorityContainsKeywordsPredicate(keyword.priority));
         }
 
+
+        if (predicates.isEmpty()) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        }
+
         return new FindCommand(predicates);
     }
 
