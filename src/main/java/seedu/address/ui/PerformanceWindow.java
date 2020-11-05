@@ -21,9 +21,9 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * The Main Window. Provides the basic application layout containing
  * a menu bar and space where other JavaFX elements can be placed.
  */
-public class MainWindow extends UiPart<Stage> {
+public class PerformanceWindow extends UiPart<Stage> {
 
-    private static final String FXML = "MainWindow.fxml";
+    private static final String FXML = "PerformanceWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -58,7 +58,7 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
-    public MainWindow(Stage primaryStage, Logic logic) {
+    public PerformanceWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -164,55 +164,15 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handlePerformance() {
-        if (!performanceWindow.isShowing()) {
-            performanceWindow.show();
+        if (!helpWindow.isShowing()) {
+            helpWindow.show();
         } else {
-            performanceWindow.focus();
+            helpWindow.focus();
         }
     }
 
     void show() {
         primaryStage.show();
-    }
-
-    /**
-     * Switches to quiz settings.
-     */
-    @FXML
-    public void handleQuiz() {
-        personListPanelPlaceholder.setVisible(false);
-        personListPanelPlaceholder.setManaged(false);
-        // TODO: Implement QuizList to display questions
-
-        quizListPanel = new QuizListPanel(logic.getQuizList());
-        quizListPanelPlaceholder.getChildren().add(quizListPanel.getRoot());
-        quizListPanelPlaceholder.setVisible(true);
-        quizListPanelPlaceholder.setManaged(true);
-        primaryStage.getScene().lookup("#quizList").setVisible(true);
-        primaryStage.getScene().lookup("#quizList").setManaged(true);
-
-        primaryStage.getScene().getStylesheets().remove("/view/DarkTheme.css");
-        primaryStage.getScene().getStylesheets().add("/view/LightTheme.css");
-    }
-
-    /**
-     * Switches to flashcard settings.
-     */
-    @FXML
-    public void handleExitQuiz() {
-        // TODO: Implement QuizList to display questions and hide them when switching back
-
-        quizListPanelPlaceholder.setVisible(false);
-        quizListPanelPlaceholder.setManaged(false);
-        primaryStage.getScene().lookup("#quizList").setVisible(false);
-        primaryStage.getScene().lookup("#quizList").setManaged(false);
-
-
-        personListPanelPlaceholder.setVisible(true);
-        personListPanelPlaceholder.setManaged(true);
-
-        primaryStage.getScene().getStylesheets().remove("/view/LightTheme.css");
-        primaryStage.getScene().getStylesheets().add("/view/DarkTheme.css");
     }
 
     /**
@@ -232,9 +192,30 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Returns true if the help window is currently being shown.
+     */
+    public boolean isShowing() {
+        return getRoot().isShowing();
+    }
+
+    /**
+     * Hides the help window.
+     */
+    public void hide() {
+        getRoot().hide();
+    }
+
+    /**
+     * Focuses on the help window.
+     */
+    public void focus() {
+        getRoot().requestFocus();
+    }
+
+    /**
      * Executes the command and returns the result.
      *
-     * @see seedu.address.logic.Logic#execute(String)
+     * @see Logic#execute(String)
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
@@ -248,14 +229,6 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowPerformance()) {
                 handlePerformance();
-            }
-
-            if (commandResult.isSwitchToQuiz()) {
-                handleQuiz();
-            }
-
-            if (commandResult.isSwitchToFlashcards()) {
-                handleExitQuiz();
             }
 
             if (commandResult.isExit()) {

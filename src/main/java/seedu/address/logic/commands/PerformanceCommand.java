@@ -16,6 +16,6 @@ public class PerformanceCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) {
-        return new CommandResult(SHOWING_PERFORMANCE_MESSAGE, true, false, false);
+        return new CommandResult(SHOWING_PERFORMANCE_MESSAGE, false, true, false);
     }
 }
