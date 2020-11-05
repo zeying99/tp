@@ -14,7 +14,6 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.quiz.Attempt;
-import seedu.address.model.quiz.Performance;
 import seedu.address.model.quiz.Question;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.PerformanceBook;
@@ -27,9 +26,9 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
-    private final ReadOnlyQuizBook readOnlyQuizBook = new SampleDataUtil().getSampleQuizBook();
+    private final ReadOnlyQuizBook readOnlyQuizBook = SampleDataUtil.getSampleQuizBook();
     private final QuizBook quizBook = new QuizBook(readOnlyQuizBook);
-    private final PerformanceBook performanceBook = new PerformanceBook(new Performance());
+    private final PerformanceBook performanceBook = new PerformanceBook(SampleDataUtil.getSamplePerformance());
     private final ObservableList<Question> filteredQuizList = this.quizBook.getQuestionList();
     private final ObservableList<Attempt> filteredAttemptList = this.performanceBook.getPerformance().getAttempts();
     private final UserPrefs userPrefs;

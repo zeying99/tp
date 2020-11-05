@@ -27,11 +27,11 @@ public class AttemptCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
+    private Label attemptDate;
     @FXML
     private Label id;
     @FXML
-    private Label definition;
+    private Label score;
     @FXML
     private FlowPane tags;
     @FXML
@@ -45,9 +45,9 @@ public class AttemptCard extends UiPart<Region> {
     public AttemptCard(Attempt attempt, int displayedIndex) {
         super(FXML);
         this.attempt = attempt;
-        //        id.setText(displayedIndex + ". ");
-        //        name.setText(attempt.getTitle().fullTitle);
-        //        definition.setText(attempt.getVisibleDefinition().value);
+        id.setText(displayedIndex + ". ");
+        attemptDate.setText(attempt.getTimestamp().toLocalDate().toString());
+        score.setText(Integer.toString(attempt.calculateScore()));
         //        priority.setText("Priority: " + attempt.getPriority().priority);
         //        attempt.getTags().stream()
         //                .sorted(Comparator.comparing(tag -> tag.tagName))

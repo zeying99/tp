@@ -68,8 +68,8 @@ public class PerformanceWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        //attemptListPanel = new AttemptListPanel(logic.getAttemptList());
-        //attemptListPanelPlaceholder.getChildren().add(attemptListPanel.getRoot());
+        attemptListPanel = new AttemptListPanel(logic.getAttemptList());
+        attemptListPanelPlaceholder.getChildren().add(attemptListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
