@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Question;
 import seedu.address.model.quiz.UniqueQuestionList;
 
@@ -15,6 +16,7 @@ import seedu.address.model.quiz.UniqueQuestionList;
 public class QuizBook implements ReadOnlyQuizBook {
 
     private final UniqueQuestionList questions;
+    private Attempt currentAttempt;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -35,6 +37,15 @@ public class QuizBook implements ReadOnlyQuizBook {
     public QuizBook(ReadOnlyQuizBook toBeCopied) {
         this();
         resetData(toBeCopied);
+    }
+
+    //// quiz methods
+
+    /**
+     * Starts a new quiz attempt.
+     */
+    public void startAttempt() {
+        this.currentAttempt = new Attempt();
     }
 
     //// list overwrite operations

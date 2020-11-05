@@ -5,7 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.List;
 import java.util.Objects;
 
-import seedu.address.model.quiz.exceptions.InvalidQuestionAttemptException;
+import seedu.address.model.quiz.exceptions.InvalidQuestionAnswerException;
 
 /**
  * Represents a MCQ question. It is assumed that the options are numerically indexed, starting from 1.
@@ -61,17 +61,18 @@ public class Mcq extends Question {
      * Checks whether the response is correct.
      * @param response user response
      * @return true if the response is correct and false otherwise
-     * @throws InvalidQuestionAttemptException if the response is not valid
+     * @throws InvalidQuestionAnswerException if the response is not valid
      */
-    public boolean checkResponse(String response) throws InvalidQuestionAttemptException {
+    @Override
+    public boolean checkResponse(String response) throws InvalidQuestionAnswerException {
         try {
             int attempt = Integer.parseInt(response);
             if (!isValidResponse(attempt)) {
-                throw new InvalidQuestionAttemptException("Response is not a valid option.");
+                throw new InvalidQuestionAnswerException("Response is not a valid option.");
             }
             return attempt == answer;
         } catch (NumberFormatException e) {
-            throw new InvalidQuestionAttemptException("Response is not a valid option.");
+            throw new InvalidQuestionAnswerException("Response is not a valid option.");
         }
     }
     @Override
@@ -104,5 +105,10 @@ public class Mcq extends Question {
     @Override
     public String toString() {
         return getQuestion();
+    }
+
+    @Override
+    public boolean isMcq() {
+        return true;
     }
 }

@@ -8,7 +8,6 @@ import javafx.collections.ObservableList;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.UniqueFlashcardList;
 
-
 /**
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSameFlashcard comparison)

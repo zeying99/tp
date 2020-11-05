@@ -3,6 +3,7 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -14,6 +15,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.quiz.Question;
 import seedu.address.model.util.SampleDataUtil;
+import seedu.address.storage.PerformanceBook;
 
 
 /**
@@ -23,11 +25,14 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
-    private final ReadOnlyQuizBook quizBook = new SampleDataUtil().getSampleQuizBook();
+    private final ReadOnlyQuizBook readOnlyQuizBook = new SampleDataUtil().getSampleQuizBook();
+    private final QuizBook quizBook = new QuizBook(readOnlyQuizBook);
     private final ObservableList<Question> filteredQuizList = this.quizBook.getQuestionList();
     private final UserPrefs userPrefs;
     private final FilteredList<Flashcard> filteredFlashcards;
     private boolean isQuizMode = false;
+    private boolean hasCurrentAttempt = false;
+    private PerformanceBook performanceBook;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -41,6 +46,12 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredFlashcards = new FilteredList<>(this.addressBook.getFlashcardList());
+
+        try {
+            performanceBook = new PerformanceBook();
+        } catch (IOException e) {
+            performanceBook = PerformanceBook.createDefaultPerformanceBook();
+        }
     }
 
     public ModelManager() {
@@ -167,14 +178,31 @@ public class ModelManager implements Model {
     public boolean getIsQuizMode() {
         return this.isQuizMode;
     }
+
     @Override
     public void flipQuizMode() {
         this.isQuizMode = !isQuizMode;
+    }
+
+    @Override
+    public boolean hasCurrentAttempt() {
+        return this.hasCurrentAttempt;
+    }
+
+    @Override
+    public void startAttempt() {
+        this.hasCurrentAttempt = true;
+        quizBook.startAttempt();
     }
 
     public ObservableList<Question> getQuizList() {
         return this.filteredQuizList;
     }
 
-
+    /**
+     * Saves performance in performance book.
+     */
+    public void savePerformance() throws IOException {
+        performanceBook.savePerformance();
+    }
 }
