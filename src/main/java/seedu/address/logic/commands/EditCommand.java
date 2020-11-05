@@ -39,7 +39,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_DEFINITION + "DEFINITION] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
-            + "Example: " + COMMAND_WORD + " 1 ";
+            + "Example: " + COMMAND_WORD + " 1 "
+            + PREFIX_TITLE + "test1";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Flashcard: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
