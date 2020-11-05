@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Flashcard;
+import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Question;
 
 /**
@@ -113,6 +114,8 @@ public interface Model {
 
     /** Get QuizList */
     ObservableList<Question> getQuizList();
+    /** Get AttemptList */
+    ObservableList<Attempt> getAttemptList();
 
     /** Saves Performance in performance book **/
     void savePerformance() throws IOException;

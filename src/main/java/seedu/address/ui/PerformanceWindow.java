@@ -27,7 +27,7 @@ public class PerformanceWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
+    private AttemptListPanel attemptListPanel;
     private ResultDisplay resultDisplay;
 
     @FXML
@@ -37,7 +37,7 @@ public class PerformanceWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane attemptListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -68,8 +68,8 @@ public class PerformanceWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        //attemptListPanel = new AttemptListPanel(logic.getAttemptList());
+        //attemptListPanelPlaceholder.getChildren().add(attemptListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

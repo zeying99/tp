@@ -9,7 +9,7 @@ import seedu.address.model.quiz.exceptions.InvalidQuestionAnswerException;
 /**
  * Represents a record of user's responses to the respective questions within a quiz attempt.
  */
-public class Attempt {
+public class Attempt implements Comparable<Attempt> {
     private ArrayList<Response> responses;
     private LocalDateTime timestamp;
 
@@ -77,5 +77,21 @@ public class Attempt {
 
     public ArrayList<Response> getResponses() {
         return responses;
+    }
+
+    /**
+     * Returns true if both attempts of the same title have at least one other identity field that is the same.
+     * This defines a weaker notion of equality between two questions.
+     */
+    public boolean isSameAttempt(Attempt otherAttempt) {
+        if (otherAttempt == this) {
+            return true;
+        }
+        return otherAttempt != null
+                && otherAttempt.getTimestamp().equals(getTimestamp());
+    }
+    @Override
+    public int compareTo(Attempt f2) {
+        return timestamp.compareTo(f2.getTimestamp());
     }
 }
