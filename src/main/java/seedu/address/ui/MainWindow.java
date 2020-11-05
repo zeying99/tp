@@ -34,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private PerformanceWindow performanceWindow;
     private QuizListPanel quizListPanel;
 
     @FXML
@@ -71,6 +72,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+        performanceWindow = new PerformanceWindow(logic);
     }
 
     public Stage getPrimaryStage() {
@@ -131,7 +133,6 @@ public class MainWindow extends UiPart<Stage> {
         quizListPanelPlaceholder.setManaged(false);
         primaryStage.getScene().lookup("#quizList").setVisible(false);
         primaryStage.getScene().lookup("#quizList").setManaged(false);
-
     }
 
     /**
@@ -155,6 +156,18 @@ public class MainWindow extends UiPart<Stage> {
             helpWindow.show();
         } else {
             helpWindow.focus();
+        }
+    }
+
+    /**
+     * Opens the performance window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handlePerformance() {
+        if (!performanceWindow.isShowing()) {
+            performanceWindow.show();
+        } else {
+            performanceWindow.focus();
         }
     }
 
@@ -211,6 +224,7 @@ public class MainWindow extends UiPart<Stage> {
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
+        performanceWindow.hide();
         primaryStage.hide();
     }
 
@@ -231,6 +245,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
+            }
+
+            if (commandResult.isShowPerformance()) {
+                handlePerformance();
             }
 
             if (commandResult.isSwitchToQuiz()) {

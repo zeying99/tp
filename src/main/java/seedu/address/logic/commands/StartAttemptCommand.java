@@ -23,7 +23,7 @@ public class StartAttemptCommand extends Command {
             throw new CommandException(MESSAGE_ATTEMPT_ALREADY_ONGOING);
         } else {
             model.startAttempt();
-            return new CommandResult(MESSAGE_ATTEMPT_ACKNOWLEDGEMENT, false, false);
+            return new CommandResult(MESSAGE_ATTEMPT_ACKNOWLEDGEMENT, false, false, false);
         }
     }
 

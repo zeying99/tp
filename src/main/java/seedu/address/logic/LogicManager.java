@@ -16,6 +16,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Flashcard;
+import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Question;
 import seedu.address.storage.Storage;
 
@@ -81,6 +82,9 @@ public class LogicManager implements Logic {
         return model.getQuizList();
     }
 
+    public ObservableList<Attempt> getAttemptList() {
+        return model.getAttemptList();
+    }
 
     @Override
     public Path getAddressBookFilePath() {

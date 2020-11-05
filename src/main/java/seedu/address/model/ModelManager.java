@@ -13,6 +13,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Flashcard;
+import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Question;
 import seedu.address.model.quiz.Response;
 import seedu.address.model.util.SampleDataUtil;
@@ -26,14 +27,15 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
-    private final ReadOnlyQuizBook readOnlyQuizBook = new SampleDataUtil().getSampleQuizBook();
+    private final ReadOnlyQuizBook readOnlyQuizBook = SampleDataUtil.getSampleQuizBook();
     private final QuizBook quizBook = new QuizBook(readOnlyQuizBook);
+    private final PerformanceBook performanceBook = new PerformanceBook(SampleDataUtil.getSamplePerformance());
     private final ObservableList<Question> filteredQuizList = this.quizBook.getQuestionList();
+    private final ObservableList<Attempt> filteredAttemptList = this.performanceBook.getPerformance().getAttempts();
     private final UserPrefs userPrefs;
     private final FilteredList<Flashcard> filteredFlashcards;
     private boolean isQuizMode = false;
     private boolean hasCurrentAttempt = false;
-    private PerformanceBook performanceBook;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -47,12 +49,6 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredFlashcards = new FilteredList<>(this.addressBook.getFlashcardList());
-
-        try {
-            performanceBook = new PerformanceBook();
-        } catch (IOException e) {
-            performanceBook = PerformanceBook.createDefaultPerformanceBook();
-        }
     }
 
     public ModelManager() {
@@ -203,6 +199,10 @@ public class ModelManager implements Model {
 
     public ObservableList<Question> getQuizList() {
         return this.filteredQuizList;
+    }
+
+    public ObservableList<Attempt> getAttemptList() {
+        return this.filteredAttemptList;
     }
 
     /**
