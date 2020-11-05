@@ -1,7 +1,5 @@
 package seedu.address.model.quiz;
 
-import static java.util.Objects.requireNonNull;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -18,13 +16,6 @@ public class Performance {
      */
     public Performance() {
         this.attempts = new ArrayList<>();
-    }
-    /**
-     * Constructor of Performance called when local cache of attempts exists
-     */
-    public Performance(ArrayList<Attempt> attempts) {
-        requireNonNull(attempts);
-        this.attempts = attempts;
     }
 
     public void addAttempt(Attempt attempt) {
