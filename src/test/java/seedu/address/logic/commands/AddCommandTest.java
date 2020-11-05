@@ -24,6 +24,7 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Question;
+import seedu.address.model.quiz.Response;
 import seedu.address.testutil.FlashcardBuilder;
 
 public class AddCommandTest {
@@ -144,6 +145,11 @@ public class AddCommandTest {
 
         @Override
         public void startAttempt() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void recordResponse(Response response) {
             throw new AssertionError("This method should not be called.");
         }
 

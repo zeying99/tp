@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import seedu.address.model.quiz.exceptions.InvalidQuestionAnswerException;
-
 /**
  * Represents a record of user's responses to the respective questions within a quiz attempt.
  */
@@ -34,13 +32,10 @@ public class Attempt implements Comparable<Attempt> {
     /**
      * Adds a response to current attempt.
      * If response to question already exists, replace previous response.
-     * @param qn Question
-     * @param ans Answer to question
-     * @throws InvalidQuestionAnswerException If
+     * @param newResponse Response to add.
      */
-    public void createResponse(Question qn, String ans) throws InvalidQuestionAnswerException {
-        Response newResponse = new Response(ans, qn);
-        newResponse.markResponse();
+    public void addResponse(Response newResponse) {
+        Question qn = newResponse.getQuestion();
         Iterator<Response> itr = responses.iterator();
         while (itr.hasNext()) {
             Response oldResponse = itr.next();

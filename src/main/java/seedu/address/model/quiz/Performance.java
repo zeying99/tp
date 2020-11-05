@@ -20,6 +20,7 @@ public class Performance {
     public Performance() {
         this.attempts = new UniqueAttemptList();
     }
+
     /**
      * Constructor of Performance called when local cache of attempts exists
      */

@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Question;
+import seedu.address.model.quiz.Response;
 import seedu.address.model.quiz.UniqueQuestionList;
 
 /**
@@ -46,6 +47,13 @@ public class QuizBook implements ReadOnlyQuizBook {
      */
     public void startAttempt() {
         this.currentAttempt = new Attempt();
+    }
+
+    /**
+     * Records a new response to current quiz attempt.
+     */
+    public void recordResponse(Response response) {
+        this.currentAttempt.addResponse(response);
     }
 
     //// list overwrite operations

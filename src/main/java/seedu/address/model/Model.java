@@ -9,6 +9,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Question;
+import seedu.address.model.quiz.Response;
 
 /**
  * The API of the Model component.
@@ -108,6 +109,9 @@ public interface Model {
 
     /** Starts a new quiz attempt. */
     void startAttempt();
+
+    /** Records a new response to current attempt. */
+    void recordResponse(Response response);
 
     /** Allows flipping the boolean isQuizMode in model */
     void flipQuizMode();
