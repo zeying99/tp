@@ -6,7 +6,7 @@ import seedu.address.model.Model;
 
 public class LeaveQuizCommand extends Command {
     public static final String COMMAND_WORD = "leave";
-    public static final String MESSAGE_USAGE = "leave quiz";
+    public static final String MESSAGE_USAGE = "Please type 'leave quiz' fully.";
     public static final String MESSAGE_EXIT_ACKNOWLEDGEMENT = "Switching from quiz mode to flashcard mode.";
 
     @Override

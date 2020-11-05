@@ -17,14 +17,13 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.FlipCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
-//import seedu.address.logic.commands.StartQuizCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Parses user input.
  */
-public class AddressBookParser {
+public class FlashcardParser {
 
     /**
      * Used for initial separation of command word and args.
@@ -58,7 +57,7 @@ public class AddressBookParser {
             return new DeleteCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
+            return new ClearCommandParser().parse(arguments);
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);

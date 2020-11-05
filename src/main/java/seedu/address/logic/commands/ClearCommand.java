@@ -11,6 +11,7 @@ import seedu.address.model.Model;
 public class ClearCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
+    public static final String MESSAGE_USAGE = "Please type 'clear' only.";
     public static final String MESSAGE_SUCCESS = "Flashcard list has been cleared!";
 
 
