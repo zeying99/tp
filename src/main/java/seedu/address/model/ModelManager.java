@@ -222,6 +222,19 @@ public class ModelManager implements Model {
     public void recordResponse(Response response) {
         quizBook.recordResponse(response);
     }
+    @Override
+    public void setSelectedIndex(Question question, String response) {
+        requireAllNonNull(question, response);
+        int index;
+        if (question.isMcq()) {
+            index = Integer.parseInt(response);
+        } else {
+            index = response.equals("True") ? 1 : 2;
+        }
+        Question newQuestion = question.copy();
+        newQuestion.setSelectedIndex(index);
+        quizBook.setQuestion(question, newQuestion);
+    }
 
     public ObservableList<Question> getQuizList() {
         return this.filteredQuizList;

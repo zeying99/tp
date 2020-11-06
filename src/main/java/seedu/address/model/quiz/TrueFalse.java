@@ -30,6 +30,11 @@ public class TrueFalse extends Question {
         return answer;
     }
 
+    @Override
+    public Question copy() {
+        return new TrueFalse(this.prompt, this.answer);
+    }
+
     /**
      * Returns the question prompt and options, represented in an appropriate String format.
      */

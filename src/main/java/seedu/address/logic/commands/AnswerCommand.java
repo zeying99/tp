@@ -50,6 +50,10 @@ public class AnswerCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        if (!model.hasCurrentAttempt()) {
+            return new CommandResult(MESSAGE_CURRENTLY_NOT_ATTEMPTING);
+        }
+
         ObservableList<Question> lastShownQuestionList = model.getQuizList();
 
         if (index.getZeroBased() >= lastShownQuestionList.size()) {
@@ -62,15 +66,12 @@ public class AnswerCommand extends Command {
         try {
             resp = new Response(this.answer, qn);
             resp.markResponse();
+            model.setSelectedIndex(qn, answer);
         } catch (InvalidQuestionAnswerException e) {
             throw new CommandException(e.getMessage());
         }
 
-        if (model.hasCurrentAttempt()) {
-            model.recordResponse(resp);
-            return new CommandResult(String.format(MESSAGE_ANSWER_SUCCESS, this.index.getZeroBased(), this.answer));
-        } else {
-            return new CommandResult(MESSAGE_CURRENTLY_NOT_ATTEMPTING);
-        }
+        model.recordResponse(resp);
+        return new CommandResult(String.format(MESSAGE_ANSWER_SUCCESS, this.index.getZeroBased(), this.answer));
     }
 }

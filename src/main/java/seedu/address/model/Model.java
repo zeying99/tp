@@ -122,6 +122,9 @@ public interface Model {
     /** Replace responseList field with the attempt's own responseList*/
     void showAttempt(Attempt attempt);
 
+    /** Set the selectedIndex field in the target Question*/
+    void setSelectedIndex(Question target, String response);
+
     /** Get QuizList */
     ObservableList<Question> getQuizList();
 

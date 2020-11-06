@@ -1,6 +1,6 @@
 package seedu.address.ui;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -10,7 +10,6 @@ import javafx.scene.layout.Region;
 import seedu.address.model.quiz.Mcq;
 import seedu.address.model.quiz.Question;
 import seedu.address.model.quiz.TrueFalse;
-
 
 
 /**
@@ -50,21 +49,29 @@ public class QuizCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         prompt.setText(question.getPrompt());
         if (question instanceof Mcq) {
-            Mcq mcqQuestion = (Mcq) question;
-            AtomicInteger counter = new AtomicInteger(1);
-            mcqQuestion.getOptions().stream()
-                    .forEach(option -> options.getChildren().add(new Label("Option "
-                        + counter.getAndIncrement() + " : " + option)));
+            //            Mcq mcqQuestion = (Mcq) question;
+            //            AtomicInteger counter = new AtomicInteger(1);
+            //            mcqQuestion.getOptions().stream()
+            //                    .forEach(option -> options.getChildren().add(new Label("Option "
+            //                        + counter.getAndIncrement() + " : " + option)));
+            addOptions(((Mcq) question).getOptions(), question.getSelectedIndex());
         } else {
-            TrueFalse.OPTIONS.stream()
-                    .forEach(option -> options.getChildren().add(new Label(option)));
+            //            TrueFalse.OPTIONS.stream()
+            //                    .forEach(option -> options.getChildren().add(new Label(option)));
+            addOptions(TrueFalse.OPTIONS, question.getSelectedIndex());
         }
     }
 
-    public void highlightUserAnswer(int index) {
-        options.getChildren().get(index).setStyle("-fx-background-color: #018f6e;");
+    private void addOptions(List<String> options, int selectedIndex) {
+        for (int i = 0; i < options.size(); i++) {
+            Label label = new Label(options.get(i));
+            label.setStyle(LABEL_BACKGROUND_GREY);
+            if (i == selectedIndex - 1) {
+                label.setStyle(LABEL_BACKGROUND_PURPLE);
+            }
+            this.options.getChildren().add(label);
+        }
     }
-
 
 
     @Override
