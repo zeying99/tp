@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -16,6 +18,8 @@ import seedu.address.model.quiz.TrueFalse;
 public class ResponseCard extends UiPart<Region> {
 
     private static final String FXML = "ResponseListCard.fxml";
+    private static final String LABEL_BACKGROUND_RED = "-fx-background-color: #cc3361;";
+    private static final String LABEL_BACKGROUND_GREEN = "-fx-background-color: #018f6e;";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -34,7 +38,7 @@ public class ResponseCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private FlowPane options;
+    private FlowPane markedOptions;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Flashcard} and index to display.
@@ -46,12 +50,28 @@ public class ResponseCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         prompt.setText(question.getPrompt());
         if (question instanceof Mcq) {
-            Mcq mcqQuestion = (Mcq) question;
-            mcqQuestion.getOptions().stream()
-                    .forEach(option -> options.getChildren().add(new Label(option)));
+            List<String> opt = ((Mcq) question).getOptions();
+            int userResponseIndex = Integer.parseInt(response.getResponse());
+            addOptions(opt, opt.get(((Mcq) question).getAnswer() - 1), opt.get(userResponseIndex - 1));
         } else {
-            TrueFalse.OPTIONS.stream()
-                    .forEach(option -> options.getChildren().add(new Label(option)));
+            String correctAns = ((TrueFalse) question).getAnswer() ? "True" : "False";
+            addOptions(TrueFalse.OPTIONS, correctAns, response.getResponse());
+        }
+    }
+
+    /**
+     * add option labels, changing the label to be red or green accordingly
+     */
+    private void addOptions(List<String> options, String correctAnswer, String userAnswer) {
+        for (String op : options) {
+            Label label = new Label(op);
+            if (op.equals(userAnswer)) {
+                label.setStyle(LABEL_BACKGROUND_RED);
+            }
+            if (op.equals(correctAnswer)) {
+                label.setStyle(LABEL_BACKGROUND_GREEN);
+            }
+            markedOptions.getChildren().add(label);
         }
     }
 

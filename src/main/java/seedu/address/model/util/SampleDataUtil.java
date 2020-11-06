@@ -20,6 +20,7 @@ import seedu.address.model.quiz.Question;
 import seedu.address.model.quiz.Response;
 import seedu.address.model.quiz.TrueFalse;
 import seedu.address.model.quiz.UniqueResponseList;
+import seedu.address.model.quiz.exceptions.InvalidQuestionAnswerException;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -113,7 +114,15 @@ public class SampleDataUtil {
     public static Attempt[] getSampleAttempts() {
         UniqueResponseList sampleResponses = new UniqueResponseList();
         for (Question sampleQ : getSampleQuestions()) {
-            sampleResponses.add(new Response("example", sampleQ, true));
+            Response r = sampleQ.isMcq() ? new Response("1", sampleQ)
+                    : new Response("True", sampleQ);
+            try {
+                r.markResponse();
+                sampleResponses.add(r);
+            } catch (InvalidQuestionAnswerException e) {
+                e.printStackTrace();
+            }
+
         }
         return new Attempt[]{
             new Attempt(sampleResponses, LocalDateTime.now())

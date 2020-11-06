@@ -28,7 +28,7 @@ public class PerformanceBook {
         performanceStorage = new PerformanceStorage(performanceFilePath);
     }
 
-    public static PerformanceBook createDefaultPerformanceBook() {
+    public static PerformanceBook createDefaultPerformanceBook()  {
         return new PerformanceBook(SampleDataUtil.getSamplePerformance());
     }
 

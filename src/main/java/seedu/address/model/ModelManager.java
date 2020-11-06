@@ -60,7 +60,6 @@ public class ModelManager implements Model {
         }
         performanceBook = tempPerformanceBook;
         filteredAttemptList = this.performanceBook.getPerformance().getAttempts();
-        responseList = filteredAttemptList.get(0).getResponses();
     }
 
     public ModelManager() {

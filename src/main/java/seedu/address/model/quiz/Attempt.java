@@ -90,9 +90,9 @@ public class Attempt implements Comparable<Attempt> {
         formattedAnalysis += totalScore + " out of " + getNumOfResponses() + " attempted question(s) correct";
         formattedAnalysis += System.lineSeparator();
         //formattedAnalysis += "Wrong questions: " + System.lineSeparator();
-        for (String wrongResponse : wrongResponses) {
-            formattedAnalysis += wrongResponse + System.lineSeparator();
-        }
+        //        for (String wrongResponse : wrongResponses) {
+        //            formattedAnalysis += wrongResponse + System.lineSeparator();
+        //        }
         return formattedAnalysis;
     }
 
