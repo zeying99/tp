@@ -5,6 +5,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -234,6 +236,16 @@ public class ModelManager implements Model {
         Question newQuestion = question.copy();
         newQuestion.setSelectedIndex(index);
         quizBook.setQuestion(question, newQuestion);
+    }
+    @Override
+    public void setAllSelectedIndex(int index) {
+        List<Question> newQuestions = new ArrayList<>();
+        for (Question qn : quizBook.getQuestionList()) {
+            Question newQn = qn.copy();
+            newQn.setSelectedIndex(index);
+            newQuestions.add(newQn);
+        }
+        quizBook.setQuestions(newQuestions);
     }
 
     public ObservableList<Question> getQuizList() {

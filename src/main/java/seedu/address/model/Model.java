@@ -125,6 +125,9 @@ public interface Model {
     /** Set the selectedIndex field in the target Question*/
     void setSelectedIndex(Question target, String response);
 
+    /** Sets the selected index of all questions in quizBook */
+    void setAllSelectedIndex(int index);
+
     /** Get QuizList */
     ObservableList<Question> getQuizList();
 

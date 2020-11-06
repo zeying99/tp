@@ -81,21 +81,6 @@ public class UniqueQuestionList implements Iterable<Question> {
         }
     }
 
-    //    /**
-    //     * Answers a question (highlight user's chosen option)
-    //     */
-    //    public void answerQuestion(Question toAnswer, int userAnswer) {
-    //        requireNonNull(toAnswer);
-    //
-    //        int index = internalList.indexOf(toAnswer);
-    //        if (index == -1) {
-    //            throw new QuestionNotFoundException();
-    //        }
-    //
-    //        internalList.get(index).toggleDefinition();
-    //        internalList.set(index, toFlip);
-    //    }
-
     public void setQuestions(UniqueQuestionList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);

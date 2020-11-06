@@ -121,11 +121,6 @@ public class QuizBook implements ReadOnlyQuizBook {
     public void removeQuestion(Question key) {
         questions.remove(key);
     }
-    //TODO
-    //    public void flipQuestion(Question target) {
-    //        questions.flipQuestion(target);
-    //    }
-    //// util methods
 
     /**
      * Sorts questions.

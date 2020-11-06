@@ -1,6 +1,8 @@
 package seedu.address.ui;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -49,15 +51,14 @@ public class QuizCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         prompt.setText(question.getPrompt());
         if (question instanceof Mcq) {
-            //            Mcq mcqQuestion = (Mcq) question;
-            //            AtomicInteger counter = new AtomicInteger(1);
-            //            mcqQuestion.getOptions().stream()
-            //                    .forEach(option -> options.getChildren().add(new Label("Option "
-            //                        + counter.getAndIncrement() + " : " + option)));
-            addOptions(((Mcq) question).getOptions(), question.getSelectedIndex());
+            Mcq mcqQuestion = (Mcq) question;
+            AtomicInteger counter = new AtomicInteger(1);
+            List<String> labelledOptions = new ArrayList<>();
+            for (String op : mcqQuestion.getOptions()) {
+                labelledOptions.add("Option " + counter.getAndIncrement() + " : " + op);
+            }
+            addOptions(labelledOptions, question.getSelectedIndex());
         } else {
-            //            TrueFalse.OPTIONS.stream()
-            //                    .forEach(option -> options.getChildren().add(new Label(option)));
             addOptions(TrueFalse.OPTIONS, question.getSelectedIndex());
         }
     }
@@ -66,7 +67,7 @@ public class QuizCard extends UiPart<Region> {
         for (int i = 0; i < options.size(); i++) {
             Label label = new Label(options.get(i));
             label.setStyle(LABEL_BACKGROUND_GREY);
-            if (i == selectedIndex - 1) {
+            if (selectedIndex == -1 || i == selectedIndex - 1) {
                 label.setStyle(LABEL_BACKGROUND_PURPLE);
             }
             this.options.getChildren().add(label);
