@@ -28,6 +28,7 @@ public class PerformanceWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private AttemptListPanel attemptListPanel;
+    private ResponseListPanel responseListPanel;
     private ResultDisplay resultDisplay;
 
     @FXML
@@ -38,6 +39,9 @@ public class PerformanceWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane attemptListPanelPlaceholder;
+
+    @FXML
+    private StackPane responseListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -139,13 +143,29 @@ public class PerformanceWindow extends UiPart<Stage> {
     }
 
     /**
+     * Switches to response settings.
+     */
+    @FXML
+    public void handleViewResponses() {
+        attemptListPanelPlaceholder.setVisible(false);
+        attemptListPanelPlaceholder.setManaged(false);
+
+        responseListPanel = new ResponseListPanel(logic.getQuizList());
+        responseListPanelPlaceholder.getChildren().add(responseListPanel.getRoot());
+        responseListPanelPlaceholder.setVisible(true);
+        responseListPanelPlaceholder.setManaged(true);
+        root.getScene().lookup("#responseList").setVisible(true);
+        root.getScene().lookup("#responseList").setManaged(true);
+    }
+
+    /**
      * Executes the command and returns the result.
      *
      * @see Logic#execute(String)
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
-            CommandResult commandResult = logic.execute(commandText);
+            CommandResult commandResult = logic.executePerformanceCommands(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 

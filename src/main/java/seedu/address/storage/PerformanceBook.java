@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Performance;
+import seedu.address.model.util.SampleDataUtil;
 
 public class PerformanceBook {
 
@@ -21,10 +22,11 @@ public class PerformanceBook {
 
     public PerformanceBook(Performance performance) {
         this.performance = performance;
+        performanceStorage = new PerformanceStorage(performanceFilePath);
     }
 
     public static PerformanceBook createDefaultPerformanceBook() {
-        return new PerformanceBook(new Performance());
+        return new PerformanceBook(SampleDataUtil.getSamplePerformance());
     }
 
     /**
