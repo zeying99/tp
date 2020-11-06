@@ -231,7 +231,7 @@ public class ModelManager implements Model {
         if (question.isMcq()) {
             index = Integer.parseInt(response);
         } else {
-            index = response.equals("True") ? 1 : 2;
+            index = response.toLowerCase().equals("true") ? 1 : 2;
         }
         Question newQuestion = question.copy();
         newQuestion.setSelectedIndex(index);
