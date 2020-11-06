@@ -25,7 +25,7 @@
                         <Region fx:constant="USE_PREF_SIZE" />
                     </minWidth>
                 </Label>
-                <Label fx:id="prompt" text="\$first" styleClass="cell_big_label" wrapText="true"/>
+                <Label fx:id="prompt" text="\$first" styleClass="cell_small_label" wrapText="true"/>
             </HBox>
             <FlowPane fx:id="options" />
         </VBox>
