@@ -80,7 +80,6 @@ public class UniqueQuestionList implements Iterable<Question> {
             throw new QuestionNotFoundException();
         }
     }
-    //TODO:
     //    /**
     //     * Flips a question to show or hide the answer.
     //     * @param toFlip question to be flipped.

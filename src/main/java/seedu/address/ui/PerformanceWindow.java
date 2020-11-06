@@ -144,14 +144,14 @@ public class PerformanceWindow extends UiPart<Stage> {
     }
 
     /**
-     * Switches to response settings.
+     * Switches to responses panel.
      */
     @FXML
     public void handleViewResponses() {
         attemptListPanelPlaceholder.setVisible(false);
         attemptListPanelPlaceholder.setManaged(false);
 
-        responseListPanel = new ResponseListPanel(logic.getQuizList());
+        responseListPanel = new ResponseListPanel(logic.getResponseList());
         responseListPanelPlaceholder.getChildren().add(responseListPanel.getRoot());
         responseListPanelPlaceholder.setVisible(true);
         responseListPanelPlaceholder.setManaged(true);

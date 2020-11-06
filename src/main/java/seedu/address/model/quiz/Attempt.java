@@ -83,10 +83,11 @@ public class Attempt implements Comparable<Attempt> {
             }
         }
         String formattedAnalysis = "";
-        formattedAnalysis += "Out of " + getNumOfResponses() + " responses, You got " + totalScore + " responses "
-                + "correct.";
+        //formattedAnalysis += "Out of " + getNumOfResponses() + " responses, You got " + totalScore + " responses "
+        //        + "correct.";
+        formattedAnalysis += totalScore + " out of " + getNumOfResponses() + " attempted question(s) correct";
         formattedAnalysis += System.lineSeparator();
-        formattedAnalysis += "Wrong questions: " + System.lineSeparator();
+        //formattedAnalysis += "Wrong questions: " + System.lineSeparator();
         for (String wrongResponse : wrongResponses) {
             formattedAnalysis += wrongResponse + System.lineSeparator();
         }

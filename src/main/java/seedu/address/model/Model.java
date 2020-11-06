@@ -120,6 +120,9 @@ public interface Model {
     /** Allows flipping the boolean isQuizMode in model */
     void flipQuizMode();
 
+    /** Replace responseList field with the attempt's own responseList*/
+    void showAttempt(Attempt attempt);
+
     /** Get QuizList */
     ObservableList<Question> getQuizList();
 

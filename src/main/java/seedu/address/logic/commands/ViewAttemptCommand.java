@@ -2,9 +2,14 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.List;
+
+import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Flashcard;
+import seedu.address.model.quiz.Attempt;
 
 /**
  * Lists all persons in the address book to the user.
@@ -29,14 +34,14 @@ public class ViewAttemptCommand extends PerformanceCommand {
     @Override
     public PerformanceCommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        //          List<Flashcard> lastShownList = model.getFilteredPersonList();
-        //
-        //        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-        //            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        //        }
-        //
-        //        Flashcard flashcardToDelete = lastShownList.get(targetIndex.getZeroBased());
-        //        model.deleteFlashcard(flashcardToDelete);
+        List<Attempt> lastShownList = model.getAttemptList();
+
+        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_ATTEMPT_DISPLAYED_INDEX);
+        }
+
+        Attempt attemptToView = lastShownList.get(targetIndex.getZeroBased());
+        model.showAttempt(attemptToView);
         int score = 13;
         return new PerformanceCommandResult(String.format(MESSAGE_VIEW_ATTEMPT_SUCCESS, score), true, false);
     }

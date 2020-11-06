@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.quiz.Question;
+import seedu.address.model.quiz.Response;
 
 /**
  * Panel containing the list of persons.
@@ -23,7 +24,7 @@ public class ResponseListPanel extends UiPart<Region> {
     /**
      * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
      */
-    public ResponseListPanel(ObservableList<Question> quizList) {
+    public ResponseListPanel(ObservableList<Response> quizList) {
         super(FXML);
         quizListView.setItems(quizList);
         quizListView.setCellFactory(listView -> new ResponseListViewCell());

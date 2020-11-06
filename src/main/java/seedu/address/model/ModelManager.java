@@ -31,11 +31,9 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final ReadOnlyQuizBook readOnlyQuizBook = SampleDataUtil.getSampleQuizBook();
     private final QuizBook quizBook = new QuizBook(readOnlyQuizBook);
-    // private final PerformanceBook performanceBook = new PerformanceBook(SampleDataUtil.getSamplePerformance());
     private final PerformanceBook performanceBook;
     private final ObservableList<Question> filteredQuizList = this.quizBook.getQuestionList();
-    private final List<Response> filteredResponseList = new ArrayList<>();
-    // private final ObservableList<Attempt> filteredAttemptList = this.performanceBook.getPerformance().getAttempts();
+    private List<Response> filteredResponseList = new ArrayList<>();
     private final ObservableList<Attempt> filteredAttemptList;
     private final UserPrefs userPrefs;
     private final FilteredList<Flashcard> filteredFlashcards;
@@ -216,6 +214,10 @@ public class ModelManager implements Model {
         } catch (IOException e) {
             logger.warning("Error here.");
         }
+    }
+    @Override
+    public void showAttempt(Attempt attempt) {
+        filteredResponseList = attempt.getResponses();
     }
 
     @Override
