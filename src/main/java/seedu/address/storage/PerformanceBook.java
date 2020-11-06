@@ -19,6 +19,9 @@ public class PerformanceBook {
         performance = performanceStorage.load();
     }
 
+    /**
+     * Creates performance book.
+     */
     public PerformanceBook(Performance performance) {
         this.performance = performance;
         performanceStorage = new PerformanceStorage(performanceFilePath);

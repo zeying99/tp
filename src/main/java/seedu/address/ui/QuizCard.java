@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -9,7 +11,7 @@ import seedu.address.model.quiz.Mcq;
 import seedu.address.model.quiz.Question;
 import seedu.address.model.quiz.TrueFalse;
 
-import java.util.concurrent.atomic.AtomicInteger;
+
 
 /**
  * An UI component that displays information of a {@code Flashcard}.
@@ -49,7 +51,8 @@ public class QuizCard extends UiPart<Region> {
             Mcq mcqQuestion = (Mcq) question;
             AtomicInteger counter = new AtomicInteger(1);
             mcqQuestion.getOptions().stream()
-                    .forEach(option -> options.getChildren().add(new Label("Option " +  counter.getAndIncrement() + " : " + option)));
+                    .forEach(option -> options.getChildren().add(new Label("Option "
+                        + counter.getAndIncrement() + " : " + option)));
         } else {
             TrueFalse.OPTIONS.stream()
                     .forEach(option -> options.getChildren().add(new Label(option)));
