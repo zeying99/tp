@@ -202,6 +202,11 @@ public class AddCommandTest {
         public void savePerformance() throws IOException {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void endAttempt() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
