@@ -62,6 +62,37 @@ public class Attempt implements Comparable<Attempt> {
         return score;
     }
 
+    /**
+     * Returns a more detailed attempt analysis.
+     */
+    public String attemptAnalysis() {
+        int totalScore = 0;
+        ArrayList<String> wrongResponses = new ArrayList<>();
+        Iterator<Response> itr = responses.iterator();
+        while (itr.hasNext()) {
+            Response response = itr.next();
+            if (response.getIsCorrect()) {
+                totalScore += 1;
+            } else {
+                String wrongQuestion = "";
+                wrongQuestion += System.lineSeparator();
+                wrongQuestion += "Question: " + response.getQuestion().getQuestion();
+                wrongQuestion += System.lineSeparator();
+                wrongQuestion += "Your response: " + response.getResponse();
+                wrongResponses.add(wrongQuestion);
+            }
+        }
+        String formattedAnalysis = "";
+        formattedAnalysis += "Out of " + getNumOfResponses() + " responses, You got " + totalScore + " responses "
+                + "correct.";
+        formattedAnalysis += System.lineSeparator();
+        formattedAnalysis += "Wrong questions: " + System.lineSeparator();
+        for (String wrongResponse : wrongResponses) {
+            formattedAnalysis += wrongResponse + System.lineSeparator();
+        }
+        return formattedAnalysis;
+    }
+
     public LocalDateTime getTimestamp() {
         return this.timestamp;
     }

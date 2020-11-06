@@ -30,7 +30,7 @@ import seedu.address.testutil.FlashcardUtil;
 
 public class DefinitionBookParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final FlashcardParser parser = new FlashcardParser();
 
     @Test
     public void parseCommand_add() throws Exception {
@@ -42,7 +42,6 @@ public class DefinitionBookParserTest {
     @Test
     public void parseCommand_clear() throws Exception {
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
-        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
     }
 
     @Test
