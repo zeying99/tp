@@ -9,7 +9,7 @@ import seedu.address.model.Model;
 /**
  * Lists all persons in the address book to the user.
  */
-public class ViewAttemptCommand extends Command {
+public class ViewAttemptCommand extends PerformanceCommand {
 
     public static final String COMMAND_WORD = "view";
 
@@ -27,7 +27,7 @@ public class ViewAttemptCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public PerformanceCommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         //          List<Flashcard> lastShownList = model.getFilteredPersonList();
         //
@@ -38,7 +38,7 @@ public class ViewAttemptCommand extends Command {
         //        Flashcard flashcardToDelete = lastShownList.get(targetIndex.getZeroBased());
         //        model.deleteFlashcard(flashcardToDelete);
         int score = 13;
-        return new CommandResult(String.format(MESSAGE_VIEW_ATTEMPT_SUCCESS, score));
+        return new PerformanceCommandResult(String.format(MESSAGE_VIEW_ATTEMPT_SUCCESS, score), true, false);
     }
 
     @Override

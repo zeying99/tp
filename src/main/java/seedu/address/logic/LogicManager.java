@@ -9,6 +9,8 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.PerformanceCommand;
+import seedu.address.logic.commands.PerformanceCommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.PerformanceParser;
@@ -72,11 +74,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public CommandResult executePerformanceCommands(String commandText) throws CommandException, ParseException {
+    public PerformanceCommandResult executePerformanceCommands(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
-        Command command = performanceParser.parseCommand(commandText);
-        CommandResult commandResult = command.execute(model);
+        PerformanceCommand command = performanceParser.parseCommand(commandText);
+        PerformanceCommandResult commandResult = command.execute(model);
         return commandResult;
     }
 
