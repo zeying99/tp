@@ -21,6 +21,7 @@ public class PerformanceBook {
 
     public PerformanceBook(Performance performance) {
         this.performance = performance;
+        performanceStorage = new PerformanceStorage(performanceFilePath);
     }
 
     public static PerformanceBook createDefaultPerformanceBook() {
