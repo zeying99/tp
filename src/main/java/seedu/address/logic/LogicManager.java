@@ -36,23 +36,23 @@ public class LogicManager implements Logic {
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
      */
     public LogicManager(Model model, Storage storage) {
-        this.model = model;
-        this.storage = storage;
-        addressBookParser = new AddressBookParser();
-        quizParser = new QuizParser();
-    }
+                this.model = model;
+                this.storage = storage;
+                addressBookParser = new AddressBookParser();
+                quizParser = new QuizParser();
+            }
 
-    @Override
-    public CommandResult execute(String commandText) throws CommandException, ParseException {
-        logger.info("----------------[USER COMMAND][" + commandText + "]");
+            @Override
+            public CommandResult execute(String commandText) throws CommandException, ParseException {
+                logger.info("----------------[USER COMMAND][" + commandText + "]");
 
-        CommandResult commandResult;
-        Command command;
+                CommandResult commandResult;
+                Command command;
 
-        if (model.getIsQuizMode()) {
-            command = quizParser.parseCommand(commandText);
-        } else {
-            command = addressBookParser.parseCommand(commandText);
+                if (model.getIsQuizMode()) {
+                    command = quizParser.parseCommand(commandText);
+                } else {
+                    command = addressBookParser.parseCommand(commandText);
         }
         commandResult = command.execute(model);
 

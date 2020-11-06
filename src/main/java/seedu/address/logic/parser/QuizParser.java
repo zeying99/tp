@@ -6,12 +6,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.AnswerCommand;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.LeaveQuizCommand;
-import seedu.address.logic.commands.StartAttemptCommand;
+import seedu.address.logic.commands.*;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -49,6 +44,9 @@ public class QuizParser {
 
         case AnswerCommand.COMMAND_WORD:
             return new AnswerCommandParser().parse(arguments);
+
+        case EndAttemptCommand.COMMAND_WORD:
+            return new EndAttemptCommand();
 
         case LeaveQuizCommand.COMMAND_WORD:
             return new LeaveQuizParser().parse(arguments);
