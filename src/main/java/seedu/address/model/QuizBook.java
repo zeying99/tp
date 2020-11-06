@@ -50,6 +50,15 @@ public class QuizBook implements ReadOnlyQuizBook {
     }
 
     /**
+     * Ends a current quiz attempt.
+     */
+    public Attempt endAttempt() {
+        Attempt tempAttempt = this.currentAttempt;
+        this.currentAttempt = null;
+        return tempAttempt;
+    }
+
+    /**
      * Records a new response to current quiz attempt.
      */
     public void recordResponse(Response response) {

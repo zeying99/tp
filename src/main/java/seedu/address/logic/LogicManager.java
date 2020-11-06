@@ -13,7 +13,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.PerformanceCommand;
 import seedu.address.logic.commands.PerformanceCommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.AddressBookParser;
+import seedu.address.logic.parser.FlashcardParser;
 import seedu.address.logic.parser.PerformanceParser;
 import seedu.address.logic.parser.QuizParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -34,7 +34,7 @@ public class LogicManager implements Logic {
 
     private final Model model;
     private final Storage storage;
-    private final AddressBookParser addressBookParser;
+    private final FlashcardParser flashcardParser;
     private final QuizParser quizParser;
     private final PerformanceParser performanceParser;
 
@@ -44,7 +44,7 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        addressBookParser = new AddressBookParser();
+        flashcardParser = new FlashcardParser();
         quizParser = new QuizParser();
         performanceParser = new PerformanceParser();
     }
@@ -59,7 +59,8 @@ public class LogicManager implements Logic {
         if (model.getIsQuizMode()) {
             command = quizParser.parseCommand(commandText);
         } else {
-            command = addressBookParser.parseCommand(commandText);
+            command = flashcardParser.parseCommand(commandText);
+
         }
         commandResult = command.execute(model);
 
@@ -74,9 +75,9 @@ public class LogicManager implements Logic {
 
         return commandResult;
     }
-
     @Override
-    public PerformanceCommandResult executePerformanceCommands(String commandText) throws CommandException, ParseException {
+    public PerformanceCommandResult executePerformanceCommands(String commandText)
+            throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         PerformanceCommand command = performanceParser.parseCommand(commandText);

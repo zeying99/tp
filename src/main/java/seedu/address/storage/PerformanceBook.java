@@ -20,6 +20,9 @@ public class PerformanceBook {
         performance = performanceStorage.load();
     }
 
+    /**
+     * Creates performance book using given performance.
+     */
     public PerformanceBook(Performance performance) {
         this.performance = performance;
         performanceStorage = new PerformanceStorage(performanceFilePath);

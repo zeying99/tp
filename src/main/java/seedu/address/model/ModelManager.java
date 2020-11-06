@@ -31,10 +31,12 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final ReadOnlyQuizBook readOnlyQuizBook = SampleDataUtil.getSampleQuizBook();
     private final QuizBook quizBook = new QuizBook(readOnlyQuizBook);
-    private final PerformanceBook performanceBook = new PerformanceBook(SampleDataUtil.getSamplePerformance());
+    // private final PerformanceBook performanceBook = new PerformanceBook(SampleDataUtil.getSamplePerformance());
+    private final PerformanceBook performanceBook;
     private final ObservableList<Question> filteredQuizList = this.quizBook.getQuestionList();
-    private final ObservableList<Attempt> filteredAttemptList = this.performanceBook.getPerformance().getAttempts();
     private final List<Response> filteredResponseList = new ArrayList<>();
+    // private final ObservableList<Attempt> filteredAttemptList = this.performanceBook.getPerformance().getAttempts();
+    private final ObservableList<Attempt> filteredAttemptList;
     private final UserPrefs userPrefs;
     private final FilteredList<Flashcard> filteredFlashcards;
     private boolean isQuizMode = false;
@@ -52,6 +54,16 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredFlashcards = new FilteredList<>(this.addressBook.getFlashcardList());
+
+        PerformanceBook tempPerformanceBook;
+
+        try {
+            tempPerformanceBook = new PerformanceBook();
+        } catch (IOException e) {
+            tempPerformanceBook = PerformanceBook.createDefaultPerformanceBook();
+        }
+        performanceBook = tempPerformanceBook;
+        filteredAttemptList = this.performanceBook.getPerformance().getAttempts();
     }
 
     public ModelManager() {
@@ -193,6 +205,17 @@ public class ModelManager implements Model {
     public void startAttempt() {
         this.hasCurrentAttempt = true;
         quizBook.startAttempt();
+    }
+
+    @Override
+    public void endAttempt() {
+        this.hasCurrentAttempt = false;
+        Attempt currentAttempt = quizBook.endAttempt();
+        try {
+            performanceBook.saveAttempt(currentAttempt);
+        } catch (IOException e) {
+            logger.warning("Error here.");
+        }
     }
 
     @Override
