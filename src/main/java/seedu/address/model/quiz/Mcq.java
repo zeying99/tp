@@ -68,7 +68,8 @@ public class Mcq extends Question {
         try {
             int attempt = Integer.parseInt(response);
             if (!isValidResponse(attempt)) {
-                throw new InvalidQuestionAnswerException("Response is not a valid option.");
+                throw new InvalidQuestionAnswerException(
+                    "Response is not a valid option. Please enter integer number in the range of 1 to option size");
             }
             return attempt == answer;
         } catch (NumberFormatException e) {
