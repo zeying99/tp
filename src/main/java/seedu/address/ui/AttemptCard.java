@@ -47,7 +47,8 @@ public class AttemptCard extends UiPart<Region> {
         this.attempt = attempt;
         id.setText(displayedIndex + ". ");
         attemptDate.setText(attempt.getTimestamp().toLocalDate().toString());
-        score.setText(Integer.toString(attempt.calculateScore()));
+        // score.setText(Integer.toString(attempt.calculateScore()));
+        score.setText(attempt.attemptAnalysis());
         //        priority.setText("Priority: " + attempt.getPriority().priority);
         //        attempt.getTags().stream()
         //                .sorted(Comparator.comparing(tag -> tag.tagName))
