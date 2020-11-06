@@ -158,6 +158,22 @@ public class PerformanceWindow extends UiPart<Stage> {
     }
 
     /**
+     * Switches to attempts panel.
+     */
+    @FXML
+    public void handleViewAttempts() {
+        responseListPanelPlaceholder.setVisible(false);
+        responseListPanelPlaceholder.setManaged(false);
+
+        attemptListPanel = new AttemptListPanel(logic.getAttemptList());
+        attemptListPanelPlaceholder.getChildren().add(attemptListPanel.getRoot());
+        attemptListPanelPlaceholder.setVisible(true);
+        attemptListPanelPlaceholder.setManaged(true);
+        root.getScene().lookup("#attemptList").setVisible(true);
+        root.getScene().lookup("#attemptList").setManaged(true);
+    }
+
+    /**
      * Executes the command and returns the result.
      *
      * @see Logic#execute(String)
@@ -169,6 +185,9 @@ public class PerformanceWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
             if (commandResult.isSwitchToResponses()) {
                 handleViewResponses();
+            }
+            if (commandResult.isSwitchToAttempts()) {
+                handleViewAttempts();
             }
 
             return commandResult;

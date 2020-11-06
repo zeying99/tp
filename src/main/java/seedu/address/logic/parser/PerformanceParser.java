@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.ListAttemptsCommand;
 import seedu.address.logic.commands.PerformanceCommand;
 import seedu.address.logic.commands.ViewAttemptCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -40,7 +41,8 @@ public class PerformanceParser {
 
         case ViewAttemptCommand.COMMAND_WORD:
             return new ViewAttemptCommandParser().parse(arguments);
-
+        case ListAttemptsCommand.COMMAND_WORD:
+            return new ListAttemptsCommand();
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
