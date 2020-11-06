@@ -139,6 +139,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void showAttempt(Attempt attempt) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasCurrentAttempt() {
             throw new AssertionError("This method should not be called.");
         }
@@ -160,6 +165,11 @@ public class AddCommandTest {
 
         @Override
         public ObservableList<Attempt> getAttemptList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Response> getResponseList() {
             throw new AssertionError("This method should not be called.");
         }
 
