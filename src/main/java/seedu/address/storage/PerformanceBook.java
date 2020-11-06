@@ -20,7 +20,7 @@ public class PerformanceBook {
     }
 
     /**
-     * Creates performance book.
+     * Creates performance book using given performance.
      */
     public PerformanceBook(Performance performance) {
         this.performance = performance;

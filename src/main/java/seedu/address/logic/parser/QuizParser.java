@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AnswerCommand;
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.EndAttemptCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.LeaveQuizCommand;
@@ -49,6 +50,9 @@ public class QuizParser {
 
         case AnswerCommand.COMMAND_WORD:
             return new AnswerCommandParser().parse(arguments);
+
+        case EndAttemptCommand.COMMAND_WORD:
+            return new EndAttemptCommand();
 
         case LeaveQuizCommand.COMMAND_WORD:
             return new LeaveQuizParser().parse(arguments);

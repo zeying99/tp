@@ -53,6 +53,7 @@ public class LogicManager implements Logic {
             command = quizParser.parseCommand(commandText);
         } else {
             command = flashcardParser.parseCommand(commandText);
+
         }
         commandResult = command.execute(model);
 
