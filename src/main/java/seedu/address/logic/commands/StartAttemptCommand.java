@@ -34,9 +34,9 @@ public class StartAttemptCommand extends Command {
             return true;
         }
 
-    // instanceof handles nulls
+        // instanceof handles nulls
         if (!(other instanceof StartAttemptCommand)) {
-        return false;
+            return false;
         }
 
         return true;
