@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Question;
 
 /**
@@ -13,4 +14,5 @@ public interface ReadOnlyQuizBook {
      * This list will not contain any duplicate questions.
      */
     ObservableList<Question> getQuestionList();
+    Attempt getCurrentAttempt();
 }

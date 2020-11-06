@@ -15,6 +15,7 @@ import seedu.address.logic.parser.QuizParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyQuizBook;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Question;
@@ -75,6 +76,9 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ReadOnlyQuizBook getQuizBook() { return model.getQuizBook(); }
+
+    @Override
     public ObservableList<Flashcard> getFilteredPersonList() {
         return model.getFilteredPersonList();
     }
@@ -101,4 +105,5 @@ public class LogicManager implements Logic {
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
     }
+
 }

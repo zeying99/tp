@@ -157,4 +157,6 @@ public class QuizBook implements ReadOnlyQuizBook {
         return questions.hashCode();
     }
 
+    @Override
+    public Attempt getCurrentAttempt() { return this.currentAttempt; }
 }

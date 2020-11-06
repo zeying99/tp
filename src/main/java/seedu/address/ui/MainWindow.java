@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -12,10 +13,12 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.quiz.Response;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -229,6 +232,7 @@ public class MainWindow extends UiPart<Stage> {
         performanceWindow.hide();
         primaryStage.hide();
     }
+
 
     public PersonListPanel getPersonListPanel() {
         return personListPanel;

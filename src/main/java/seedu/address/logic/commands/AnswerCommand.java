@@ -68,9 +68,11 @@ public class AnswerCommand extends Command {
 
         if (model.hasCurrentAttempt()) {
             model.recordResponse(resp);
-            return new CommandResult(String.format(MESSAGE_ANSWER_SUCCESS, this.index.getZeroBased(), this.answer));
+            return new CommandResult(String.format(MESSAGE_ANSWER_SUCCESS, this.index.getZeroBased(), this.answer),
+                false, false, false, false, false, true);
         } else {
             return new CommandResult(MESSAGE_CURRENTLY_NOT_ATTEMPTING);
         }
     }
+
 }

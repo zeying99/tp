@@ -126,4 +126,7 @@ public interface Model {
 
     /** Saves Performance in performance book **/
     void savePerformance() throws IOException;
+
+    /** Get QuizBook */
+    ReadOnlyQuizBook getQuizBook();
 }

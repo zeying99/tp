@@ -115,6 +115,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ReadOnlyQuizBook getQuizBook() {
+        return quizBook;
+    }
+
+    @Override
     public boolean hasFlashcard(Flashcard flashcard) {
         requireNonNull(flashcard);
         return addressBook.hasFlashcard(flashcard);

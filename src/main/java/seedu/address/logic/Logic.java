@@ -8,6 +8,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyQuizBook;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Question;
@@ -54,4 +55,6 @@ public interface Logic {
     ObservableList<Question> getQuizList();
     /** Get QuizList */
     ObservableList<Attempt> getAttemptList();
+    /** Get QuizBook */
+    ReadOnlyQuizBook getQuizBook();
 }
