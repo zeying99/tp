@@ -1,29 +1,40 @@
 package seedu.address.model.quiz;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Iterator;
+
+import javafx.collections.ObservableList;
 
 /**
  * Represents a history of past attempts.
  */
 public class Performance {
-    private ArrayList<Attempt> attempts;
+    private UniqueAttemptList attempts;
 
     /**
      * Constructor of Performance called when no past attempts exists
      */
     public Performance() {
-        this.attempts = new ArrayList<>();
+        this.attempts = new UniqueAttemptList();
+    }
+
+    /**
+     * Constructor of Performance called when local cache of attempts exists
+     */
+    public Performance(UniqueAttemptList attempts) {
+        requireNonNull(attempts);
+        this.attempts = attempts;
     }
 
     public void addAttempt(Attempt attempt) {
         attempts.add(attempt);
     }
 
-    public ArrayList<Attempt> getAttempts() {
-        return attempts;
+    public ObservableList<Attempt> getAttempts() {
+        return attempts.asUnmodifiableObservableList();
     }
 
     /**

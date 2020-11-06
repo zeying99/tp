@@ -20,7 +20,7 @@ Given below are my contributions to the project.
 
 * **Enhancements to existing features**:
   * Refactored code to more suit our application (Pull request [\#38]())
-  * Duplicate and refactor classes for our quiz feature (Pull request [\#82]())
+  * Create and refactor classes for our quiz feature (Pull request [\#82]())
   * Added sample quiz questions (Pull request [\#82]())
   * Wrote additional tests for existing features (Pull request [\#82]())
   * Fix PED bug reports (Pull request [\#133]())

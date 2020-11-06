@@ -14,6 +14,9 @@ public class CommandResult {
     /** Help information should be shown to the user. */
     private final boolean showHelp;
 
+    /** Performance information should be shown to the user. */
+    private final boolean showPerformance;
+
     /** Application should be switched to quiz mode. */
     private final boolean switchToQuiz;
 
@@ -26,9 +29,10 @@ public class CommandResult {
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean showPerformance, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
+        this.showPerformance = showPerformance;
         this.exit = exit;
         this.switchToQuiz = false;
         this.switchToFlashcards = false;
@@ -37,9 +41,11 @@ public class CommandResult {
     /**
      * Constructs a {@code CommandResult} with the specified fields (2).
      */
-    public CommandResult(String feedbackToUser, boolean isQuiz, boolean isExitQuiz, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean isQuiz, boolean isExitQuiz, boolean showHelp,
+                         boolean showPerformance, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
+        this.showPerformance = showPerformance;
         this.exit = exit;
         this.switchToQuiz = isQuiz;
         this.switchToFlashcards = isExitQuiz;
@@ -50,7 +56,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, false);
     }
 
     public String getFeedbackToUser() {
@@ -59,6 +65,10 @@ public class CommandResult {
 
     public boolean isShowHelp() {
         return showHelp;
+    }
+
+    public boolean isShowPerformance() {
+        return showPerformance;
     }
 
     public boolean isSwitchToQuiz() {

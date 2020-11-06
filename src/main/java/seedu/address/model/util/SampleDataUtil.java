@@ -1,5 +1,7 @@
 package seedu.address.model.util;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -12,8 +14,11 @@ import seedu.address.model.person.Definition;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.person.Priority;
 import seedu.address.model.person.Title;
+import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Mcq;
+import seedu.address.model.quiz.Performance;
 import seedu.address.model.quiz.Question;
+import seedu.address.model.quiz.Response;
 import seedu.address.model.quiz.TrueFalse;
 import seedu.address.model.tag.Tag;
 
@@ -103,6 +108,24 @@ public class SampleDataUtil {
             sampleQb.addQuestion(sampleQuestion);
         }
         return sampleQb;
+    }
+
+    public static Attempt[] getSampleAttempts() {
+        ArrayList<Response> sampleResponses = new ArrayList<>();
+        for (Question sampleQ : getSampleQuestions()) {
+            sampleResponses.add(new Response("example", sampleQ, true));
+        }
+        return new Attempt[]{
+            new Attempt(sampleResponses, LocalDateTime.now())
+        };
+    }
+
+    public static Performance getSamplePerformance() {
+        Performance sampleP = new Performance();
+        for (Attempt sampleAttempt : getSampleAttempts()) {
+            sampleP.addAttempt(sampleAttempt);
+        }
+        return sampleP;
     }
 
     /**

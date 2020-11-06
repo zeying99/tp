@@ -22,6 +22,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.Flashcard;
+import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Question;
 import seedu.address.model.quiz.Response;
 import seedu.address.testutil.FlashcardBuilder;
@@ -154,6 +155,11 @@ public class AddCommandTest {
 
         @Override
         public ObservableList<Question> getQuizList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Attempt> getAttemptList() {
             throw new AssertionError("This method should not be called.");
         }
 
