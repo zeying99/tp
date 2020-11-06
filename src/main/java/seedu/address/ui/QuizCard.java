@@ -15,6 +15,8 @@ import seedu.address.model.quiz.TrueFalse;
 public class QuizCard extends UiPart<Region> {
 
     private static final String FXML = "QuizListCard.fxml";
+    private static final String LABEL_BACKGROUND_GREY = "-fx-background-color: #808080;";
+    private static final String LABEL_BACKGROUND_PURPLE = "-fx-background-color: #7f368f;";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -52,6 +54,12 @@ public class QuizCard extends UiPart<Region> {
                     .forEach(option -> options.getChildren().add(new Label(option)));
         }
     }
+
+    public void highlightUserAnswer(int index) {
+        options.getChildren().get(index).setStyle("-fx-background-color: #018f6e;");
+    }
+
+
 
     @Override
     public boolean equals(Object other) {

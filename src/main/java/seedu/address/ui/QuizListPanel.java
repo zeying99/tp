@@ -30,7 +30,7 @@ public class QuizListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Flashcard} using a {@code PersonCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Question} using a {@code QuizCard}.
      */
     class QuizListViewCell extends ListCell<Question> {
         @Override
