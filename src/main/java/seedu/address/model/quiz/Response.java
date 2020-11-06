@@ -52,4 +52,17 @@ public class Response {
         return this.response;
     }
 
+    /**
+     * Returns true if both responses share the same question and response
+     * This defines a weaker notion of equality between two questions.
+     */
+    public boolean isSameResponse(Response otherResponse) {
+        if (otherResponse == this) {
+            return true;
+        }
+        return otherResponse != null
+                && otherResponse.getQuestion().equals(getQuestion())
+                && otherResponse.getResponse().equals(getResponse());
+    }
+
 }

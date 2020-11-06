@@ -2,7 +2,6 @@ package seedu.address.logic;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.List;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -103,7 +102,7 @@ public class LogicManager implements Logic {
         return model.getAttemptList();
     }
     @Override
-    public List<Response> getResponseList() {
+    public ObservableList<Response> getResponseList() {
         return model.getResponseList();
     }
 

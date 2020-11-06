@@ -7,6 +7,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.quiz.Mcq;
 import seedu.address.model.quiz.Question;
+import seedu.address.model.quiz.Response;
 import seedu.address.model.quiz.TrueFalse;
 
 /**
@@ -38,8 +39,9 @@ public class ResponseCard extends UiPart<Region> {
     /**
      * Creates a {@code PersonCode} with the given {@code Flashcard} and index to display.
      */
-    public ResponseCard(Question question, int displayedIndex) {
+    public ResponseCard(Response response, int displayedIndex) {
         super(FXML);
+        Question question = response.getQuestion();
         this.question = question;
         id.setText(displayedIndex + ". ");
         prompt.setText(question.getPrompt());

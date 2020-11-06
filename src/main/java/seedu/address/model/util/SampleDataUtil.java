@@ -1,7 +1,6 @@
 package seedu.address.model.util;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -20,6 +19,7 @@ import seedu.address.model.quiz.Performance;
 import seedu.address.model.quiz.Question;
 import seedu.address.model.quiz.Response;
 import seedu.address.model.quiz.TrueFalse;
+import seedu.address.model.quiz.UniqueResponseList;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -111,7 +111,7 @@ public class SampleDataUtil {
     }
 
     public static Attempt[] getSampleAttempts() {
-        ArrayList<Response> sampleResponses = new ArrayList<>();
+        UniqueResponseList sampleResponses = new UniqueResponseList();
         for (Question sampleQ : getSampleQuestions()) {
             sampleResponses.add(new Response("example", sampleQ, true));
         }

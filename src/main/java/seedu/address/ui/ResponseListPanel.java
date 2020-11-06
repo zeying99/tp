@@ -8,34 +8,34 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.quiz.Question;
 import seedu.address.model.quiz.Response;
+
 
 /**
  * Panel containing the list of persons.
  */
 public class ResponseListPanel extends UiPart<Region> {
     private static final String FXML = "ResponseListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+    private final Logger logger = LogsCenter.getLogger(ResponseListPanel.class);
 
     @FXML
-    private ListView<Question> quizListView;
+    private ListView<Response> responseListView;
 
     /**
-     * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
+     * Creates a {@code ResponseListPanel} with the given {@code ObservableList}.
      */
-    public ResponseListPanel(ObservableList<Response> quizList) {
+    public ResponseListPanel(ObservableList<Response> responseList) {
         super(FXML);
-        quizListView.setItems(quizList);
-        quizListView.setCellFactory(listView -> new ResponseListViewCell());
+        responseListView.setItems(responseList);
+        responseListView.setCellFactory(listView -> new ResponseListViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Flashcard} using a {@code PersonCard}.
      */
-    class ResponseListViewCell extends ListCell<Question> {
+    class ResponseListViewCell extends ListCell<Response> {
         @Override
-        protected void updateItem(Question question, boolean empty) {
+        protected void updateItem(Response question, boolean empty) {
             super.updateItem(question, empty);
 
             if (empty || question == null) {

@@ -5,8 +5,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -33,7 +31,7 @@ public class ModelManager implements Model {
     private final QuizBook quizBook = new QuizBook(readOnlyQuizBook);
     private final PerformanceBook performanceBook;
     private final ObservableList<Question> filteredQuizList = this.quizBook.getQuestionList();
-    private List<Response> filteredResponseList = new ArrayList<>();
+    private ObservableList<Response> responseList;
     private final ObservableList<Attempt> filteredAttemptList;
     private final UserPrefs userPrefs;
     private final FilteredList<Flashcard> filteredFlashcards;
@@ -62,6 +60,7 @@ public class ModelManager implements Model {
         }
         performanceBook = tempPerformanceBook;
         filteredAttemptList = this.performanceBook.getPerformance().getAttempts();
+        responseList = filteredAttemptList.get(0).getResponses();
     }
 
     public ModelManager() {
@@ -217,7 +216,7 @@ public class ModelManager implements Model {
     }
     @Override
     public void showAttempt(Attempt attempt) {
-        filteredResponseList = attempt.getResponses();
+        responseList = attempt.getResponses();
     }
 
     @Override
@@ -233,8 +232,8 @@ public class ModelManager implements Model {
         return this.filteredAttemptList;
     }
 
-    public List<Response> getResponseList() {
-        return this.filteredResponseList;
+    public ObservableList<Response> getResponseList() {
+        return this.responseList;
     }
 
     /**

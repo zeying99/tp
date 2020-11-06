@@ -8,7 +8,6 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Flashcard;
 import seedu.address.model.quiz.Attempt;
 
 /**
@@ -23,7 +22,7 @@ public class ViewAttemptCommand extends PerformanceCommand {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_VIEW_ATTEMPT_SUCCESS = "Viewing Attempt: %1$s";
+    public static final String MESSAGE_VIEW_ATTEMPT_SUCCESS = "Viewing Attempt %1$s";
 
     private final Index targetIndex;
 
@@ -42,8 +41,8 @@ public class ViewAttemptCommand extends PerformanceCommand {
 
         Attempt attemptToView = lastShownList.get(targetIndex.getZeroBased());
         model.showAttempt(attemptToView);
-        int score = 13;
-        return new PerformanceCommandResult(String.format(MESSAGE_VIEW_ATTEMPT_SUCCESS, score), true, false);
+        return new PerformanceCommandResult(String.format(MESSAGE_VIEW_ATTEMPT_SUCCESS, targetIndex.getOneBased()),
+                false, true);
     }
 
     @Override

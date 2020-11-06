@@ -9,14 +9,12 @@ import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
-import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.PerformanceCommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * The Main Window. Provides the basic application layout containing
- * a menu bar and space where other JavaFX elements can be placed.
+ * The Performance Window.
  */
 public class PerformanceWindow extends UiPart<Stage> {
 
@@ -169,6 +167,9 @@ public class PerformanceWindow extends UiPart<Stage> {
             PerformanceCommandResult commandResult = logic.executePerformanceCommands(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+            if (commandResult.isSwitchToResponses()) {
+                handleViewResponses();
+            }
 
             return commandResult;
         } catch (CommandException | ParseException e) {
