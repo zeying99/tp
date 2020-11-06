@@ -12,6 +12,7 @@ import seedu.address.logic.commands.EndAttemptCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.LeaveQuizCommand;
+import seedu.address.logic.commands.ShowPerformanceCommand;
 import seedu.address.logic.commands.StartAttemptCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -59,6 +60,9 @@ public class QuizParser {
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
+
+        case ShowPerformanceCommand.COMMAND_WORD:
+            return new ShowPerformanceCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
