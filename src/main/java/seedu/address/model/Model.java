@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -118,8 +119,12 @@ public interface Model {
 
     /** Get QuizList */
     ObservableList<Question> getQuizList();
+
     /** Get AttemptList */
     ObservableList<Attempt> getAttemptList();
+
+    /** Get ResponseList */
+    List<Response> getResponseList();
 
     /** Saves Performance in performance book **/
     void savePerformance() throws IOException;

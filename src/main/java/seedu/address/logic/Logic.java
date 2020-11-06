@@ -1,6 +1,7 @@
 package seedu.address.logic;
 
 import java.nio.file.Path;
+import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
@@ -12,6 +13,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Flashcard;
 import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Question;
+import seedu.address.model.quiz.Response;
 
 /**
  * API of the Logic component
@@ -62,6 +64,10 @@ public interface Logic {
 
     /** Get QuizList */
     ObservableList<Question> getQuizList();
+
     /** Get QuizList */
     ObservableList<Attempt> getAttemptList();
+
+    /** Get ResponseList */
+    List<Response> getResponseList();
 }
