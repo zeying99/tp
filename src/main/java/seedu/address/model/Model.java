@@ -119,10 +119,23 @@ public interface Model {
     /** Allows flipping the boolean isQuizMode in model */
     void flipQuizMode();
 
+    /** Replace responseList field with the attempt's own responseList*/
+    void showAttempt(Attempt attempt);
+
+    /** Set the selectedIndex field in the target Question*/
+    void setSelectedIndex(Question target, String response);
+
+    /** Sets the selected index of all questions in quizBook */
+    void setAllSelectedIndex(int index);
+
     /** Get QuizList */
     ObservableList<Question> getQuizList();
+
     /** Get AttemptList */
     ObservableList<Attempt> getAttemptList();
+
+    /** Get ResponseList */
+    ObservableList<Response> getResponseList();
 
     /** Saves Performance in performance book **/
     void savePerformance() throws IOException;

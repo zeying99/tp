@@ -184,7 +184,6 @@ public class MainWindow extends UiPart<Stage> {
     public void handleQuiz() {
         personListPanelPlaceholder.setVisible(false);
         personListPanelPlaceholder.setManaged(false);
-        // TODO: Implement QuizList to display questions
 
         quizListPanel = new QuizListPanel(logic.getQuizList());
         quizListPanelPlaceholder.getChildren().add(quizListPanel.getRoot());
@@ -202,8 +201,6 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleExitQuiz() {
-        // TODO: Implement QuizList to display questions and hide them when switching back
-
         quizListPanelPlaceholder.setVisible(false);
         quizListPanelPlaceholder.setManaged(false);
         primaryStage.getScene().lookup("#quizList").setVisible(false);

@@ -17,6 +17,7 @@ public abstract class Question implements Comparable<Question> {
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
     public final String prompt;
+    private int selectedIndex;
 
     /**
      * Every field must be present and not null.
@@ -25,7 +26,13 @@ public abstract class Question implements Comparable<Question> {
         requireNonNull(prompt);
         checkArgument(isValidPrompt(prompt), MESSAGE_CONSTRAINTS);
         this.prompt = prompt;
+        selectedIndex = -1;
     }
+
+    /**
+     * Return copy of itself
+     */
+    public abstract Question copy();
 
     /**
      * Returns true if a given string is a valid prompt.
@@ -51,6 +58,25 @@ public abstract class Question implements Comparable<Question> {
      */
     public abstract boolean checkResponse(String response) throws InvalidQuestionAnswerException;
 
+    /**
+     * Returns true if Question is MCQ question, other wise returns false
+     */
+    public abstract boolean isMcq();
+
+    /**
+     * Sets selected option
+     */
+    public void setSelectedIndex(int index) {
+        selectedIndex = index;
+    }
+
+    /**
+     * Returns selectedOption
+     */
+    public int getSelectedIndex() {
+        return selectedIndex;
+    }
+
     public abstract int compareTo(Question f2);
 
     /**
@@ -65,8 +91,4 @@ public abstract class Question implements Comparable<Question> {
                 && otherQuestion.getPrompt().equals(getPrompt());
     }
 
-    /**
-     * Returns true if Question is MCQ question, other wise returns false
-     */
-    public abstract boolean isMcq();
 }

@@ -1,18 +1,17 @@
 package seedu.address.storage;
 
-import java.util.ArrayList;
-
 import seedu.address.model.quiz.Question;
 import seedu.address.model.quiz.Response;
+import seedu.address.model.quiz.UniqueResponseList;
 
 public class ResponseParser {
 
     /**
      * Returns list of responses
      */
-    public ArrayList<Response> parseResponses(String stringResponse) {
+    public UniqueResponseList parseResponses(String stringResponse) {
         String[] stringResponses = stringResponse.split("\\|");
-        ArrayList<Response> responses = new ArrayList<>();
+        UniqueResponseList responses = new UniqueResponseList();
         for (String s : stringResponses) {
             responses.add(parseResponseFields(s));
         }

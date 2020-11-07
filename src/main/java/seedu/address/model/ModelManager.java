@@ -5,6 +5,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -29,10 +31,9 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final ReadOnlyQuizBook readOnlyQuizBook = SampleDataUtil.getSampleQuizBook();
     private final QuizBook quizBook = new QuizBook(readOnlyQuizBook);
-    // private final PerformanceBook performanceBook = new PerformanceBook(SampleDataUtil.getSamplePerformance());
     private final PerformanceBook performanceBook;
     private final ObservableList<Question> filteredQuizList = this.quizBook.getQuestionList();
-    // private final ObservableList<Attempt> filteredAttemptList = this.performanceBook.getPerformance().getAttempts();
+    private ObservableList<Response> responseList;
     private final ObservableList<Attempt> filteredAttemptList;
     private final UserPrefs userPrefs;
     private final FilteredList<Flashcard> filteredFlashcards;
@@ -214,10 +215,37 @@ public class ModelManager implements Model {
             logger.warning("Error here.");
         }
     }
+    @Override
+    public void showAttempt(Attempt attempt) {
+        responseList = attempt.getResponses();
+    }
 
     @Override
     public void recordResponse(Response response) {
         quizBook.recordResponse(response);
+    }
+    @Override
+    public void setSelectedIndex(Question question, String response) {
+        requireAllNonNull(question, response);
+        int index;
+        if (question.isMcq()) {
+            index = Integer.parseInt(response);
+        } else {
+            index = response.toLowerCase().equals("true") ? 1 : 2;
+        }
+        Question newQuestion = question.copy();
+        newQuestion.setSelectedIndex(index);
+        quizBook.setQuestion(question, newQuestion);
+    }
+    @Override
+    public void setAllSelectedIndex(int index) {
+        List<Question> newQuestions = new ArrayList<>();
+        for (Question qn : quizBook.getQuestionList()) {
+            Question newQn = qn.copy();
+            newQn.setSelectedIndex(index);
+            newQuestions.add(newQn);
+        }
+        quizBook.setQuestions(newQuestions);
     }
 
     public ObservableList<Question> getQuizList() {
@@ -226,6 +254,10 @@ public class ModelManager implements Model {
 
     public ObservableList<Attempt> getAttemptList() {
         return this.filteredAttemptList;
+    }
+
+    public ObservableList<Response> getResponseList() {
+        return this.responseList;
     }
 
     /**

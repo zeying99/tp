@@ -2,8 +2,8 @@ package seedu.address.storage;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
+import javafx.collections.ObservableList;
 import seedu.address.model.quiz.Attempt;
 import seedu.address.model.quiz.Response;
 
@@ -17,7 +17,7 @@ public class AttemptComposer {
         composedAttempt += getFormattedTimestamp(attempt.getTimestamp());
         composedAttempt += "####";
         ResponseComposer responseComposer = new ResponseComposer();
-        ArrayList<Response> responses = attempt.getResponses();
+        ObservableList<Response> responses = attempt.getResponses();
         for (int i = 0; i < responses.size() - 1; i++) {
             composedAttempt += responseComposer.composeResponse(responses.get(i));
             composedAttempt += "|";

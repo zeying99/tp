@@ -1,8 +1,6 @@
 package seedu.address.ui;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,17 +9,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.quiz.Mcq;
 import seedu.address.model.quiz.Question;
+import seedu.address.model.quiz.Response;
 import seedu.address.model.quiz.TrueFalse;
-
 
 /**
  * An UI component that displays information of a {@code Flashcard}.
  */
-public class QuizCard extends UiPart<Region> {
+public class ResponseCard extends UiPart<Region> {
 
-    private static final String FXML = "QuizListCard.fxml";
-    private static final String LABEL_BACKGROUND_GREY = "-fx-background-color: #808080;";
-    private static final String LABEL_BACKGROUND_PURPLE = "-fx-background-color: #7f368f;";
+    private static final String FXML = "ResponseListCard.fxml";
+    private static final String LABEL_BACKGROUND_RED = "-fx-background-color: #cc3361;";
+    private static final String LABEL_BACKGROUND_GREEN = "-fx-background-color: #018f6e;";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -40,40 +38,42 @@ public class QuizCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private FlowPane options;
+    private FlowPane markedOptions;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Flashcard} and index to display.
      */
-    public QuizCard(Question question, int displayedIndex) {
+    public ResponseCard(Response response, int displayedIndex) {
         super(FXML);
+        Question question = response.getQuestion();
         this.question = question;
         id.setText(displayedIndex + ". ");
         prompt.setText(question.getPrompt());
         if (question instanceof Mcq) {
-            Mcq mcqQuestion = (Mcq) question;
-            AtomicInteger counter = new AtomicInteger(1);
-            List<String> labelledOptions = new ArrayList<>();
-            for (String op : mcqQuestion.getOptions()) {
-                labelledOptions.add("Option " + counter.getAndIncrement() + " : " + op);
-            }
-            addOptions(labelledOptions, question.getSelectedIndex());
+            List<String> opt = ((Mcq) question).getOptions();
+            int userResponseIndex = Integer.parseInt(response.getResponse());
+            addOptions(opt, opt.get(((Mcq) question).getAnswer() - 1), opt.get(userResponseIndex - 1));
         } else {
-            addOptions(TrueFalse.OPTIONS, question.getSelectedIndex());
+            String correctAns = ((TrueFalse) question).getAnswer() ? "True" : "False";
+            addOptions(TrueFalse.OPTIONS, correctAns, response.getResponse());
         }
     }
 
-    private void addOptions(List<String> options, int selectedIndex) {
-        for (int i = 0; i < options.size(); i++) {
-            Label label = new Label(options.get(i));
-            label.setStyle(LABEL_BACKGROUND_GREY);
-            if (selectedIndex == -1 || i == selectedIndex - 1) {
-                label.setStyle(LABEL_BACKGROUND_PURPLE);
+    /**
+     * add option labels, changing the label to be red or green accordingly
+     */
+    private void addOptions(List<String> options, String correctAnswer, String userAnswer) {
+        for (String op : options) {
+            Label label = new Label(op);
+            if (op.equals(userAnswer)) {
+                label.setStyle(LABEL_BACKGROUND_RED);
             }
-            this.options.getChildren().add(label);
+            if (op.equals(correctAnswer)) {
+                label.setStyle(LABEL_BACKGROUND_GREEN);
+            }
+            markedOptions.getChildren().add(label);
         }
     }
-
 
     @Override
     public boolean equals(Object other) {
@@ -83,12 +83,12 @@ public class QuizCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof QuizCard)) {
+        if (!(other instanceof ResponseCard)) {
             return false;
         }
 
         // state check
-        QuizCard card = (QuizCard) other;
+        ResponseCard card = (ResponseCard) other;
         return id.getText().equals(card.id.getText())
                 && question.equals(card.question);
     }

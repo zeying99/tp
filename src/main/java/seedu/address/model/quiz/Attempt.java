@@ -4,11 +4,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javafx.collections.ObservableList;
+
 /**
  * Represents a record of user's responses to the respective questions within a quiz attempt.
  */
 public class Attempt implements Comparable<Attempt> {
-    private ArrayList<Response> responses;
+    private UniqueResponseList responses;
     private LocalDateTime timestamp;
 
     /**
@@ -16,7 +18,7 @@ public class Attempt implements Comparable<Attempt> {
      */
     public Attempt() {
         if (this.responses == null) {
-            this.responses = new ArrayList<>();
+            this.responses = new UniqueResponseList();
         }
         this.timestamp = LocalDateTime.now();
     }
@@ -24,7 +26,7 @@ public class Attempt implements Comparable<Attempt> {
     /**
      * Constructs Attempt;
      */
-    public Attempt(ArrayList<Response> responses, LocalDateTime timestamp) {
+    public Attempt(UniqueResponseList responses, LocalDateTime timestamp) {
         this.responses = responses;
         this.timestamp = timestamp;
     }
@@ -83,13 +85,14 @@ public class Attempt implements Comparable<Attempt> {
             }
         }
         String formattedAnalysis = "";
-        formattedAnalysis += "Out of " + getNumOfResponses() + " responses, You got " + totalScore + " responses "
-                + "correct.";
+        //formattedAnalysis += "Out of " + getNumOfResponses() + " responses, You got " + totalScore + " responses "
+        //        + "correct.";
+        formattedAnalysis += totalScore + " out of " + getNumOfResponses() + " attempted question(s) correct";
         formattedAnalysis += System.lineSeparator();
-        formattedAnalysis += "Wrong questions: " + System.lineSeparator();
-        for (String wrongResponse : wrongResponses) {
-            formattedAnalysis += wrongResponse + System.lineSeparator();
-        }
+        //formattedAnalysis += "Wrong questions: " + System.lineSeparator();
+        //        for (String wrongResponse : wrongResponses) {
+        //            formattedAnalysis += wrongResponse + System.lineSeparator();
+        //        }
         return formattedAnalysis;
     }
 
@@ -101,8 +104,8 @@ public class Attempt implements Comparable<Attempt> {
         return responses.size();
     }
 
-    public ArrayList<Response> getResponses() {
-        return responses;
+    public ObservableList<Response> getResponses() {
+        return responses.asUnmodifiableObservableList();
     }
 
     /**

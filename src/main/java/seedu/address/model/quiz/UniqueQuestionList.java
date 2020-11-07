@@ -80,22 +80,6 @@ public class UniqueQuestionList implements Iterable<Question> {
             throw new QuestionNotFoundException();
         }
     }
-    //TODO:
-    //    /**
-    //     * Flips a question to show or hide the answer.
-    //     * @param toFlip question to be flipped.
-    //     */
-    //    public void flipQuestion(Question toFlip) {
-    //        requireNonNull(toFlip);
-    //
-    //        int index = internalList.indexOf(toFlip);
-    //        if (index == -1) {
-    //            throw new QuestionNotFoundException();
-    //        }
-    //
-    //        internalList.get(index).toggleDefinition();
-    //        internalList.set(index, toFlip);
-    //      }
 
     public void setQuestions(UniqueQuestionList replacement) {
         requireNonNull(replacement);

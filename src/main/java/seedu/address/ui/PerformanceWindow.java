@@ -9,13 +9,12 @@ import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
-import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.PerformanceCommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * The Main Window. Provides the basic application layout containing
- * a menu bar and space where other JavaFX elements can be placed.
+ * The Performance Window.
  */
 public class PerformanceWindow extends UiPart<Stage> {
 
@@ -28,6 +27,7 @@ public class PerformanceWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private AttemptListPanel attemptListPanel;
+    private ResponseListPanel responseListPanel;
     private ResultDisplay resultDisplay;
 
     @FXML
@@ -38,6 +38,9 @@ public class PerformanceWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane attemptListPanelPlaceholder;
+
+    @FXML
+    private StackPane responseListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -139,15 +142,53 @@ public class PerformanceWindow extends UiPart<Stage> {
     }
 
     /**
+     * Switches to responses panel.
+     */
+    @FXML
+    public void handleViewResponses() {
+        attemptListPanelPlaceholder.setVisible(false);
+        attemptListPanelPlaceholder.setManaged(false);
+
+        responseListPanel = new ResponseListPanel(logic.getResponseList());
+        responseListPanelPlaceholder.getChildren().add(responseListPanel.getRoot());
+        responseListPanelPlaceholder.setVisible(true);
+        responseListPanelPlaceholder.setManaged(true);
+        root.getScene().lookup("#responseList").setVisible(true);
+        root.getScene().lookup("#responseList").setManaged(true);
+    }
+
+    /**
+     * Switches to attempts panel.
+     */
+    @FXML
+    public void handleViewAttempts() {
+        responseListPanelPlaceholder.setVisible(false);
+        responseListPanelPlaceholder.setManaged(false);
+
+        attemptListPanel = new AttemptListPanel(logic.getAttemptList());
+        attemptListPanelPlaceholder.getChildren().add(attemptListPanel.getRoot());
+        attemptListPanelPlaceholder.setVisible(true);
+        attemptListPanelPlaceholder.setManaged(true);
+        root.getScene().lookup("#attemptList").setVisible(true);
+        root.getScene().lookup("#attemptList").setManaged(true);
+    }
+
+    /**
      * Executes the command and returns the result.
      *
      * @see Logic#execute(String)
      */
-    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
+    private PerformanceCommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
-            CommandResult commandResult = logic.execute(commandText);
+            PerformanceCommandResult commandResult = logic.executePerformanceCommands(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+            if (commandResult.isSwitchToResponses()) {
+                handleViewResponses();
+            }
+            if (commandResult.isSwitchToAttempts()) {
+                handleViewAttempts();
+            }
 
             return commandResult;
         } catch (CommandException | ParseException e) {

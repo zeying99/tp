@@ -34,6 +34,11 @@ public class Mcq extends Question {
         return options;
     }
 
+    @Override
+    public Question copy() {
+        return new Mcq(this.prompt, this.answer, this.options);
+    }
+
     /**
      * Returns the question prompt and options, represented in an appropriate String format.
      */

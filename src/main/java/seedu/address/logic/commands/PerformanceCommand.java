@@ -1,21 +1,21 @@
 package seedu.address.logic.commands;
 
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
 /**
- * Format full help instructions for every command for display.
+ * Represents a command with hidden internal logic and the ability to be executed.
  */
-public class PerformanceCommand extends Command {
+public abstract class PerformanceCommand extends Command {
 
-    public static final String COMMAND_WORD = "performance";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows user's past quiz attempts.\n"
-            + "Example: " + COMMAND_WORD;
-
-    public static final String SHOWING_PERFORMANCE_MESSAGE = "Opened performance window.";
-
+    /**
+     * Executes the command and returns the result message.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return feedback message of the operation result for display
+     * @throws CommandException If an error occurs during command execution.
+     */
     @Override
-    public CommandResult execute(Model model) {
-        return new CommandResult(SHOWING_PERFORMANCE_MESSAGE, false, true, false);
-    }
+    public abstract PerformanceCommandResult execute(Model model) throws CommandException;
+
 }

@@ -9,7 +9,8 @@ public class EndAttemptCommand extends Command {
 
     public static final String COMMAND_WORD = "end";
     public static final String MESSAGE_USAGE = COMMAND_WORD + "end attempt: Ends a quiz attempt.";
-    public static final String MESSAGE_ATTEMPT_ACKNOWLEDGEMENT = "Attempt ended!";
+    public static final String MESSAGE_ATTEMPT_ACKNOWLEDGEMENT = "Attempt ended! \n"
+                                                                + "You can view your results at Performance";
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -18,6 +19,7 @@ public class EndAttemptCommand extends Command {
             throw new CommandException("There is no attempt in progress");
         } else {
             model.endAttempt();
+            model.setAllSelectedIndex(-1);
             return new CommandResult(MESSAGE_ATTEMPT_ACKNOWLEDGEMENT, false, false, false);
         }
     }

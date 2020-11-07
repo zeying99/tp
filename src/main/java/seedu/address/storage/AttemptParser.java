@@ -2,10 +2,9 @@ package seedu.address.storage;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
 import seedu.address.model.quiz.Attempt;
-import seedu.address.model.quiz.Response;
+import seedu.address.model.quiz.UniqueResponseList;
 
 public class AttemptParser {
 
@@ -19,7 +18,7 @@ public class AttemptParser {
         LocalDateTime dateTime = LocalDateTime.parse(stringTime, formatter);
 
         String stringResponses = userArguments[1];
-        ArrayList<Response> responses = new ResponseParser().parseResponses(stringResponses);
+        UniqueResponseList responses = new ResponseParser().parseResponses(stringResponses);
         return new Attempt(responses, dateTime);
     }
 }
