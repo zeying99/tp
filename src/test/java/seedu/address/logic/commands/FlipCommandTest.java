@@ -31,7 +31,7 @@ public class FlipCommandTest {
         Flashcard flashcardToFlip = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         FlipCommand flipCommand = new FlipCommand(INDEX_FIRST_PERSON);
 
-        String expectedMessage = String.format(FlipCommand.MESSAGE_FLIP_FLASHCARD_SUCCESS, flashcardToFlip);
+        String expectedMessage = flipCommand.generateSuccessMessage(flashcardToFlip);
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.flipFlashcard(flashcardToFlip);
@@ -54,7 +54,7 @@ public class FlipCommandTest {
         Flashcard flashcardToFlip = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         FlipCommand flipCommand = new FlipCommand(INDEX_FIRST_PERSON);
 
-        String expectedMessage = String.format(FlipCommand.MESSAGE_FLIP_FLASHCARD_SUCCESS, flashcardToFlip);
+        String expectedMessage = flipCommand.generateSuccessMessage(flashcardToFlip);
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.flipFlashcard(flashcardToFlip);
