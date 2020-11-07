@@ -36,8 +36,6 @@ public class Flashcard implements Comparable<Flashcard> {
         this.priority = priority;
     }
 
-
-
     public Title getTitle() {
         return title;
     }
@@ -83,6 +81,14 @@ public class Flashcard implements Comparable<Flashcard> {
         } else {
             this.visibleDefinition = new Definition();
         }
+    }
+
+    /**
+     * Returns true if the flashcard is flipped to show its definition.
+     * @return boolean value to indicate if flashcard is currently flipped.
+     */
+    public boolean isFlipped() {
+        return this.definition.equals(this.visibleDefinition);
     }
 
     /**

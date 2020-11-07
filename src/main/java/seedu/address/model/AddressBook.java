@@ -83,6 +83,10 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setFlashcard(Flashcard target, Flashcard editedFlashcard) {
         requireNonNull(editedFlashcard);
 
+        if (target.isFlipped()) {
+            editedFlashcard.toggleDefinition();
+        }
+
         flashcards.setFlashcard(target, editedFlashcard);
     }
 

@@ -51,12 +51,17 @@ public class FlipCommand extends Command {
         Flashcard flashcardToFlip = lastShownList.get(index.getZeroBased());
         model.flipFlashcard(flashcardToFlip);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_FLASHCARD);
-        return new CommandResult(String.format(MESSAGE_FLIP_FLASHCARD_SUCCESS, flashcardToFlip));
+        return new CommandResult(this.generateSuccessMessage(flashcardToFlip));
     }
 
-    private String generateSuccessMessage(Flashcard flashcardToFlip) {
+    /**
+     * Generates the message to be displayed to the user upon the successful execution of a flip command.
+     * @param flashcardToFlip the flashcard to be flipped.
+     * @return message displayed to the user indicating the successful execution of the flip command.
+     */
+    public String generateSuccessMessage(Flashcard flashcardToFlip) {
         String message = MESSAGE_FLIP_FLASHCARD_SUCCESS;
-        return String.format(message, flashcardToFlip);
+        return String.format(message, flashcardToFlip.getTitle());
     }
 
     @Override
