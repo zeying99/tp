@@ -12,6 +12,7 @@ public class EndAttemptCommand extends Command {
         + "Example: " + COMMAND_WORD + " attempt" + " (case sensitive)";
     public static final String MESSAGE_ATTEMPT_ACKNOWLEDGEMENT = "Attempt ended! \n"
                                                                 + "You can view your results at Performance";
+    public static final String MESSAGE_EMPTY_ATTEMPT = "Attempt will not be saved to Performance because it is empty.";
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -19,7 +20,10 @@ public class EndAttemptCommand extends Command {
         if (!model.hasCurrentAttempt()) {
             throw new CommandException("There is no attempt in progress");
         } else {
-            model.endAttempt();
+            boolean isCurrentAttemptEmpty = model.endAttempt();
+            if (isCurrentAttemptEmpty) {
+                return new CommandResult(MESSAGE_EMPTY_ATTEMPT, false, false, false);
+            }
             model.setAllSelectedIndex(-1);
             return new CommandResult(MESSAGE_ATTEMPT_ACKNOWLEDGEMENT, false, false, false);
         }

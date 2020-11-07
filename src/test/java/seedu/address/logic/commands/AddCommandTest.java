@@ -224,7 +224,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void endAttempt() {
+        public boolean endAttempt() {
             throw new AssertionError("This method should not be called.");
         }
     }

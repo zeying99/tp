@@ -123,4 +123,8 @@ public class Attempt implements Comparable<Attempt> {
     public int compareTo(Attempt f2) {
         return timestamp.compareTo(f2.getTimestamp());
     }
+
+    public boolean isEmpty() {
+        return responses.size() <= 0;
+    }
 }
