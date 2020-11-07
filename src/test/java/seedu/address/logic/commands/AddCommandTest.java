@@ -144,6 +144,16 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setSelectedIndex(Question target, String response) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAllSelectedIndex(int index) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasCurrentAttempt() {
             throw new AssertionError("This method should not be called.");
         }
