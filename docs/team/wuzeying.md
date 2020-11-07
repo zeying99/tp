@@ -5,12 +5,12 @@ title: Wu Zeying's Project Portfolio Page
 
 ## Project: DSAce (AddressBook Level 3)
 
-DSAce is a desktop definition book application used for teaching Data Structures and Algorithms principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. 
+DSAce is a desktop definition book application used for teaching Data Structures and Algorithms principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX.
 It is written in Java, and has about 10 kLoC.
 
 Given below are my contributions to the project.
 
-* **New Feature**: Priority 
+* **New Feature**: Priority
   * What it does: Allows users to assign priority of the flashcards. Users can sort the flashcards by priority.
   * Justification: This feature allows users to see which concept should be of their priority. Hence, easing their process of revision.
   * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands such add and edit.

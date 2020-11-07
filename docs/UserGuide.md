@@ -62,19 +62,19 @@ DSAce is a **desktop app for creating flashcards and attempting quiz questions f
    * **`clear`** : Deletes all flashcards.
 
    * **`enter quiz`** : Enters Quiz mode. (Enter quiz interface)
-   
+
       * **`start attempt`** : Start a proper attempt where answers will be recorded. (Only workable in quiz interface)
-      
+
       * **`answer`** `1 a/true` : Answer the first quiz question, type the question index and user's answer in this format `[a/ANSWER]`. (Only workable in quiz interface)
-      
+
       * **`end attempt`**: End the curret attempt and results can be seemed in performance. (Only workable in quiz interface)
 
    * **`leave quiz`** : Leaves Quiz mode. (Enter flashcard interface)
-   
+
    * **`performance`** : Check historical quiz attempts results. (Enter performance interface)
-     
+
      * **`view`** `1` : View the first attempt to check the wrong and correct answers. (Only workable in performance interface)
-     
+
      * **`list`** : Show the list of historical attempts. (Only workable in performance interface)
 
    * **`exit`** : Exits the app.
@@ -116,7 +116,7 @@ Format: `help`
 
 ### Adding a flashcard : `add`
 
-Adds a flashcard to the default DSAce folder. 
+Adds a flashcard to the default DSAce folder.
 
 Format: `add n/NAME d/DEFINITION [t/TAG] [p/PRIORITY]`
 
@@ -124,10 +124,10 @@ Examples:
 * `add n/Bellman Ford Search d/runtime: O(VE) p/high`
 * `add n/Bubble Sort d/runtime: O(n^2) t/sorting t/midterm`
 
-Note: 
+Note:
 - Priority will default to low when unspecified.
 - To add multiple tags, each of them requires its own label e.g `t/sorting t/midterm`
-- If there are multiple instances of name and/or definition, the one that appears last is taken 
+- If there are multiple instances of name and/or definition, the one that appears last is taken
 e.g second is the name of `n/first n/second`
 
 ### Listing all flashcards : `list`
@@ -172,9 +172,9 @@ Examples:
  all existing tags.
 * `list` followed by `edit 3 p/high` Edits the priority of the 3rd flashcard to be `high`.
 
-Note: 
+Note:
 - To edit multiple tags, each of them requires its own label e.g `t/sorting t/midterm`
-- If there are multiple instances of name and/or definition, the one that appears last is taken 
+- If there are multiple instances of name and/or definition, the one that appears last is taken
   e.g second will be the name of `n/first n/second`
 
 ### Locating flashcards by name/tag/priority: `find`
@@ -231,7 +231,7 @@ Format: `clear`
 
 ### Entering Quiz mode : `enter quiz`
 
-Enters quiz mode and disables all commands in flashcard mode. 
+Enters quiz mode and disables all commands in flashcard mode.
 
 Format: `enter quiz`
 
@@ -266,7 +266,7 @@ Answers the specific indexed quiz question.
 Format: `answer [INDEX] [a/ANSWER]`
 
 * For True/False questions, answer in true/false. (case-insensitive)
-* For MCQ questions, answer in positive integer as labelled in the quiz list. 
+* For MCQ questions, answer in positive integer as labelled in the quiz list.
 
 Examples:
 For True/False questions, type e.g `answer 1 a/true` or `answer 1 a/TrUe` or `answer 1 a/false`
@@ -363,7 +363,7 @@ Action | Format, Examples
 **Exit** | `exit`
 **Enter Quiz** | `enter quiz`
 **Start attempt**  | `start attempt`
-**Answer** | `answer [INDEX] [a/ANSWER]` <br> e.g., `ansewer 1 a/true` for True/False questions and `ansewer 2 a/1` for MCQ questions 
+**Answer** | `answer [INDEX] [a/ANSWER]` <br> e.g., `ansewer 1 a/true` for True/False questions and `ansewer 2 a/1` for MCQ questions
 **End attempt**  | `end attempt`
 **Leave Quiz** | `leave quiz`
 **Performance** | `performance`

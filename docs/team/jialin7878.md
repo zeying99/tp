@@ -5,13 +5,13 @@ title: Cai Jialin's Project Portfolio Page
 
 ## Project: AddressBook Level 3
 
-DSAce is a desktop definition book application used for teaching Data Structures and Algorithms principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. 
+DSAce is a desktop definition book application used for teaching Data Structures and Algorithms principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX.
 It is written in Java, and has about 10 kLoC.
 
 Given below are my contributions to the project.
 
 * **New Feature**: Added the ability for find command to search for tags and priority.
-  * What it does: allows the user to search for flashcards using tags and priority keywords as well. Multiple keywords will follow the `AND` search 
+  * What it does: allows the user to search for flashcards using tags and priority keywords as well. Multiple keywords will follow the `AND` search
   i.e only flashcards that fulfills all keywords will be returned
   * Justification: This feature improves the user experience because the user can revise flashcards by topic (e.g Sorting) and/or by priority (e.g priority: high)
   * Highlights: The implementation required changes to existing commands, as well as the creation of three new predicate classes.
