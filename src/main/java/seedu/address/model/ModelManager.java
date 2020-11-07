@@ -206,14 +206,18 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void endAttempt() {
+    public boolean endAttempt() {
         this.hasCurrentAttempt = false;
         Attempt currentAttempt = quizBook.endAttempt();
+        boolean isCurrentAttemptEmpty = currentAttempt.isEmpty();
         try {
-            performanceBook.saveAttempt(currentAttempt);
+            if (!isCurrentAttemptEmpty) {
+                performanceBook.saveAttempt(currentAttempt);
+            }
         } catch (IOException e) {
             logger.warning("Error here.");
         }
+        return isCurrentAttemptEmpty;
     }
     @Override
     public void showAttempt(Attempt attempt) {

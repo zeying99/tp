@@ -70,7 +70,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveName = 'addressbook.jar'
+    archiveName = '[CS2103-T14-2][DSAce].jar'
 }
 
 defaultTasks 'clean', 'test'
