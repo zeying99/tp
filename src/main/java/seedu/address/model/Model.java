@@ -111,7 +111,7 @@ public interface Model {
     void startAttempt();
 
     /** Ends a current quiz attempt. */
-    void endAttempt();
+    boolean endAttempt();
 
     /** Records a new response to current attempt. */
     void recordResponse(Response response);
