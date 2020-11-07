@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-DSAce is a **desktop app for creating flashcards for CS2040s, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, DSAce can get your revision tasks done faster than traditional GUI apps.
+DSAce is a **desktop app for creating flashcards and attempting quiz questions for CS2040s, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, DSAce can get your revision tasks done faster than traditional GUI apps.
 
 ## Table of Contents
 * [Quick start](#quick-start)
@@ -20,6 +20,9 @@ DSAce is a **desktop app for creating flashcards for CS2040s, optimized for use 
    * [**`enter quiz`** : Entering Quiz mode.](#entering-quiz-mode--enter-quiz)
    * [**`leave quiz`** : Leaving Quiz mode.](#leaving-quiz-mode--leave-quiz)
    * [**`exit`** : Exiting the program.](#exiting-the-program--exit)
+   * [**`performance`** : Opening performance interface.](#checking-performance--performance)
+   * [**`view`** : Viewing previous an attempt result.](#viewing-a-specific-historical-attempt--view)
+   * [**`list`** : List historical attempts.](#listing-historical-attempts-results--list)
    * [Saving the data.](#saving-the-data)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
@@ -31,14 +34,14 @@ DSAce is a **desktop app for creating flashcards for CS2040s, optimized for use 
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `dsace.jar` from [here](https://github.com/AY2021S1-CS2103-T14-2/tp/releases).
+2. Download the latest `dsace.jar` from [here](https://github.com/AY2021S1-CS2103-T14-2/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your DSAce.
+3. Copy the file to the folder you want to use as the _home folder_ for your DSAce.
 
-1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * **`list`** : Lists all flashcards.
@@ -50,7 +53,7 @@ DSAce is a **desktop app for creating flashcards for CS2040s, optimized for use 
 
    * **`sort`**`desc` : Sorts all flashcards by priority in descending order.
 
-   * **`find`**`n/Trees` : Finds flashcards with names containing the keyword `Trees`
+   * **`find`**`n/Heap` : Finds flashcards with names containing the keyword `Heap`
 
    * **`delete`**`3` : Deletes the 3rd flashcard shown in the current list.
 
@@ -58,25 +61,36 @@ DSAce is a **desktop app for creating flashcards for CS2040s, optimized for use 
 
    * **`clear`** : Deletes all flashcards.
 
-   * **`enter quiz`** : Enters Quiz mode.
+   * **`enter quiz`** : Enters Quiz mode. (Enter quiz interface)
+   
+      * **`start attempt`** : Start a proper attempt where answers will be recorded. (Only workable in quiz interface)
+      
+      * **`answer`** `1 a/true` : Answer the first quiz question, type the question index and user's answer in this format `a/[ANSWER]`. (Only workable in quiz interface)
+      
+      * **`end attempt`**: End the curret attempt and results can be seemed in performance. (Only workable in quiz interface)
 
-   * **`leave quiz`** : Leaves Quiz mode.
+   * **`leave quiz`** : Leaves Quiz mode. (Enter flashcard interface)
+   
+   * **`performance`** : Check historical quiz attempts results. (Enter performance interface)
+     
+     * **`view`** `1` : View the first attempt to check the wrong and correct answers. (Only workable in performance interface)
+     
+     * **`list`** : Show the list of historical attempts. (Only workable in performance interface)
 
    * **`exit`** : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 
-1. All sample data and flashcards created by the user will be stored in the `DSAce` folder.
+7. All sample data and flashcards created by the user will be stored in the `DSAce` folder.
 
-1. Other commands in Quiz mode are to be implemented in v1.4.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Notes about the command format:**<br>
+* There are three sets of instructions at flashcard, quiz and performance interface. The sets of instructions are not mutual. eg: add n/name d/definition cannot be used in quiz and performance interface. <br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user. <br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/Sorting`.
@@ -84,6 +98,11 @@ DSAce is a **desktop app for creating flashcards for CS2040s, optimized for use 
 * Parameters can be in any order. <br>
   e.g. if the command specifies `n/NAME d/DEFINITION`, `d/DEFINITION n/NAME` is also acceptable.
 
+</div>
+
+## Feature 1 - Flashcard mode
+<div markdown="block" class="alert alert-info">
+* Command lines below are only workable under flashcard interface.
 </div>
 
 ### Viewing help : `help`
@@ -212,9 +231,63 @@ Format: `clear`
 
 ### Entering Quiz mode : `enter quiz`
 
-Enters quiz mode and disables all commands in flashcard mode.
+Enters quiz mode and disables all commands in flashcard mode. 
 
 Format: `enter quiz`
+
+### Checking performance : `performance`
+
+Opens a new window of performance where historical attempts are stored
+
+Format: `performance`
+
+### Exiting the program : `exit`
+
+Exits the program.
+
+Format: `exit`
+
+## Feature 2 - Quiz mode
+
+<div markdown="block" class="alert alert-info">
+* Command line below are only workable under quiz interface.
+</div>
+
+### Starting an attempt : `start attempt`
+
+Starts an attempt of the set of questions.
+
+Format: `start attempt`
+
+### Answering quiz questions : `answer`
+
+Answers the specific indexed quiz question.
+
+Format: `answer [INDEX] a/[ANSWER]`
+
+* For True/False questions, answer in true/false. (case-insensitive)
+* For MCQ questions, answer in positive integer as labelled in the quiz list. 
+
+Examples:
+For True/False questions, type e.g `answer 1 a/true` or `answer 1 a/TrUe` or `answer 1 a/false`
+For MCQ questions, type e.g `answer 2 a/1` for option 1 or `answer 2 a/2` for option 2. Invalid out of bounce index will not be recorded.
+### Ending an attempt : `end attempt`
+
+Ends the current attempt and store the result into Performance.
+
+### Checking performance : `performance`
+
+Opens a new window of performance where historical attempts are stored
+
+Format: `performance`
+
+### Viewing help : `help`
+
+Shows a message explaining the features of the app, and the format of the command associated with each feature.
+
+![help message](images/helpMessage.png)
+
+Format: `help`
 
 ### Leaving Quiz mode : `leave quiz`
 
@@ -222,11 +295,48 @@ Leaves quiz mode and disables all commands in quiz mode.
 
 Format: `leave quiz`
 
-### Exiting the program : `exit`
+### Exiting application : `exit`
 
-Exits the program.
+Exits the programme.
 
 Format: `exit`
+
+## Feature 3 - Performance mode
+
+<div markdown="block" class="alert alert-info">
+* Command line below are only workable under perfomance interface.
+</div>
+
+### Listing historical attempts results: `list`
+
+Shows a list of previous attempts and result statistic.
+
+Format: `list`
+
+### Viewing a specific historical attempt : `view`
+
+Shows the quiz questions attempted. Red options indicate wrong answer input and green options indicate correct answer/input.
+
+Format: `view [INDEX]`
+
+Example: Index input must start from 1. Out of bounce index will not be recorded. e.g `view 1`
+
+![view message](images/view_attempt.png)
+
+### Viewing help : `help`
+
+Shows a message explaining the features of the app, and the format of the command associated with each feature.
+
+![help message](images/helpMessage.png)
+
+Format: `help`
+
+### Exiting application : `exit`
+
+Exits the programme.
+
+Format: `exit`
+
 
 ### Saving the data
 DSAce data is saved in the DSAce folder automatically after any command that changes the data is entered. There is no need to save the data manually.
