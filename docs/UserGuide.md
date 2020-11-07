@@ -65,7 +65,7 @@ DSAce is a **desktop app for creating flashcards and attempting quiz questions f
    
       * **`start attempt`** : Start a proper attempt where answers will be recorded. (Only workable in quiz interface)
       
-      * **`answer`** `1 a/true` : Answer the first quiz question, type the question index and user's answer in this format `a/[ANSWER]`. (Only workable in quiz interface)
+      * **`answer`** `1 a/true` : Answer the first quiz question, type the question index and user's answer in this format `[a/ANSWER]`. (Only workable in quiz interface)
       
       * **`end attempt`**: End the curret attempt and results can be seemed in performance. (Only workable in quiz interface)
 
@@ -263,7 +263,7 @@ Format: `start attempt`
 
 Answers the specific indexed quiz question.
 
-Format: `answer [INDEX] a/[ANSWER]`
+Format: `answer [INDEX] [a/ANSWER]`
 
 * For True/False questions, answer in true/false. (case-insensitive)
 * For MCQ questions, answer in positive integer as labelled in the quiz list. 
@@ -358,8 +358,14 @@ Action | Format, Examples
 **Flip** | `flip INDEX` <br> e.g., `flip 2`
 **Edit** | `edit INDEX [n/NAME] [d/DEFINITION] [t/TAGS] [p/PRIORITY]` <br> e.g., `edit 1 n/BubbleSort d/Average case: O(n^2) p/low`
 **Find** | `find [n/KEYWORDS] [t/KEYWORD​S] [p/KEYWORD​S]​` <br> e.g., `find n/BellmanFord Search`
-**List** | `list`
+**List** | `list` (flashcard interface)
 **Help** | `help`
 **Exit** | `exit`
 **Enter Quiz** | `enter quiz`
+**Start attempt**  | `start attempt`
+**Answer** | `answer [INDEX] [a/ANSWER]` <br> e.g., `ansewer 1 a/true` for True/False questions and `ansewer 2 a/1` for MCQ questions 
+**End attempt**  | `end attempt`
 **Leave Quiz** | `leave quiz`
+**Performance** | `performance`
+**List** | `list` (performance interface)
+**View** | `view [INDEX]` <br> e.g., `view 1`
