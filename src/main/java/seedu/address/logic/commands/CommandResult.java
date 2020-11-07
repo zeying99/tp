@@ -26,6 +26,9 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** The application should exit. */
+    private final boolean toggle;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
@@ -36,6 +39,7 @@ public class CommandResult {
         this.exit = exit;
         this.switchToQuiz = false;
         this.switchToFlashcards = false;
+        this.toggle = false;
     }
 
     /**
@@ -49,6 +53,21 @@ public class CommandResult {
         this.exit = exit;
         this.switchToQuiz = isQuiz;
         this.switchToFlashcards = isExitQuiz;
+        this.toggle = false;
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields (3).
+     */
+    public CommandResult(String feedbackToUser, boolean isQuiz, boolean isExitQuiz, boolean showHelp,
+                         boolean showPerformance, boolean exit, boolean toggle) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showHelp = showHelp;
+        this.showPerformance = showPerformance;
+        this.exit = exit;
+        this.switchToQuiz = isQuiz;
+        this.switchToFlashcards = isExitQuiz;
+        this.toggle = toggle;
     }
 
     /**
